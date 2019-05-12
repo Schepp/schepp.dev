@@ -1,0 +1,16 @@
+{
+  "title": "Der Schepp",
+  "url": "https://schepp.dev/",
+  "description": "Writing about front-end development",
+  "feed": {
+    "subtitle": "Writing about front-end development",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "url": "https://myurl.com/feed/feed.xml",
+    "id": "https://myurl.com/"
+  },
+  "author": {
+    "name": "Christian \"Schepp\" Schaefer",
+    "email": "schaepp@gmx.de"
+  }
+}
