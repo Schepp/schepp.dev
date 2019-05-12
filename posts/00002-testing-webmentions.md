@@ -1,12 +1,12 @@
 ---
-title: I finally have a blog!
-description: After 15 years of not having a blog, 2019 is the year I turn things around. 
+title: Testing Webmentions
+description: This is my webmention.rock test page.
 date: 2019-05-12
 tags:
   - indiewebcamp
 layout: layouts/post.njk
 ---
-This is my webmention.rock test.
+This is my webmention.rock test page.
 
 [https://webmention.rocks/test/1](https://webmention.rocks/test/1)
 [https://webmention.rocks/test/2](https://webmention.rocks/test/2)
