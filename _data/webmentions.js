@@ -18,7 +18,7 @@ async function fetchWebmentions(since) {
         // If we dont have a domain name, abort
         console.warn(
             'unable to fetch webmentions: no domain specified in metadata.'
-        )
+        );
         return false
     }
     if (!TOKEN) {
