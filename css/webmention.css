@@ -15,6 +15,7 @@
     border-radius: 50%;
     object-fit: cover;
     flex: none;
+    border: 2px solid #333;
 }
 .webmentions__list {
     list-style-type: none;
@@ -47,6 +48,7 @@
     border-radius: 50%;
     object-fit: cover;
     margin-right:.5rem;
+    border: 2px solid #333;
 }
 .webmention__pubdate {
     font-style: italic;

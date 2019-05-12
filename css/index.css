@@ -1,11 +1,11 @@
 :root {
-  --red: #C5004A;
-  --darkred: #7F0036;
+  --red: #c4c4c4;
+  --darkred: #7d7d7d;
   --lightgray: #e0e0e0;
   --gray: #C0C0C0;
   --darkgray: #333;
   --navy: #17050F;
-  --blue: #082840;
+  --blue: #404040;
   --white: #fff;
 }
 * {
@@ -15,9 +15,13 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
   color: var(--darkgray);
   background-color: var(--white);
+}
+body {
+  max-width: 40rem;
+  margin: auto;
 }
 p:last-child {
   margin-bottom: 0;
