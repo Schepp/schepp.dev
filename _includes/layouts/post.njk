@@ -6,4 +6,6 @@ templateClass: tmpl-post
 
 {{ content | safe }}
 
+{% include "webmentionlist.njk" %}
+
 <p><a href="{{ '/' | url }}">← Home</a></p>
