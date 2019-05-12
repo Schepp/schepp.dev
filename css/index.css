@@ -228,3 +228,14 @@ a[href].direct-link:focus:visited,
 :hover > a[href].direct-link:visited {
   color: #aaa;
 }
+.me {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid #333;
+}
+.me li {
+  display: inline-block;
+  padding-right: 1em;
+}
