@@ -10,13 +10,17 @@ module.exports = function (eleventyConfig) {
 
     eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 
-    eleventyConfig.addFilter("readableDate", dateObj => {
-        return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLL yyyy");
+    eleventyConfig.addFilter('readableDate', dateObj => {
+        return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('dd LLL yyyy')
+    });
+
+    eleventyConfig.addFilter('dateFromTimestamp', timestamp => {
+        return DateTime.fromISO(timestamp, { zone: 'utc' }).toJSDate()
     });
 
     // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-    eleventyConfig.addFilter('htmlDateString', (dateObj) => {
-        return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
+    eleventyConfig.addFilter('htmlDateString', dateObj => {
+        return DateTime.fromJSDate(dateObj).toFormat('yyyy-LL-dd')
     });
 
     // Get the first `n` elements of a collection.
