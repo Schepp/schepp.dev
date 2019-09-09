@@ -18,7 +18,7 @@ So-called skyscraper or wallpaper ads have a tendency to make sure that they are
 
 And ads sometimes turn out to be trojan horses who's innards **try to steal sensible data** from you without you noticing. 
 
-Oh yes, they suck big time. But for us, there was no way around them, so we found ways to work with them and to minimize their impact. And here comes how ...
+Oh yes, they suck big time. But for us, there was no way around them, so we found ways to work with them and to minimize their impact.
 
 ## Ads & Responsive
 
@@ -28,7 +28,7 @@ Since we also wanted to get rid of server side user agent sniffing we had to fin
 
 One way to do this is to leverage the power of Web Components by putting both snippets in separate `<template>` elements and then to import the correct one into the current DOM, like so:  
 
-```
+```html
 <div class="ad">
   <template class="ad__mobile">
     // Mobile ad HTML code with inline script
@@ -52,7 +52,7 @@ Note that you can't go "all in" with Web Components and make it a full custom el
 
 The above was not the route we chose, though. When developed our site in late 2017, Edge was not yet there and we still had a considerable amount of IE traffic that we wanted to monetize. So my approach was a different one. The idea was to still deliver both ad codes but to use `document.write` to render one of them useless at parse time. One idea would have been to use an HTML comment, like so:
 
-```xhtml
+```html
 <div class="ad">
   <script>
     (function() {
@@ -81,7 +81,7 @@ The closing comment declarations would be hardcoded into the HTML (`-->`), where
 
 So I remembered one more discovery I made a few years back, in regards to HTML, and that was the `<xmp>` element. This tag has been marked deprecated in HTML 3.2 and completely removed in HTML 5. But browsers still support it. The `<xmp>` was once meant to display preformatted text and was superseded by the `<pre>` element. But `<xmp>` has huge advantage over `<pre>` in that it does not need HTML to be entity encoded inside it. Similarly to the `<template>` element it mutes the effect of any contained HTML, which the only difference that it would visibly show up in the browser. And the probability of an ad code to break it with an `</xmp>` tag is basically non-existent. So this is basically the code we went live with:
 
-```xhtml
+```html
 <div class="ad">
   <script>
     (function() {
@@ -116,7 +116,7 @@ But our ad people would not be who they are if they didn't increase the difficul
 
 Triggering actions once an element enters the viewport got pretty easy nowadays thanks to the IntersectionObserver API (and the available [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)). The more difficult problem to tackle was how to postpone the execution of arbitrarily shaped scripts into the future. As you might know, just reading out the ad's HTML snippet and injecting it into the DOM via `.innerHTML` would not execute whatever `<script>` element was contained in it. One possibility could have been to parse out any `script` tags, to recreate them via `document.createElement`, and to then append them. But then again, how would we handle `document.write`? Since our base document has finished parsing and is now considered "closed", such a late `document.write` would overwrite the whole document, instead of adding to it. The `<template>` together with `document.importNode` could solve the problem, but as I have already outlined above, they are not an option for us. But I discovered one more interesting DOM feature capable of helping me out: the Range object and its `.createContextualFragment()` method ([*](https://developer.mozilla.org/en-US/docs/Web/API/Range/createContextualFragment)), creating a, well, Contextual Fragment. And here is how I put it to use (Media Queries and IntersectionObserver code are left out for the sake of a better understanding of the Range technique):
 
-```
+```html
 <div class="ad">
   <xmp class="ad__mobile">
     // Mobile ad HTML code with inline script
