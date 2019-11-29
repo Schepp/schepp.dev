@@ -178,13 +178,24 @@ I wanted to change `document.write` into something that would catch the output t
   })();
 ``` 
 
-The above code uses ES6 as this time it is not an inline script and so can be transpiled. And I am using `.closest()` and `.after()`, which you need to polyfill in older Edge browsers ([*](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/after) / [*](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)), as well as `document.currentScript` ([*](https://github.com/amiller-gh/currentScript-polyfill)).
+The above code uses ES6 as this time it is not an inline script and so can be transpiled. And I am using `.closest()` and `.after()`, which you need to polyfill in older Edge browsers ([*](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/after) / [*](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)), as well as [`document.currentScript`](https://github.com/amiller-gh/currentScript-polyfill)).
 
 Okay, **NOW** we're finally done. Now we have **responsive**, and **lazily loadable** ad slots that **work for any type of copy & paste code** snippet in the world!
 
-## Bringing back stability to layout
+## Bringing stability back to layout
 
-One other side effect of having ads in your page is that slots pop open once an ad gets loaded into a slot, thereby pushing the content below it and to its side around. The same happens if you use fixed-sized placeholders in slots and it then turns out that there is no ad with those dimensions left in the pool to deliver, but only smaller or taller ones. Then the slot shrinks or grows, again pushing things around. Usability suffer tremendously as the human eye constantly loses orientation and the browser needs to relayout the page each time (including paint and compositing). The Chrome team recently added a new performance metric they call ["Cumulative Layout Shift"](https://web.dev/cls/) which aims to quantify these problems.
+One other side effect of having ads in your page is that slots pop open once an ad gets loaded into a slot, thereby pushing the content below it and to its side around. The same happens if you use fixed-sized placeholders in slots and it then turns out that there is no ad with those dimensions left in the pool to deliver, but only smaller or taller ones. Then the slot shrinks or grows, again pushing things around. Usability suffer tremendously as the human eye constantly loses orientation and the browser needs to relayout the page each time (including paint and compositing). Most browsers try to compensate for it through a technique called "[Scroll Anchoring](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-anchor/Guide_to_scroll_anchoring)", but there is limits as to how good that works. The Chrome team recently added a new performance metric they call ["Cumulative Layout Shift"](https://web.dev/cls/) which aims to quantify these problems.
+
+So what we did was introducing a new type of placeholder slot, that would always be as large as the largest possible ad format it is configured for, and that would turn any ad being loaded inside of it into a `position: sticky` element that would slide along with the user scrolling the page:
+
+<video autoplay muted loop>
+  <source src="/img/position-sticky-ad.mp4" type="video/mp4">
+  <img src="/img/position-sticky-ad.gif">
+</video>
+
+That way, we did not need to resize the slot once the ad is loaded, thereby reducing the layout shift.
+
+Now we still needed to find a solution for when there's no remaining ad in the ad server pool. Usually, when that was the case, we collapsed the slot. Our new approach is to have new "backup" ads of our own to serve when this happens. These can be ads for our own offers or it could be ads for a good cause, e.g. organizations that can't afford booking ads on larger news sites. 
 
 ## Winning the z-Index Wars
 
