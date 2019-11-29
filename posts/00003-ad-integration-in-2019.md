@@ -6,7 +6,7 @@ tags:
   - adtech
 layout: layouts/post.njk
 ---
-As you may, or may not know, I work for a news company in Germany, the Rheinische Post Mediengruppe. My task there is to concept and build the frontend for a bunch of newspaper sites in form of a white label framework. Sadly, but not very surprisingly my client is still dependent on ads to generate revenue. Which is why I need to prepare our frontend to be able to deal with them.
+As you may, or may not know, I work for a news company in Germany, the Rheinische Post Mediengruppe. My task there is to concept and build the frontend for a bunch of news sites in form of a white label framework. Sadly, but not very surprisingly my client is still dependent on ads to generate revenue. Which is why I need to prepare our frontend to be able to deal with them.
 
 ## But ads suck! 
 
@@ -20,11 +20,11 @@ And ads sometimes turn out to be trojan horses who's innards **try to steal sens
 
 Oh yes, they suck big time. But for us, there was no way around them, so we found ways to work with them and to minimize their impact.
 
-## Ads & Responsive
+## Ads & Responsiveness
 
-Back in the days our newspaper had a standard website for desktops and an mdot site for mobile. This made integrating ads into the site pretty easy, as we knew when to send the ad code for desktop devices and when the one for mobile devices. But maintaining two separate sites has a lot of drawbacks, too: You need to develop many feature twice, you constantly had to maintain your list of devices and corresponding user agent strings to continue to send the right ones to either the desktop or the mobile site, and you constantly had to troubleshoot your URL scheme. This is why for our relaunch we wanted to go the responsive route.
+Back in the days our newspaper had a standard website for desktops and an mdot site for mobile. This made integrating ads into the site pretty strait forward, as we knew when to send the ad code for desktop devices and when the one for mobile devices. But maintaining two separate sites has a lot of drawbacks, too: You need to develop many feature twice, you constantly have to keep your list of devices and corresponding user agent strings up to date to continue sending visitors to the right site, and you constantly had to troubleshoot your URL scheme. This is why for our relaunch we wanted to go the responsive route.
 
-Since we also wanted to get rid of server side user agent sniffing we had to find a way to send both the code for desktop and for mobile devices to the client and to have that client then decide which one of the two to execute. Not that hard. But now comes one more challenge: The people in house adding ad codes to our site are no programmers. They do get isolated codes snippets, either for a mobile or a desktop ad and all they do is paste those into textareas labeled "mobile ad code" and "desktop ad code". So we had to develop something generic that would handle the task.
+Since we also wanted to get rid of server side user agent sniffing we had to find a way to send both ad codes, the one for desktop and the one for mobile devices, to the client and to then have the client somehow sort out which one of the two to execute. Not too hard to achieve. But now comes the real challenge: The people working in the ads division putting corresponding code into our site are no programmers. They do get isolated codes snippets via email or from a documentation, either for a mobile or a desktop ad and all they do is paste those into textareas labeled "mobile ad code" and "desktop ad code". They are not able to transform and combine them to one responsive ad loading code. So we had to develop something generic that would handle the task.
 
 One way to do this is to leverage the power of Web Components by putting both snippets in separate `<template>` elements and then to import the correct one into the current DOM, like so:  
 
@@ -48,9 +48,9 @@ One way to do this is to leverage the power of Web Components by putting both sn
 </div>
 ```
 
-Note that you can't go "all in" with Web Components and make it a full custom element, as ads often rely on being able to reach into the rest of the document. Browser support for the above is quite good, which only IE and Edge &lt; 15 not supporting both `document.currentScript`([*](https://caniuse.com/#feat=document-currentscript)) and `document.importNode`([*](https://caniuse.com/#feat=template)).
+Note that you can't go "all in" with Web Components and make it a full custom element, as ads often rely on being able to reach into the rest of the document. Browser support for the above is quite good, with only IE and Edge &lt; 15 not supporting both `document.currentScript`([*](https://caniuse.com/#feat=document-currentscript)) and `document.importNode`([*](https://caniuse.com/#feat=template)) at the same time.
 
-The above was not the route we chose, though. When developed our site in late 2017, Edge was not yet there and we still had a considerable amount of IE traffic that we wanted to monetize. So my approach was a different one. The idea was to still deliver both ad codes but to use `document.write` to render one of them useless at parse time. One idea would have been to use an HTML comment, like so:
+The above was not the route we chose, though. When we started developing our site in late 2017, Edge was not yet there in terms of support and we still had a considerable amount of IE traffic that we wanted to monetize. So my approach was a different one. The idea was to still deliver both ad codes but to use `document.write` to render one of them useless at parse time. One idea would have been to use an HTML comment, like so:
 
 ```html
 <div class="ad">
@@ -77,9 +77,9 @@ The above was not the route we chose, though. When developed our site in late 20
 </div>
 ```
 
-The closing comment declarations would be hardcoded into the HTML (`-->`), whereas the opening declarations would be inserted depending on the device type (`<!--`), thereby disabling the code in between. But again, this wasn't good enough. Since our people managing the ads would probably just copy & paste code into the respective CMS textareas, I was fully prepared for them to also copy & paste any HTML comments that would come along. Just one such occurrence would be enough to send our whole site into the Nirvana, due to broken HTML nesting.
+The closing comment declarations would be hardcoded into the HTML (`-->`), whereas the opening declarations would be inserted depending on the device type (`<!--`), thereby disabling the code in between. But again, this wasn't good enough. Since our people managing the ads would probably just copy & paste code into the respective CMS textareas, I was fully prepared for them to also copy & paste any HTML comments that they would come across in their code snippets. Just one such occurrence would be enough to transform our whole site into a Frankenstein, due to messed HTML nesting.
 
-So I remembered one more discovery I made a few years back, in regards to HTML, and that was the `<xmp>` element. This tag has been marked deprecated in HTML 3.2 and completely removed in HTML 5. But browsers still support it. The `<xmp>` was once meant to display preformatted text and was superseded by the `<pre>` element. But `<xmp>` has huge advantage over `<pre>` in that it does not need HTML to be entity encoded inside it. Similarly to the `<template>` element it mutes the effect of any contained HTML, which the only difference that it would visibly show up in the browser. And the probability of an ad code to break it with an `</xmp>` tag is basically non-existent. So this is basically the code we went live with:
+So I remembered one more discovery I made a few years back, in regards to HTML, and that was the `<xmp>` element. This tag has been marked deprecated in HTML 3.2 and completely removed in HTML 5. But browsers still support it. The `<xmp>` was once meant to display preformatted text and was superseded by the `<pre>` element. But `<xmp>` has one huge advantage over `<pre>` in that it does not need HTML to be entity encoded inside it. Similarly to the `<template>` element it mutes the effect of any contained HTML, with the only difference being that it would visibly show up in the browser and not hide. And the probability of an ad code to break it with an `</xmp>` tag is close to zero. So this is basically the code we went live with:
 
 ```html
 <div class="ad">
@@ -112,9 +112,9 @@ And it worked like a charm, except maybe for Firefox complaining about having to
 
 ## Lazy Loading Ads for better performance
 
-But our ad people would not be who they are if they didn't increase the difficulty level one notch. So after a certain amount of time they asked if it would be possible to have ad slots loaded lazily, when they scroll into view. Because some ads only pay off only if they are seen, not when they a loaded. So from a performance standpoint this makes total sense.
+But our ad people would not be who they are if they didn't crank the difficulty level up one notch. So after a certain amount of time they asked if it would be possible to have ad slots loaded lazily, when they scroll into view. Because some ads pay off only when they are seen by the user, not when they are loaded. So from a performance standpoint it makes total sense to only load them on demand.
 
-Triggering actions once an element enters the viewport got pretty easy nowadays thanks to the IntersectionObserver API (and the available [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)). The more difficult problem to tackle was how to postpone the execution of arbitrarily shaped scripts into the future. As you might know, just reading out the ad's HTML snippet and injecting it into the DOM via `.innerHTML` would not execute whatever `<script>` element was contained in it. One possibility could have been to parse out any `script` tags, to recreate them via `document.createElement`, and to then append them. But then again, how would we handle `document.write`? Since our base document has finished parsing and is now considered "closed", such a late `document.write` would overwrite the whole document, instead of adding to it. The `<template>` together with `document.importNode` could solve the problem, but as I have already outlined above, they are not an option for us. But I discovered one more interesting DOM feature capable of helping me out: the Range object and its `.createContextualFragment()` method ([*](https://developer.mozilla.org/en-US/docs/Web/API/Range/createContextualFragment)), creating a, well, Contextual Fragment. And here is how I put it to use (Media Queries and IntersectionObserver code are left out for the sake of a better understanding of the Range technique):
+Triggering actions once an element enters the viewport got pretty easy nowadays thanks to the IntersectionObserver API (and the available [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)). The more difficult problem to tackle was how to postpone the execution of arbitrarily shaped scripts into the future. As you might know, just reading out the ad's HTML snippet and injecting it into the DOM via `.innerHTML` would not execute whatever `<script>` element was contained in it. One possibility could have been to parse out any `script` tags, to recreate them via `document.createElement`, and to then append them. But then again, how would we handle `document.write`? Since our base document has finished parsing and is now considered "closed", such a late `document.write` would replace the whole document, instead of just adding little pieces to it. A `<template>` element together with `document.importNode` could solve the problem, but as I have already outlined above, they are not (yet) an option for us. But I discovered one more interesting DOM feature capable of helping me out: the Range object and its `.createContextualFragment()` method ([*](https://developer.mozilla.org/en-US/docs/Web/API/Range/createContextualFragment)), creating a, well, Contextual Fragment. And here is how I put it to use (Media Queries and IntersectionObserver code are left out for the sake of a better understanding of the range technique):
 
 ```html
 <div class="ad">
@@ -127,7 +127,7 @@ Triggering actions once an element enters the viewport got pretty easy nowadays 
   <script>
     (function() {
       // Due to IE we can't use document.currentScript
-      // But we must be the last .ad element in the document
+      // But we know we must be the last .ad element in the document
       var ads = document.querySelectorAll('.ad');
       var ad = ads[ads.length - 1];
       var xmp = ad.querySelector(isMobile ? '.ad__mobile' : '.ad__desktop');
@@ -147,18 +147,12 @@ Triggering actions once an element enters the viewport got pretty easy nowadays 
 
 The above enables us to have `<script>` elements in our code and even `document.write` and it is easily combined with an Intersection Observer for a lazy approach. On top of it all, since we do not need to dynamically open `<xmp>`sections anymore, Firefox stops complaining about the unbalanced DOM tree.
 
-One thing I did not account for, though, is that externally loaded scripts can also contain `document.write`. Those document.writes won't be catched by our Contextual Fragment, as these scripts are only loaded and executed after we injected and executed our initial code block. External scripts doing document.writes does not happen very often, but often enough. Since I really liked what I saw, so I didn't want to give up. So I rolled up my sleeves and went ahead to patch `document.write`.
+One thing I did not account for, though, is that externally loaded scripts can also contain `document.write`. Those document.writes won't be catched by our Contextual Fragment, as these scripts are only loaded and executed after we injected and executed our initial code block. External scripts doing document.writes do not happen very often, but often enough. Since I really liked what I saw, I didn't want to give up. So I rolled up my sleeves and went ahead to patch `document.write`.
 
-I wanted to change `document.write` into something that would catch the output that was supposed to be written into the DOM, then I wanted to create another Contextual Fragment, which I would finally append right after the script calling it. Here is how that turned out:
+I wanted to change `document.write` into something that would catch the output that was supposed to be written into the DOM, then I wanted to create another Contextual Fragment, which I would finally append right after the script calling it. Here is how that came together:
 
 ```js
   (() => {
-    // If we do not have document.currentScript 
-    // we cannot do anything (IE, this time you are out!)
-    if (!document.currentScript) {
-      return;
-    }
-
     // We store the original since we still need 
     // it outside of ad containers
     const originalDocumentWrite = document.write;
@@ -179,20 +173,24 @@ I wanted to change `document.write` into something that would catch the output t
 
       range.setStart(div, 0);
 
-      document.currentScript.after(range.createContextualFragment(html));
+      sourceScript.after(range.createContextualFragment(html));
     };
   })();
 ``` 
 
-The above code uses ES6 as this time it is not an inline script. And I am using `.closest()` and `.after()`, which you need to polyfill in older Edge browsers ([*](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/after) / [*](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)). And IE is out, as it does not support `document.currentScript`.
+The above code uses ES6 as this time it is not an inline script and so can be transpiled. And I am using `.closest()` and `.after()`, which you need to polyfill in older Edge browsers ([*](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/after) / [*](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)), as well as `document.currentScript` ([*](https://github.com/amiller-gh/currentScript-polyfill)).
 
-Okay, **NOW** I'm finally done. It took a while but now I have **responsive**, and **lazily loadable** ad slots that **work for any type of copy & paste code** snippet in the world!
+Okay, **NOW** we're finally done. Now we have **responsive**, and **lazily loadable** ad slots that **work for any type of copy & paste code** snippet in the world!
+
+## Bringing back stability to layout
+
+One other side effect of having ads in your page is that slots pop open once an ad gets loaded into a slot, thereby pushing the content below it and to its side around. The same happens if you use fixed-sized placeholders in slots and it then turns out that there is no ad with those dimensions left in the pool to deliver, but only smaller or taller ones. Then the slot shrinks or grows, again pushing things around. Usability suffer tremendously as the human eye constantly loses orientation and the browser needs to relayout the page each time (including paint and compositing). The Chrome team recently added a new performance metric they call ["Cumulative Layout Shift"](https://web.dev/cls/) which aims to quantify these problems.
 
 ## Winning the z-Index Wars
 
-As I wrote in the introductory section a few types of ads tend to break out of their given place and to cover up important site UI like the header or the navigation. Typical candidates are (sticky) skyscrapers on the side of the page that extend to the top and bottom of the viewport, ignoring that there might be a header bar that they shouldn't cover. Another ad format is the fireplace ad that tries to lay itself all around the content: to the left, to the right and above. Covering up navigation leads to people feeling like they lose control over the site.
+As I wrote in the introductory section a few types of ads tend to break out of their given place and to cover up important site UI like the header or the navigation. Typical candidates are (sticky) skyscrapers flanking the page that extend to the top and bottom of the viewport, ignoring that there might be a header bar that they shouldn't cover. Another ad format is the fireplace ad that tries to lay itself all around the content: to the left, to the right and above. Covering up navigation leads to people feeling like they lost control over the site.
 
-And then there are ads which do sit where they are supposed to be but that have such a high z-index that they will even sit there when you've opened your off-canvas menu and then they cover that up. All while there are guidelines by the IAB, the "Interactive Advertising Bureau", on which z-indexes to use as a site owner and which ones to use as an ad creator, seeing what crap comes in over the ad servers makes me have no faith in that standard being applied correctly. Which is why I prefer to take it into my own hands.
+And then there are ads which do sit where they are supposed to be but that boast such a high z-index that they will even sit there when you've opened your off-canvas menu and then they'll cover that up, too. While there are guidelines by the IAB, the "Interactive Advertising Bureau", on which z-indexes to use as a site owner and which ones to use as an ad creator, seeing what crap comes in over the ad servers makes me have no faith in that standard being applied correctly. Which is why I prefer to take it into my own hands.
 
 What I noticed was that all those ads that ended up covering up things were accessing `document.body` to append themselves to it. That's when I got the idea to patch `document.body`! Instead of returning the `<body>` element, I would return a `<div>` that extends over the whole surface of the `<body>` element, but that would come equipped with `z-index: 0`. And then those ads would become children of that element instead. What seemingly only a few people know is that once a parent of an element is already part of a stacking context child elements cannot stick out higher in the stack than the parent. So now even ads with a z-index in the millions range could not go higher than the stacking height of that new element, which was 0. I then equipped our header with `z-index: 4` and our off-canvas menus with `z-index: 3` and from that moment on they remained forever uncovered. And how did I patch `document.body`? With a property getter, supported in all relevant browsers:
 
