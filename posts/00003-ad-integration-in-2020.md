@@ -1,28 +1,27 @@
 ---
-title: Dealing with ads in 2019
-description: It's 2019 but ads related 3rd parties are still not responsive, they still block the natural render flow, they trigger z-index wars and on top of that some of them steal your secrets. This is about how to deal with them without losing your sanity.
+title: Dealing with ads in 2020
+description: It's almost 2020 but ads related 3rd parties are still not responsive, they still block the natural render flow, they trigger z-index wars and on top of that some of them steal your secrets. This is about how to deal with them without losing your sanity.
 date: 2019-09-06
 tags:
   - adtech
 layout: layouts/post.njk
 ---
-As you may, or may not know, I work for a news company in Germany, the Rheinische Post Mediengruppe. My task there is to concept and build the frontend for a bunch of news sites in form of a white label framework. Sadly, but not very surprisingly my client is still dependent on ads to generate revenue. Which is why I need to prepare our frontend to be able to deal with them.
+As you may know, I currently work for a news company in Germany, the Rheinische Post Mediengruppe. My task there is to concept and build the frontend for a bunch of news sites in form of a white label framework. Sadly, but not very surprisingly my client is still dependent on ads to generate revenue. Which is why we wanted to adjust our frontend to be in a better position to deal with them. Mostly because
 
-## But ads suck! 
+## Ads suck! 
 
-Ads are still sold to customers as fixed-sized canvases, **counteracting the idea of true responsiveness**.
+And there are many ways in which they suck:
 
-Ads have a **huge negative impact on a site's performance**, be it render time, time to interactive, or general input lag.
+* Ads are still sold to customers as fixed-sized canvases, **counteracting the idea of true responsiveness**.
+* Ads have a **huge negative impact on a site's performance**, be it render time, layout shifts, time to interactive, or general input lag.
+* So-called skyscraper or wallpaper ads have a tendency to make sure that they are always visible even if this means that they **cover essential site UI** like the header or menu.
+* And ads sometimes turn out to be trojan horses who's innards **try to steal sensible data** from you without you noticing. 
 
-So-called skyscraper or wallpaper ads have a tendency to make sure that they are always visible even if this means that they **cover essential site UI** like the header or menu.
-
-And ads sometimes turn out to be trojan horses who's innards **try to steal sensible data** from you without you noticing. 
-
-Oh yes, they suck big time. But for us, there was no way around them, so we found ways to work with them and to minimize their impact.
+Oh yes, they are a kind of its own. But for us, there was no way around them, so we found ways to work with them and to minimize their impact.
 
 ## Ads & Responsiveness
 
-Back in the days our newspaper had a standard website for desktops and an mdot site for mobile. This made integrating ads into the site pretty strait forward, as we knew when to send the ad code for desktop devices and when the one for mobile devices. But maintaining two separate sites has a lot of drawbacks, too: You need to develop many feature twice, you constantly have to keep your list of devices and corresponding user agent strings up to date to continue sending visitors to the right site, and you constantly had to troubleshoot your URL scheme. This is why for our relaunch we wanted to go the responsive route.
+Back in the days the newspaper a work for had a standard website for desktops and an mdot site for mobile. This made integrating ads into the site pretty strait forward, as we knew when to send the ad code for desktop devices and when the one for mobile devices. But maintaining two separate sites has a lot of drawbacks, too: You need to develop many feature twice, you constantly have to keep your list of devices and corresponding user agent strings up to date to continue sending visitors to the right site, and you constantly had to troubleshoot your URL scheme. This is why for our relaunch we wanted to go the responsive route.
 
 Since we also wanted to get rid of server side user agent sniffing we had to find a way to send both ad codes, the one for desktop and the one for mobile devices, to the client and to then have the client somehow sort out which one of the two to execute. Not too hard to achieve. But now comes the real challenge: The people working in the ads division putting corresponding code into our site are no programmers. They do get isolated codes snippets via email or from a documentation, either for a mobile or a desktop ad and all they do is paste those into textareas labeled "mobile ad code" and "desktop ad code". They are not able to transform and combine them to one responsive ad loading code. So we had to develop something generic that would handle the task.
 
