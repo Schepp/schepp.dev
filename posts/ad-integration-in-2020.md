@@ -18,13 +18,13 @@ And there are many ways in which they suck:
 * So-called skyscraper or wallpaper ads have a tendency to make sure that they are always visible even if this means that they **cover essential site UI** like the header or menu.
 * And ads sometimes turn out to be trojan horses who's innards **try to steal sensitive data** from you without you noticing. 
 
-Oh yes, ads really are a kind of its own. But for us, there was no way around them, so we need to find ways to work with them and to minimize their impact.
+Oh yes, ads really are a kind of its own. But for us, there was no way around them, so we needed to find ways to work with them and to minimize their impact.
 
 ## Ads & Responsiveness
 
 Back in the days, the newspaper I work for had a standard website for desktops and an mdot site for mobile. This made integrating ads into the site pretty straight forward, as we knew when to send the ad code for desktop devices and when the one for mobile devices. But maintaining two separate sites has a lot of drawbacks, too: You need to develop many features twice, you constantly have to keep your list of devices and corresponding user agent strings up to date to continue sending visitors to the right site, and you constantly had to troubleshoot your URL scheme. This is why for our relaunch we wanted to go the responsive route.
 
-Since we also wanted to get rid of server-side user agent sniffing we had to find a way to send both ad codes, the one for desktop and the one for mobile devices, to the client and to then have the client somehow sort out which one of the two to execute. Not too hard to achieve. But now comes the real challenge: The people working in the ads division putting corresponding code into our site are no programmers. They do get isolated codes snippets via email or from documentation, either for a mobile or a desktop ad and all they do is paste those into textareas labeled "mobile ad code" and "desktop ad code". They are not able to transform and combine them to one responsive ad loading code. So we had to develop something generic that would handle the task.
+Since we also wanted to get rid of server-side user agent sniffing we had to find a way to send both ad codes, the one for desktops and the one for mobile devices, to the client and to then have the client somehow sort out which one of the two to execute. Not too hard to achieve. But now comes the real challenge: The people working in the ads division putting corresponding code into our site are no programmers. They do get isolated code snippets via email or from documentation, either for a mobile or a desktop ad and all they do is paste those into textareas labeled "mobile ad code" and "desktop ad code". They are not able to transform and combine them into one responsive ad loading code. So we had to develop something generic that would handle the task.
 
 One way to do this is to leverage the power of Web Components by putting both snippets in separate `<template>` elements and then to import the correct one into the current DOM, like so:  
 
