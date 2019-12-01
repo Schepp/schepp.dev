@@ -14,7 +14,7 @@ And there are many ways in which they suck:
 
 * Ads are still sold to customers as fixed-sized canvases, **counteracting the idea of true responsiveness**.
 * Ads have a **huge negative impact on a site's performance**, be it render time, time to interactive, or general input lag.
-* Ads take a massive toll on user happiness due to all the layout shifts they create, which make people lose their focus and which break the back button experience.
+* Ads take a massive toll on user happiness due to all the **layout shifts** they create, which make people lose their focus and which break the back button experience.
 * So-called skyscraper or wallpaper ads have a tendency to make sure that they are always visible even if this means that they **cover essential site UI** like the header or menu.
 * And ads sometimes turn out to be trojan horses who's innards **try to steal sensible data** from you without you noticing. 
 
