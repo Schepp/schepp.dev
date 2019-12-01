@@ -6,7 +6,7 @@ tags:
   - adtech
 layout: layouts/post.njk
 ---
-As you may know, I currently work for a news company in Germany, the Rheinische Post Mediengruppe. My task there is to concept and build the frontend for a bunch of news sites in form of a white label framework. Sadly, but not very surprisingly my client is still dependent on ads to generate revenue. Which is why we wanted to adjust our frontend to be in a better position to deal with them. Mostly because
+As you may know, I currently work for a news company in Germany, the Rheinische Post Mediengruppe. My task there is to concept and build the frontend for a bunch of news sites in form of a white label framework. Sadly, but not very surprisingly my client is still dependent on ads to generate revenue. Which is why we wanted to adjust our frontend to be in a better position to deal with them. Mostly because...
 
 ## Ads suck! 
 
@@ -17,7 +17,7 @@ And there are many ways in which they suck:
 * So-called skyscraper or wallpaper ads have a tendency to make sure that they are always visible even if this means that they **cover essential site UI** like the header or menu.
 * And ads sometimes turn out to be trojan horses who's innards **try to steal sensible data** from you without you noticing. 
 
-Oh yes, they are a kind of its own. But for us, there was no way around them, so we found ways to work with them and to minimize their impact.
+Oh yes, ads really are a kind of its own. But for us, there was no way around them, so we need to find ways to work with them and to minimize their impact.
 
 ## Ads & Responsiveness
 
