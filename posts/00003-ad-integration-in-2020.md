@@ -13,7 +13,8 @@ As you may know, I currently work for a news company in Germany, the Rheinische 
 And there are many ways in which they suck:
 
 * Ads are still sold to customers as fixed-sized canvases, **counteracting the idea of true responsiveness**.
-* Ads have a **huge negative impact on a site's performance**, be it render time, layout shifts, time to interactive, or general input lag.
+* Ads have a **huge negative impact on a site's performance**, be it render time, time to interactive, or general input lag.
+* Ads take a massive toll on user happiness due to all the layout shifts they create, which make people lose their focus and which break the back button experience.
 * So-called skyscraper or wallpaper ads have a tendency to make sure that they are always visible even if this means that they **cover essential site UI** like the header or menu.
 * And ads sometimes turn out to be trojan horses who's innards **try to steal sensible data** from you without you noticing. 
 
@@ -49,7 +50,7 @@ One way to do this is to leverage the power of Web Components by putting both sn
 
 Note that you can't go "all in" with Web Components and make it a full custom element, as ads often rely on being able to reach into the rest of the document. Browser support for the above is quite good, with only IE and Edge &lt; 15 not supporting both `document.currentScript`([*](https://caniuse.com/#feat=document-currentscript)) and `document.importNode`([*](https://caniuse.com/#feat=template)) at the same time.
 
-The above was not the route we chose, though. When we started developing our site in late 2017, Edge was not yet there in terms of support and we still had a considerable amount of IE traffic that we wanted to monetize. So my approach was a different one. The idea was to still deliver both ad codes but to use `document.write` to render one of them useless at parse time. One idea would have been to use an HTML comment, like so:
+The above was not the route we chose, though. When we started developing our site in late 2017, Edge was not yet there in terms of support and we still had a considerable amount of IE traffic that we wanted to monetize. So our approach was a different one. The idea was to still deliver both ad codes but to use `document.write` to render one of them useless at parse time. One idea would have been to use an HTML comment, like so:
 
 ```html
 <div class="ad">
@@ -76,7 +77,7 @@ The above was not the route we chose, though. When we started developing our sit
 </div>
 ```
 
-The closing comment declarations would be hardcoded into the HTML (`-->`), whereas the opening declarations would be inserted depending on the device type (`<!--`), thereby disabling the code in between. But again, this wasn't good enough. Since our people managing the ads would probably just copy & paste code into the respective CMS textareas, I was fully prepared for them to also copy & paste any HTML comments that they would come across in their code snippets. Just one such occurrence would be enough to transform our whole site into a Frankenstein, due to messed HTML nesting.
+The closing comment declarations would be hardcoded into the HTML (`-->`), whereas the opening declarations would be inserted depending on the device type (`<!--`), thereby disabling the code in between. But again, this wasn't good enough. Since our people managing the ads would probably just copy & paste code into the respective CMS textareas, we were fully prepared for them to also copy & paste any HTML comments that they would come across in their code snippets. Just one such occurrence would be enough to transform our whole site into a Frankenstein, due to messed HTML nesting.
 
 So I remembered one more discovery I made a few years back, in regards to HTML, and that was the `<xmp>` element. This tag has been marked deprecated in HTML 3.2 and completely removed in HTML 5. But browsers still support it. The `<xmp>` was once meant to display preformatted text and was superseded by the `<pre>` element. But `<xmp>` has one huge advantage over `<pre>` in that it does not need HTML to be entity encoded inside it. Similarly to the `<template>` element it mutes the effect of any contained HTML, with the only difference being that it would visibly show up in the browser and not hide. And the probability of an ad code to break it with an `</xmp>` tag is close to zero. So this is basically the code we went live with:
 
@@ -113,7 +114,7 @@ And it worked like a charm, except maybe for Firefox complaining about having to
 
 But our ad people would not be who they are if they didn't crank the difficulty level up one notch. So after a certain amount of time they asked if it would be possible to have ad slots loaded lazily, when they scroll into view. Because some ads pay off only when they are seen by the user, not when they are loaded. So from a performance standpoint it makes total sense to only load them on demand.
 
-Triggering actions once an element enters the viewport got pretty easy nowadays thanks to the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) (and the available [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)). The more difficult problem to tackle was how to postpone the execution of arbitrarily shaped scripts into the future. As you might know, just reading out the ad's HTML snippet and injecting it into the DOM via `.innerHTML` would not execute whatever `<script>` element was contained in it. One possibility could have been to parse out any `script` tags, to recreate them via `document.createElement`, and to then append them. But then again, how would we handle `document.write`? Since our base document has finished parsing and is now considered "closed", such a late `document.write` would replace the whole document, instead of just adding little pieces to it. A `<template>` element together with `document.importNode` could solve the problem, but as I have already outlined above, they are not (yet) an option for us. But I discovered one more interesting DOM feature capable of helping me out: the Range object and its [`.createContextualFragment()`](https://developer.mozilla.org/en-US/docs/Web/API/Range/createContextualFragment) method, creating a, well, Contextual Fragment. And here is how I put it to use (Media Queries and IntersectionObserver code are left out for the sake of a better understanding of the range technique):
+Triggering actions once an element enters the viewport got pretty easy nowadays thanks to the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) (and the available [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)). The more difficult problem to tackle was how to postpone the execution of arbitrarily shaped scripts into the future. As you might know, just reading out the ad's HTML snippet and injecting it into the DOM via `.innerHTML` would not execute whatever `<script>` element was contained in it. One possibility could have been to parse out any `script` tags, to recreate them via `document.createElement`, and to then append them. But then again, how would we handle `document.write`? Since our base document has finished parsing and is now considered "closed", such a late `document.write` would replace the whole document, instead of just adding little pieces to it. A `<template>` element together with `document.importNode` could solve the problem, but as already outlined above, they are not (yet) an option for us. But I discovered one more interesting DOM feature capable of helping me out: the Range object and its [`.createContextualFragment()`](https://developer.mozilla.org/en-US/docs/Web/API/Range/createContextualFragment) method, creating a, well, Contextual Fragment. And here is how I put it to use (Media Queries and IntersectionObserver code are left out for the sake of a better understanding of the range technique):
 
 ```html
 <div class="ad">
@@ -146,7 +147,7 @@ Triggering actions once an element enters the viewport got pretty easy nowadays 
 
 The above enables us to have `<script>` elements in our code and even `document.write` and it is easily combined with an Intersection Observer for a lazy approach. On top of it all, since we do not need to dynamically open `<xmp>`sections anymore, Firefox stops complaining about the unbalanced DOM tree.
 
-One thing I did not account for, though, is that externally loaded scripts can also contain `document.write`. Those document.writes won't be catched by our Contextual Fragment, as these scripts are only loaded and executed after we injected and executed our initial code block. External scripts doing document.writes do not happen very often, but often enough. Since I really liked what I saw, I didn't want to give up. So I rolled up my sleeves and went ahead to patch `document.write`.
+One thing I did not account for, though, is that externally loaded scripts can also contain `document.write`. Those document.writes won't be catched by our Contextual Fragment, as these scripts are only loaded and executed after we injected and executed our initial code block. External scripts doing document.writes do not happen very often, but often enough. Since we really liked what we saw, we didn't want to give up. So we rolled up our sleeves and went ahead to patch `document.write`.
 
 I wanted to change `document.write` into something that would catch the output that was supposed to be written into the DOM, then I wanted to create another Contextual Fragment, which I would finally append right after the script calling it. Here is how that came together:
 
@@ -180,40 +181,6 @@ I wanted to change `document.write` into something that would catch the output t
 The above code uses ES6 as this time it is not an inline script and so can be transpiled. And I am using `.closest()` and `.after()`, which you need to polyfill in older Edge browsers ([*](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/after) / [*](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)), as well as [`document.currentScript`](https://github.com/amiller-gh/currentScript-polyfill)).
 
 Okay, **NOW** we're finally done. Now we have **responsive**, and **lazily loadable** ad slots that **work for any type of copy & paste code** snippet in the world!
-
-## Bringing stability back to layout
-
-One other side effect of having ads in your page is that slots pop open once an ad gets loaded into a slot, thereby pushing the content below it and to its side around. The same happens if you use fixed-sized placeholders in slots and it then turns out that there is no ad with those dimensions left in the pool to deliver, but only smaller or taller ones. Then the slot shrinks or grows, again pushing things around. Usability suffer tremendously as the human eye constantly loses orientation and the browser needs to relayout the page each time (including paint and compositing). Most browsers try to compensate for it through a technique called "[Scroll Anchoring](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-anchor/Guide_to_scroll_anchoring)", but there is limits as to how good that works. The Chrome team recently added a new performance metric they call ["Cumulative Layout Shift"](https://web.dev/cls/) which aims to quantify these problems.
-
-So what we did was introducing a new type of placeholder slot, that would always be as large as the largest possible ad format it is configured for, and that would turn any ad being loaded inside of it into a `position: sticky` element that would slide along with the user scrolling the page:
-
-<video width="300" height="520" autoplay muted loop>
-  <source src="/img/position-sticky-ad.mp4" type="video/mp4">
-  <img src="/img/position-sticky-ad.gif">
-</video>
-
-That way, we get around the need to resize the slot once the ad is loaded, thereby reducing the layout shift.
-
-One thing one needs to know though with `position: sticky`, and which is not mentioned a lot around the internets, is that it stops working the moment one of its ancestors uses `overflow: hidden`. It turned out we had quite had few elements on our page set to `overflow: hidden`, mostly to clear floats or to stop things from exceeding the horizontal boundaries of the page on mobile. So we had to refactor these. 
-
-In order to find ad slots that are affected with such a constellation, I created the following snippet which I could run in the browser console:
-
-```js
-[...document.querySelectorAll('.ad')].forEach((adSlot) => {
-  const problematicParents = [...document.querySelectorAll('*')]
-    .filter(elem => elem.contains(adSlot))
-    .filter(elem => getComputedStyle(elem)
-                        .getPropertyValue('overflow') === 'hidden');
-  
-  if (problematicParents.length) {
-    console.warn('Sticky will break in ad slot:', adSlot, problematicParents);
-  } else {
-    console.info('Sticky will work in portal:', adSlot);
-  }
-});
-```
-
-Now we still needed to find a solution for when there's no remaining ad in the ad server pool. In the past, when that was the case, we collapsed the slot. Our new approach is to have "backup" ads of our own to serve when this happens. These can be ads for our own offers or it could be a piece of usage info about your site, or it could be ads for a good cause, e.g. organizations that can't afford booking ads on larger news sites.
 
 ## Politely bowing out when the user's connection is constrained
 
@@ -267,13 +234,47 @@ You can try it out yourself by throttling the network in Chrome Devtools to "Slo
 
 According to the [Chrome User Experience Report](https://developers.google.com/web/tools/chrome-user-experience-report), this affects 0.02% to 0.03% of our visitors, which, given that we hover around 60M page views per month, still amounts to 12K.
 
+## Bringing stability back to layout
+
+One other side effect of having ads in your page is that slots pop open once an ad gets loaded into a slot, thereby pushing the content below it and to its side around. The same happens if you use fixed-sized placeholders in slots and it then turns out that there is no ad with those dimensions left in the pool to deliver, but only smaller or taller ones. Then the slot shrinks or grows, again pushing things around. Usability suffer tremendously as the human eye constantly loses orientation and the browser needs to relayout the page each time (including paint and compositing). Most browsers try to compensate for it through a technique called "[Scroll Anchoring](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-anchor/Guide_to_scroll_anchoring)", but there is limits as to how good that works. The Chrome team recently added a new performance metric they call ["Cumulative Layout Shift"](https://web.dev/cls/) which aims to quantify these problems.
+
+So what we did was introducing a new type of placeholder slot, that would always be as large as the largest possible ad format it is configured for, and that would turn any ad being loaded inside of it into a `position: sticky` element that would slide along with the user scrolling the page:
+
+<video width="300" height="520" autoplay muted loop>
+  <source src="/img/position-sticky-ad.mp4" type="video/mp4">
+  <img src="/img/position-sticky-ad.gif">
+</video>
+
+That way, we get around the need to resize the slot once the ad is loaded, thereby reducing the layout shift.
+
+One thing one needs to know though with `position: sticky`, and which is not mentioned a lot around the internets, is that it stops working the moment one of its ancestors uses `overflow: hidden`. It turned out we had quite had few elements on our page set to `overflow: hidden`, mostly to clear floats or to stop things from exceeding the horizontal boundaries of the page on mobile. So we had to refactor these. 
+
+In order to find ad slots that are affected with such a constellation, I created the following snippet which I could run in the browser console:
+
+```js
+[...document.querySelectorAll('.ad')].forEach((adSlot) => {
+  const problematicParents = [...document.querySelectorAll('*')]
+    .filter(elem => elem.contains(adSlot))
+    .filter(elem => getComputedStyle(elem)
+                        .getPropertyValue('overflow') === 'hidden');
+  
+  if (problematicParents.length) {
+    console.warn('Sticky will break in ad slot:', adSlot, problematicParents);
+  } else {
+    console.info('Sticky will work in portal:', adSlot);
+  }
+});
+```
+
+Now we still needed to find a solution for when there's no remaining ad in the ad server pool. In the past, when that was the case, we collapsed the slot. Our new approach is to have "backup" ads of our own to serve when this happens. These can be ads for our own offers or it could be a piece of usage info about your site, or it could be ads for a good cause, e.g. organizations that can't afford booking ads on larger news sites.
+
 ## Winning the z-Index Wars
 
 As I wrote in the introductory section a few types of ads tend to break out of their given place and to cover up important site UI like the header or the navigation. Typical candidates are (sticky) skyscrapers flanking the page that extend to the top and bottom of the viewport, ignoring that there might be a header bar that they shouldn't cover. Another ad format is the fireplace ad that tries to lay itself all around the content: to the left, to the right and above. Covering up navigation leads to people feeling like they lost control over the site.
 
-And then there are ads which do sit where they are supposed to be but that boast such a high z-index that they will even sit there when you've opened your off-canvas menu and then they'll cover that up, too. While there are guidelines by the IAB, the "Interactive Advertising Bureau", on which z-indexes to use as a site owner and which ones to use as an ad creator, seeing what crap comes in over the ad servers makes me have no faith in that standard being applied correctly. Which is why I prefer to take it into my own hands.
+And then there are ads which do sit where they are supposed to be but that boast such a high z-index that they will even sit there when you've opened your off-canvas menu and then they'll cover that up, too. While there are guidelines by the IAB, the "Interactive Advertising Bureau", on which z-indexes to use as a site owner and which ones to use as an ad creator, seeing what crap comes in over the ad servers makes me have no faith in that standard being applied correctly. Which is why I prefer to take things into my own hands.
 
-What I noticed was that all those ads that ended up covering up things were accessing `document.body` to append themselves to it. That's when I got the idea to patch `document.body`! Instead of returning the `<body>` element, I would return a `<div>` that extends over the whole surface of the `<body>` element, but that would come equipped with `z-index: 0`. And then those ads would become children of that element instead. What seemingly only a few people know is that once a parent of an element is already part of a stacking context child elements cannot stick out higher in the stack than the parent. So now even ads with a z-index in the millions range could not go higher than the stacking height of that new element, which was 0. I then equipped our header with `z-index: 4` and our off-canvas menus with `z-index: 3` and from that moment on they remained forever uncovered. And how did I patch `document.body`? With a property getter, supported in all relevant browsers:
+What we noticed was that all those ads that ended up covering up things were accessing `document.body` to append themselves to it. That's when we got the idea to patch `document.body`! Instead of returning the `<body>` element, we would return a `<div>` that extends over the whole surface of the `<body>` element, but that would come equipped with `z-index: 0`. And then those ads would become children of that element instead. What seemingly only a few people know is that once a parent of an element is already part of a stacking context child elements cannot stick out higher in the stack than the parent. So now even ads with a z-index in the millions range could not go higher than the stacking height of that new element, which was 0. We then equipped our header with `z-index: 4` and our off-canvas menus with `z-index: 3` and from that moment on they remained forever uncovered. And how did we patch `document.body`? With a property getter, supported in all relevant browsers:
 
 ```js
 Object.defineProperty(document, 'body', {
@@ -295,7 +296,7 @@ Restricting access would be wise, though, as these ads can observe you and read 
 
 ![Chrome's console showing how a file called fb_events.js accesses a form input](/img/fb_events.jpg)
 
-Since we don't want that to happen and we could not lock out the third party, we had to do something else. And again I patched a browser built-in, and this time it was `input.value`:
+Since we don't want that to happen and we could not lock out the third party, we had to do something else. And again we patched a browser built-in, and this time it was `input.value`:
 
 ```js
 (() => {
@@ -341,6 +342,14 @@ Since we don't want that to happen and we could not lock out the third party, we
 })();
 ```
 
-What I basically did there was making `.value` to always return an empty string and hiding the real value behind a new property accessible via `.realValue`. This allowed us to still read out the form inputs in our own code. On top of that I had an alarm in the console together with a `console.trace` to find the code that tried to access the input. And finally I added the possibility to allow certain inputs to stay readable, as from time to time we have a quiz or something that is not programmed with our patch in mind. This works by handling it a CSS selector à la `.quiz input`. Now, if you access an input that matches `.quiz input`, the value stays readable.
+What we basically did there was making `.value` to always return an empty string and hiding the real value behind a new property accessible via `.realValue`. This allowed us to still read out the form inputs in our own code. On top of that we had an alarm in the console together with a `console.trace` to find the code that tried to access the input. And finally we added the possibility to allow certain inputs to stay readable, as from time to time we have a quiz or something that is not programmed with our patch in mind. This works by handling it a CSS selector à la `.quiz input`. Now, if you access an input that matches `.quiz input`, the value stays readable.
 
 The patch does not change anything in regards to normal HTML-based form submission and you can also use the FormData API as normal. Still, the above change is enough to cover almost all third party situations as they never use anything else than `.value`.
+
+## Closing Notes
+
+Working with ads is messy and also a bit delicate, because of course you don't wanna break stuff in a way that cuts off revenue (e.g. break an advertiser's measurement tools). One thing on my list is to take on common scripts like Google's `osd.js` or Meetrics' `mtrcs.js` monitoring tool, as both tend to burn most of our CPU cycles. I think I'd like to probe them to see where exactly they waste processing time. My hopes are that force-debouncing scroll events and mapping layout trashing reads to less expensive, maybe even async methods in the background manage to reduce the pressure on our site.
+
+What I would wish for even more is for companies like Google and Meetrics to put their code on Github and to allow people to send them pull requests that improve their code. But I guess this will never happen.
+
+Do you have similar experiences with ads? Have you also tried decreasing the harm they do on your site? If so, I'd love to hear from on the Twitters! My handle is [@derSchepp](https://twitter.com/derSchepp). 
