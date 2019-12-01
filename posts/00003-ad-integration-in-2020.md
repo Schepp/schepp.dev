@@ -200,7 +200,11 @@ In order to find ad slots that are affected with such a constellation, I created
 
 ```js
 [...document.querySelectorAll('.ad')].forEach((adSlot) => {
-  const problematicParents = [...document.querySelectorAll('*')].filter(elem => elem.contains(adSlot)).filter(elem => window.getComputedStyle(elem).getPropertyValue('overflow') === 'hidden');
+  const problematicParents = [...document.querySelectorAll('*')]
+    .filter(elem => elem.contains(adSlot))
+    .filter(elem => getComputedStyle(elem)
+                        .getPropertyValue('overflow') === 'hidden');
+  
   if (problematicParents.length) {
     console.warn('Sticky will break in ad slot:', adSlot, problematicParents);
   } else {
