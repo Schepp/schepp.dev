@@ -1,7 +1,7 @@
 ---
 title: Dealing with ads in 2020
 description: It's almost 2020 but ads related 3rd parties are still not responsive, they still block the natural render flow, they trigger z-index wars and on top of that some of them steal your secrets. This is about how to deal with them without losing your sanity.
-date: 2019-09-06
+date: 2019-12-01
 tags:
   - adtech
 layout: layouts/post.njk
