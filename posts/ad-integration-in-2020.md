@@ -353,6 +353,6 @@ Working with ads is messy and also a bit delicate, because of course you don't w
 
 I think I'd like to probe them to see where exactly they waste processing time. My hopes are that force-debouncing scroll events and mapping layout trashing reads to less expensive, maybe even async methods in the background will manage to reduce the pressure on our site.
 
-What I would wish for even more is for companies like Google and Meetrics to put their code on Github and to allow people to send them pull-requests that improve their code. But I guess this will never happen.
+What I would wish for even more is for companies like Google and Meetrics to put out their code on Github and to allow people to send them pull-requests that improve it. But I guess this will never happen.
 
 Do you have similar experiences with ads? Have you also tried decreasing the harm they do on your site? If so, I'd love to hear from you on the Twitters! My handle is [@derSchepp](https://twitter.com/derSchepp). 
