@@ -243,7 +243,11 @@ const initAds = () => {
 };
 ```
 
-You can try it out by throttling the network in Chrome Devtools to "Slow 3G" and then go visit [rp-online.de](https://rp-online.de). According to the [Chrome User Experience Report](https://developers.google.com/web/tools/chrome-user-experience-report), this affects 0.02% to 0.03% of our visitors, which, given that we hover around 60M page views per month, still amounts to 12K.
+You can try it out yourself by throttling the network in Chrome Devtools to "Slow 3G" and then go visit [rp-online.de](https://rp-online.de). 
+
+![The Chrome Devtools with the areas highlighted which you need to set to try this out](/img/disabling-ads-for-slow-connections.png)
+
+According to the [Chrome User Experience Report](https://developers.google.com/web/tools/chrome-user-experience-report), this affects 0.02% to 0.03% of our visitors, which, given that we hover around 60M page views per month, still amounts to 12K.
 
 ## Winning the z-Index Wars
 
