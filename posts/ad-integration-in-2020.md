@@ -126,8 +126,7 @@ Triggering actions once an element enters the viewport got pretty easy nowadays 
   </xmp>
   <script>
     (function() {
-      // Due to IE we can't use document.currentScript
-      // But we know we must be the last .ad element in the document
+      // We know we must be the last .ad element in the document
       var ads = document.querySelectorAll('.ad');
       var ad = ads[ads.length - 1];
       var xmp = ad.querySelector(isMobile ? '.ad__mobile' : '.ad__desktop');
@@ -192,7 +191,7 @@ Sometimes your connection happens to be super slow. You don't need to live in po
 * someone is on vacation in rural areas (like I experienced each time we were on vacation at a farm), or
 * a European travels to Florida, his/her 4G phone doesn't support the US frequencies and falls back to the next slower available connection speed, which turns out to be 2G, as Florida already got rid of its 3G network in favor of 4G (exactly this happened to poor me two years ago)
 
-In those situations it is not desirable to still have ads compete on bandwidth against the main content of your site. Even less so with news sites as sometimes they spread vital information, like informing people when a bigger incident happened and what to do. If we leave ads on even at 2g speeds, chances are high that neither those nor our main content will ever load.
+In those situations it is not desirable to still have ads compete on bandwidth against the main content of your site. Even less so with news sites as sometimes they spread vital information, like informing people when a bigger incident happened and what to do. If we leave ads on even at 2G speeds, chances are that neither those nor our main content will ever load.
 
 So how we took that into account was to look for the presence of the [Network Information API](https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API) and if available to check a visitor's effective connection speed:
 
