@@ -195,7 +195,55 @@ So what we did was introducing a new type of placeholder slot, that would always
 
 That way, we get around the need to resize the slot once the ad is loaded, thereby reducing the layout shift.
 
-Now we still needed to find a solution for when there's no remaining ad in the ad server pool. In the past, when that was the case, we collapsed the slot. Our new approach is to have "backup" ads of our own to serve when this happens. These can be ads for our own offers or it could be a piece of usage info about your site, or it could be ads for a good cause, e.g. organizations that can't afford booking ads on larger news sites. 
+Now we still needed to find a solution for when there's no remaining ad in the ad server pool. In the past, when that was the case, we collapsed the slot. Our new approach is to have "backup" ads of our own to serve when this happens. These can be ads for our own offers or it could be a piece of usage info about your site, or it could be ads for a good cause, e.g. organizations that can't afford booking ads on larger news sites.
+
+## Politely bowing out when the user's connection is constrained
+
+Sometimes your connection happens to be super slow. You don't need to live in poorer regions of the world to experience slow connections. Reasons can be:
+
+* someone's allocated high speed traffic volume for the current month is depleted
+* someone is part of a mass gathering and the network is overloaded (e.g. New Year's Eve)
+* someone travels by train having a super flaky connection (looking at you, Deutsche Bahn)
+* someone is on vacation in rural areas (like I experienced each time we were on vacation at a farm), or
+* a European travels to Florida, his 4G phone doesn't support the US frequencies and falls back to the next slower available connection speed, which turns out to be 2G, as Florida already got rid of its 3G network in favor of 4G (exactly this happened to poor me two years ago)
+
+In those situations it is not desirable to still have ads compete on bandwidth against the main content of your site. Even less so with news sites as sometimes they spread vital information, like informing people when a bigger incident happened and what to do. If we leave ads on even at 2g speeds, chances are high that neither those nor our main content will ever load.
+
+So how we took that into account was to look for the presence of the [Network Information API](https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API) and if available to check a visitor's effective connection speed:
+
+```js
+const hasFastConnection = () => {
+  // Let's also prepared for offline scenarios
+  if (navigator.onLine === false) {
+    return false;
+  }
+
+  // Mark the connection as slow if it falls into the 2G category
+  if (navigator.connection && navigator.connection.effectiveType) {
+    switch (navigator.connection.effectiveType) {
+      default:
+        return true;
+
+      case 'slow-2g':
+      case '2g':
+        return false;
+    }
+  }
+
+  return true;
+};
+
+const initAds = () => {
+  if (!hasFastConnection()) {
+    console.info('Disabling ads due to slow connection');
+    return;
+  }
+  
+  // initialize the ads
+};
+```
+
+You can try it out by throttling the network in Chrome Devtools to "Slow 3G" and then go visit [rp-online.de](https://rp-online.de). According to the [Chrome User Experience Report](https://developers.google.com/web/tools/chrome-user-experience-report), this affects 0.02% to 0.03% of our visitors, which, given that we hover around 60M page views per month, still amounts to 12K.
 
 ## Winning the z-Index Wars
 
