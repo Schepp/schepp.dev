@@ -32,6 +32,10 @@ img, video {
   max-width: 100%;
   height: auto;
 }
+video {
+  margin: 0 auto;
+  border: 1px solid #ccc;
+}
 p,
 .tmpl-post li {
   line-height: 1.45;
