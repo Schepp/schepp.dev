@@ -187,7 +187,7 @@ One other side effect of having ads in your page is that slots pop open once an 
 
 So what we did was introducing a new type of placeholder slot, that would always be as large as the largest possible ad format it is configured for, and that would turn any ad being loaded inside of it into a `position: sticky` element that would slide along with the user scrolling the page:
 
-<video autoplay muted loop>
+<video width="300" height="520" autoplay muted loop>
   <source src="/img/position-sticky-ad.mp4" type="video/mp4">
   <img src="/img/position-sticky-ad.gif">
 </video>
