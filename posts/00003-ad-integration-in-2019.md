@@ -193,9 +193,9 @@ So what we did was introducing a new type of placeholder slot, that would always
   <img src="/img/position-sticky-ad.gif">
 </video>
 
-That way, we did not need to resize the slot once the ad is loaded, thereby reducing the layout shift.
+That way, we get around the need to resize the slot once the ad is loaded, thereby reducing the layout shift.
 
-Now we still needed to find a solution for when there's no remaining ad in the ad server pool. Usually, when that was the case, we collapsed the slot. Our new approach is to have new "backup" ads of our own to serve when this happens. These can be ads for our own offers or it could be ads for a good cause, e.g. organizations that can't afford booking ads on larger news sites. 
+Now we still needed to find a solution for when there's no remaining ad in the ad server pool. In the past, when that was the case, we collapsed the slot. Our new approach is to have "backup" ads of our own to serve when this happens. These can be ads for our own offers or it could be a piece of usage info about your site, or it could be ads for a good cause, e.g. organizations that can't afford booking ads on larger news sites. 
 
 ## Winning the z-Index Wars
 
