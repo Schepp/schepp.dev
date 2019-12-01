@@ -194,6 +194,21 @@ So what we did was introducing a new type of placeholder slot, that would always
 
 That way, we get around the need to resize the slot once the ad is loaded, thereby reducing the layout shift.
 
+One thing one needs to know though with `position: sticky`, and which is not mentioned a lot around the internets, is that it stops working the moment one of its ancestors uses `overflow: hidden`. It turned out we had quite had few elements on our page set to `overflow: hidden`, mostly to clear floats or to stop things from exceeding the horizontal boundaries of the page on mobile. So we had to refactor these. 
+
+In order to find ad slots that are affected with such a constellation, I created the following snippet which I could run in the browser console:
+
+```js
+[...document.querySelectorAll('.ad')].forEach((adSlot) => {
+  const problematicParents = [...document.querySelectorAll('*')].filter(elem => elem.contains(adSlot)).filter(elem => window.getComputedStyle(elem).getPropertyValue('overflow') === 'hidden');
+  if (problematicParents.length) {
+    console.warn('Sticky will break in ad slot:', adSlot, problematicParents);
+  } else {
+    console.info('Sticky will work in portal:', adSlot);
+  }
+});
+```
+
 Now we still needed to find a solution for when there's no remaining ad in the ad server pool. In the past, when that was the case, we collapsed the slot. Our new approach is to have "backup" ads of our own to serve when this happens. These can be ads for our own offers or it could be a piece of usage info about your site, or it could be ads for a good cause, e.g. organizations that can't afford booking ads on larger news sites.
 
 ## Politely bowing out when the user's connection is constrained
