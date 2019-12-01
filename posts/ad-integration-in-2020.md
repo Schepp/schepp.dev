@@ -246,7 +246,7 @@ So what we did was introducing a new type of placeholder slot, that would always
 
 That way, we get around the need to resize the slot once the ad is loaded, thereby reducing the layout shift.
 
-One thing you need to know though with `position: sticky` which is not mentioned a lot around the internets, is that it stops working the moment one of its ancestors uses `overflow: hidden`. It turned out we had quite had few elements on our page set to `overflow: hidden`, mostly to clear floats or to stop things from exceeding the horizontal boundaries of the page on mobile. So we had to refactor these. 
+One thing you need to know though with `position: sticky`-elements which is not mentioned a lot around the internets, is that it stops working the moment one of the ancestors uses `overflow: hidden`. It turned out we had quite had few elements on our page set to `overflow: hidden`, mostly to clear floats or to stop things from exceeding the horizontal boundaries of the page on mobile. So we had to refactor these. 
 
 In order to find ad slots that are affected with such a constellation, I created the following snippet which I could run in the browser console:
 
