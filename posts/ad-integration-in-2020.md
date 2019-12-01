@@ -352,7 +352,7 @@ Working with ads is messy and also a bit delicate, because of course you don't w
 
 ![Chrome Devtools Call Tree showing that osd.js and mtrcs.js take up most time](/img/osd-and-meetrics-javascript.png)
 
-I think I'd like to probe them to see where exactly they waste processing time. My hopes are that force-debouncing scroll events and mapping layout trashing reads to less expensive, maybe even async methods in the background manage to reduce the pressure on our site.
+I think I'd like to probe them to see where exactly they waste processing time. My hopes are that force-debouncing scroll events and mapping layout trashing reads to less expensive, maybe even async methods in the background will manage to reduce the pressure on our site.
 
 What I would wish for even more is for companies like Google and Meetrics to put their code on Github and to allow people to send them pull requests that improve their code. But I guess this will never happen.
 
