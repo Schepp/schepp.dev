@@ -59,7 +59,7 @@ One way to do this is to leverage the power of Web Components by putting both sn
 
 Note that you can't go "all in" with Web Components and make it a full custom element, as ads often rely on being able to reach into the rest of the document. Browser support for the above is quite good, with only IE and Edge &lt; 15 not supporting both [`document.currentScript`](https://caniuse.com/#feat=document-currentscript) and [`document.importNode`](https://caniuse.com/#feat=template) at the same time.
 
-The above was not the route we chose, though. When we started developing our site in late 2017, Web Components support in Edge was not yet there and we still had a considerable amount of IE traffic that we wanted to monetize. So our approach was a different one. The ay to go was still to deliver both ad codes but to use `document.write` to render one of them useless at parse time. One idea would have been to use an HTML comment, like so:
+The above was not the route we chose, though. When we started developing our site in late 2017, Web Components support in Edge was not yet there and we still had a considerable amount of IE traffic that we wanted to monetize. So our approach was a different one. The way to go was still to deliver both ad codes but to use `document.write` to render one of them useless at parse time. One idea would have been to use an HTML comment, like so:
 
 ```html
 <div class="ad">
