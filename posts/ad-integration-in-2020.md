@@ -214,7 +214,7 @@ Our solution was to manipulate the viewport meta tag in a way that we force tabl
   <script>
     // If tablet or bigger, fix viewport to create space for the ads
     // Our cut-off point was at a width of 725 pixels
-    // (also see: https://mydevice.io/devices/#sortTablets)
+    // (also see: http://mydevice.io/#compare-devices)
     if (
         window.matchMedia && 
         matchMedia('screen and (min-width: 45.3125em)').matches
