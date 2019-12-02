@@ -54,6 +54,9 @@ p,
 img, video {
     max-width: 100%;
     height: auto;
+}
+
+img, video {
     border: 1px solid #ccc;
 }
 
