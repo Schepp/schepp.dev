@@ -196,6 +196,32 @@ The above code uses ES6 as this time it is not an inline script and so can be tr
 
 Okay, **NOW** we're finally done. Now we have **responsive**, and **lazily loadable** ad slots that **work for any type of copy & paste code** snippet in the world!
 
+"But what about tablets?", you may ask. Valid remark! For advertisers the tablet category does not exist. For them there is just desktop or mobile, nothing in between. This means it is upon you as a publisher to decide which of those two categories to serve to tablet users. Since desktop ads bring more revenue, we chose those to serve to tablet users. Now, not every tablet offers the screen size to flank our main content with skyscrapers and the likes. But those bring most of the money!
+
+Our solution was to manipulate the viewport meta tag in a way that we force tablets into creating a virtual drawing canvas of 1325 pixels, similarly to what they fall back to when no viewport meta tag is set at all:
+
+```html
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <script>
+    // If tablet or bigger, fix viewport to create space for the ads
+    // Our cut-off point was at a width of 725 pixels
+    // (also see: https://mydevice.io/devices/#sortTablets)
+    if (window.matchMedia && matchMedia('screen and (min-width: 45.3125em)').matches) {
+      // In the first step we also turn off user scaling so that the browser zooms out
+      document
+        .querySelector('meta[name="viewport"]')
+        .setAttribute('content', 'width=1325, user-scalable=no');
+      
+      // Then we re-enable zooming
+      window.setTimeout(function () {
+        document
+          .querySelector('meta[name="viewport"]').setAttribute('content', 'width=1325');
+      }, 1000);
+    }
+  </script>
+```
+
 ## Politely bowing out when the user's connection is constrained
 
 Sometimes your connection happens to be super slow. You don't need to live in poorer regions of the world to experience slow connections. Reasons can be:
