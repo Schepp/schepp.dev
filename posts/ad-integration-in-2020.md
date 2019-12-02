@@ -22,9 +22,15 @@ Oh yes, ads really are a kind of its own. But for us, there was no way around th
 
 ## Ads & Responsiveness
 
-Back in the days, the newspaper I work for had a standard website for desktops and an mdot site for mobile. This setup made integrating ads into the site pretty straight forward, because we knew when to send the ad code for desktop devices and when the one for mobile devices. But maintaining two separate sites has a lot of drawbacks, too: You need to develop many features twice, you constantly have to keep your list of devices and corresponding user agent strings up to date to continue sending visitors to the right site, and you constantly had to troubleshoot your URL scheme. This is why for our relaunch we wanted to go the responsive route.
+Back in the days, the newspaper I work for had a standard website for desktops and an mdot site for mobile. This setup made integrating ads into the site pretty straight forward, because we knew when to send the ad code for desktop devices and when the one for mobile devices. But maintaining two separate sites has a lot of drawbacks, too: 
 
-Since we also wanted to get rid of server-side user agent sniffing we had to find a way to send both ad codes, the one for desktops and the one for mobile devices, to the client and to then have the client somehow sort out which one of the two to execute. Not too hard to achieve. But now comes the real challenge: The people working in the ads division putting corresponding code into our site are no programmers. They do get isolated code snippets via email or from documentation, either for a mobile or a desktop ad and all they do is paste those into textareas labeled "mobile ad code" and "desktop ad code". They are not able to transform and combine them into one responsive ad loading code. So we had to develop something generic that would handle the task.
+* you need to develop many features twice
+* you constantly have to keep your list of devices and corresponding user agent strings up to date to continue sending visitors to the right site
+* you constantly had to troubleshoot your URL scheme. 
+
+These drawbacks were the reason why for our relaunch, we wanted to go the responsive route.
+
+We also wanted to get rid of server-side user agent sniffing. Thi meant we had to find a way to send down the ad codes both, for desktops and for mobile devices, down the wire and then to have the client somehow sort out which one of the two to execute. Not too hard to achieve. But now comes the real challenge: The people working in the ads division putting corresponding code into our site are no programmers. They do get isolated code snippets via email or from documentation, either for a mobile or a desktop ad and all they do is paste those into textareas labeled "mobile ad code" and "desktop ad code". They are not able to transform and combine them into one responsive ad loading code. We had to develop something generic that would handle the task.
 
 One way to do this is to leverage the power of Web Components by putting both snippets in separate `<template>` elements and then to import the correct one into the current DOM, like so:  
 
@@ -48,7 +54,7 @@ One way to do this is to leverage the power of Web Components by putting both sn
 </div>
 ```
 
-Note that you can't go "all in" with Web Components and make it a full custom element, as ads often rely on being able to reach into the rest of the document. Browser support for the above is quite good, with only IE and Edge &lt; 15 not supporting both `document.currentScript`([*](https://caniuse.com/#feat=document-currentscript)) and `document.importNode`([*](https://caniuse.com/#feat=template)) at the same time.
+Note that you can't go "all in" with Web Components and make it a full custom element, as ads often rely on being able to reach into the rest of the document. Browser support for the above is quite good, with only IE and Edge &lt; 15 not supporting both [`document.currentScript`](https://caniuse.com/#feat=document-currentscript) and [`document.importNode`](https://caniuse.com/#feat=template) at the same time.
 
 The above was not the route we chose, though. When we started developing our site in late 2017, Edge was not yet there in terms of support and we still had a considerable amount of IE traffic that we wanted to monetize. So our approach was a different one. The idea was to still deliver both ad codes but to use `document.write` to render one of them useless at parse time. One idea would have been to use an HTML comment, like so:
 
