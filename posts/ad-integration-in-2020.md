@@ -159,11 +159,11 @@ And here is how I put it to use (Media Queries and IntersectionObserver code are
 </div>
 ```
 
-The above enables us to have `<script>` elements in our code and even `document.write` and it is easily combined with an Intersection Observer for a lazy approach. On top of it all, since we do not need to dynamically open `<xmp>`sections anymore, Firefox stops complaining about the unbalanced DOM tree.
+The above snippet enables us to have `<script>` elements in our code and even `document.write` and it is easily combined with an Intersection Observer for a lazy load approach. On top of it all, since we do not need to dynamically open `<xmp>`sections anymore, Firefox stops complaining about the unbalanced DOM tree.
 
-One thing I did not account for, though, is that externally loaded scripts can also contain `document.write`. Those document.writes won't be catched by our Contextual Fragment, as these scripts are only loaded and executed after we injected and executed our initial code block. External scripts doing document.writes do not happen very often, but often enough. Since we really liked what we saw, we didn't want to give up. So we rolled up our sleeves and went ahead to patch `document.write`.
+One thing we did not account for, though, is that externally loaded scripts can also contain `document.write`. Those document.writes won't be caught by our Contextual Fragment, as these scripts are only loaded and executed after we injected and executed our initial code block. External scripts doing document.writes do not happen very often, but unfortunately often enough to consider them. Since we really liked what we saw, we didn't want to give up. We rolled up our sleeves and went ahead to patch `document.write`.
 
-I wanted to change `document.write` into something that would catch the output that was supposed to be written into the DOM, then I wanted to create another Contextual Fragment, which I would finally append right after the script calling it. Here is how that came together:
+We wanted to change `document.write` into something that would catch the output that was supposed to be written into the DOM, then I wanted to create another Contextual Fragment, which I would finally append right after the script calling it. Here is how that came together:
 
 ```js
   (() => {
@@ -192,7 +192,7 @@ I wanted to change `document.write` into something that would catch the output t
   })();
 ``` 
 
-The above code uses ES6 as this time it is not an inline script and so can be transpiled. And I am using `.closest()` and `.after()`, which you need to polyfill in older Edge browsers ([*](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/after) / [*](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)), as well as [`document.currentScript`](https://github.com/amiller-gh/currentScript-polyfill)).
+The above code uses ES6 as this time it is not an inline script and so can be transpiled. And I am using [`.closest()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest) and [`.after()`](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/after), which you need to polyfill in older Edge browsers, as well as [`document.currentScript`](https://github.com/amiller-gh/currentScript-polyfill)).
 
 Okay, **NOW** we're finally done. Now we have **responsive**, and **lazily loadable** ad slots that **work for any type of copy & paste code** snippet in the world!
 
@@ -206,9 +206,9 @@ Sometimes your connection happens to be super slow. You don't need to live in po
 * someone is on vacation in rural areas (like I experienced each time we were on vacation at a farm), or
 * a European travels to Florida, his/her 4G phone doesn't support the US frequencies and falls back to the next slower available connection speed, which turns out to be 2G, as Florida already got rid of its 3G network in favor of 4G (exactly this happened to poor me two years ago)
 
-In those situations it is not desirable to still have ads compete on bandwidth against the main content of your site. Even less so with news sites as sometimes they spread vital information, like informing people when a bigger incident happened and what to do. If we leave ads on even at 2G speeds, chances are that neither those nor our main content will ever load.
+In those situations it is not desirable to still have ads compete on bandwidth against the main content of your site. Even less so with news sites as sometimes they spread vital information, like informing people when a sgnificant incident happened and what to do. If we leave ads on even at 2G speeds, chances are that neither those nor our main content will ever load.
 
-So how we took that into account was to look for the presence of the [Network Information API](https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API) and if available to check a visitor's effective connection speed:
+WSe wanted to take the user connection into account using the [Network Information API](https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API). If this API is available we check a visitor's effective connection speed:
 
 ```js
 const hasFastConnection = () => {
@@ -246,13 +246,13 @@ You can try it out yourself by throttling the network in Chrome Devtools to "Slo
 
 ![The Chrome Devtools with the areas highlighted which you need to set to try this out](/img/disabling-ads-for-slow-connections.png)
 
-According to the [Chrome User Experience Report](https://developers.google.com/web/tools/chrome-user-experience-report), this affects 0.02% to 0.03% of our visitors, which, given that we hover around 60M page views per month, still amounts to 12K.
+According to the [Chrome User Experience Report](https://developers.google.com/web/tools/chrome-user-experience-report), this affects 0.02% to 0.03% of our visitors, which, given that we hover around 60M page views per month, still amounts to 12K views.
 
 ## Bringing stability back to layout
 
-One other side effect of having ads in your page is that slots pop open once an ad gets loaded into a slot, thereby pushing the content below it and to its side around. The same happens if you use fixed-sized placeholders in slots and it then turns out that there is no ad with those dimensions left in the pool to deliver, but only smaller or taller ones. Then the slot shrinks or grows, again pushing things around. Usability suffers tremendously as the human eye constantly loses orientation and the browser needs to re-layout the page each time (including paint and compositing). Most browsers try to compensate for it through a technique called "[Scroll Anchoring](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-anchor/Guide_to_scroll_anchoring)", but there are limits as to how good that works. The Chrome team recently added a new performance metric they call ["Cumulative Layout Shift"](https://web.dev/cls/) which aims to quantify these problems.
+One other side effect of having ads on your page is that slots pop open once an ad gets loaded into a slot, thereby pushing the content below it and to its side around. The same happens if you use fixed-sized placeholders in slots and it then turns out that there is no ad with those dimensions left in the pool to deliver, but only smaller or taller ones. Then the slot shrinks or grows, pushing things around. Usability suffers tremendously as the human eye constantly loses orientation and the browser needs to re-layout the page each time (including paint and compositing). Most browsers try to compensate for it through a technique called "[Scroll Anchoring](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-anchor/Guide_to_scroll_anchoring)", but there are limits as to how good that works. The Chrome team recently added a new performance metric they call ["Cumulative Layout Shift"](https://web.dev/cls/) which aims to quantify these problems.
 
-So what we did was introducing a new type of placeholder slot, that would always be as large as the largest possible ad format it is configured for, and that would turn any ad being loaded inside of it into a `position: sticky` element that would slide along with the user scrolling the page:
+What we did was introducing a new type of placeholder slot, that would always be as large as the largest possible ad format it is configured for, and that would turn any ad being loaded inside of it into a `position: sticky` element that would slide along with the user scrolling the page:
 
 <video width="300" height="520" autoplay muted loop>
   <source src="/img/position-sticky-ad.mp4" type="video/mp4">
