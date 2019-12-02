@@ -307,3 +307,7 @@ twitter-widget {
     margin-left: auto;
     margin-right: auto;
 }
+
+li {
+  margin-bottom: 0.7em;
+}
