@@ -18,13 +18,13 @@ And there are many ways in which they suck:
 * So-called skyscraper or wallpaper ads tend to make sure that they are always visible even if this means that they **cover essential site UI** like the header or menu.
 * And ads sometimes turn out to be trojan horses who's innards **try to steal sensitive data** from you without you noticing. 
 
-Oh yes, ads really are a kind of its own. But for us, there was no way around them, so we need to find ways to work with them and to minimize their impact.
+Oh yes, ads really are a kind of its own. But for us, there was no way around them, so we needed to find ways to work with them and to minimize their impact.
 
 ## Ads & Responsiveness
 
 Back in the days, the newspaper I work for had a standard website for desktops and an mdot site for mobile. This setup made integrating ads into the site pretty straight forward, because we knew when to send the ad code for desktop devices and when the one for mobile devices. But maintaining two separate sites has a lot of drawbacks, too: You need to develop many features twice, you constantly have to keep your list of devices and corresponding user agent strings up to date to continue sending visitors to the right site, and you constantly had to troubleshoot your URL scheme. This is why for our relaunch we wanted to go the responsive route.
 
-Since we also wanted to get rid of server-side user agent sniffing we had to find a way to send both ad codes, the one for desktop and the one for mobile devices, to the client and to then have the client somehow sort out which one of the two to execute. Not too hard to achieve. But now comes the real challenge: The people working in the ads division putting corresponding code into our site are no programmers. They do get isolated codes snippets via email or from documentation, either for a mobile or a desktop ad and all they do is paste those into textareas labeled "mobile ad code" and "desktop ad code". They are not able to transform and combine them to one responsive ad loading code. So we had to develop something generic that would handle the task.
+Since we also wanted to get rid of server-side user agent sniffing we had to find a way to send both ad codes, the one for desktops and the one for mobile devices, to the client and to then have the client somehow sort out which one of the two to execute. Not too hard to achieve. But now comes the real challenge: The people working in the ads division putting corresponding code into our site are no programmers. They do get isolated code snippets via email or from documentation, either for a mobile or a desktop ad and all they do is paste those into textareas labeled "mobile ad code" and "desktop ad code". They are not able to transform and combine them into one responsive ad loading code. So we had to develop something generic that would handle the task.
 
 One way to do this is to leverage the power of Web Components by putting both snippets in separate `<template>` elements and then to import the correct one into the current DOM, like so:  
 
@@ -77,9 +77,9 @@ The above was not the route we chose, though. When we started developing our sit
 </div>
 ```
 
-The closing comment declarations would be hardcoded into the HTML (`-->`), whereas the opening declarations would be inserted depending on the device type (`<!--`), thereby disabling the code in between. But again, this wasn't good enough. Since our people managing the ads would probably just copy & paste code into the respective CMS textareas, we were fully prepared for them to also copy & paste any HTML comments that they would come across in their code snippets. Just one such occurrence would be enough to transform our whole site into a Frankenstein, due to messed HTML nesting.
+The closing comment declarations would be hardcoded into the HTML (`-->`), whereas the opening declarations would be inserted depending on the device type (`<!--`), thereby disabling the code in between. But again, this wasn't good enough. Since our people managing the ads would probably just copy & paste code into the respective CMS textareas, we were fully prepared for them to also copy & paste any HTML comments that they would come across in their code snippets. Just one such occurrence would be enough to transform our whole site into a Frankenstein, due to messed up HTML nesting.
 
-So I remembered one more discovery I made a few years back, in regards to HTML, and that was the `<xmp>` element. This tag has been marked deprecated in HTML 3.2 and completely removed in HTML 5. But browsers still support it. The `<xmp>` was once meant to display preformatted text and was superseded by the `<pre>` element. But `<xmp>` has one huge advantage over `<pre>` in that it does not need HTML to be entity encoded inside it. Similarly to the `<template>` element, it mutes the effect of any contained HTML, with the only difference being that it would visibly show up in the browser and not hide. And the probability of an ad code to break it with an `<xmp>` tag is close to zero. So this is basically the code we went live with:
+So I remembered one more discovery I made a few years back, in regards to HTML, and that was the `<xmp>` element. This tag has been marked deprecated in HTML 3.2 and completely removed in HTML 5. But browsers still support it. The `<xmp>` was once meant to display preformatted text and was superseded by the `<pre>` element. But `<xmp>` has one huge advantage over `<pre>` in that it does not need HTML to be entity encoded inside it. Similarly to the `<template>` element, it mutes the effect of any contained HTML, with the only difference being that it would visibly show up in the browser and not hide itself. And the probability of an ad code to break it with a closing `</xmp>` tag is close to zero. So this is basically the code we went live with:
 
 ```html
 <div class="ad">
@@ -126,8 +126,7 @@ Triggering actions once an element enters the viewport got pretty easy nowadays 
   </xmp>
   <script>
     (function() {
-      // Due to IE we can't use document.currentScript
-      // But we know we must be the last .ad element in the document
+      // We know we must be the last .ad element in the document
       var ads = document.querySelectorAll('.ad');
       var ad = ads[ads.length - 1];
       var xmp = ad.querySelector(isMobile ? '.ad__mobile' : '.ad__desktop');
@@ -192,7 +191,7 @@ Sometimes your connection happens to be super slow. You don't need to live in po
 * someone is on vacation in rural areas (like I experienced each time we were on vacation at a farm), or
 * a European travels to Florida, his/her 4G phone doesn't support the US frequencies and falls back to the next slower available connection speed, which turns out to be 2G, as Florida already got rid of its 3G network in favor of 4G (exactly this happened to poor me two years ago)
 
-In those situations it is not desirable to still have ads compete on bandwidth against the main content of your site. Even less so with news sites as sometimes they spread vital information, like informing people when a bigger incident happened and what to do. If we leave ads on even at 2g speeds, chances are high that neither those nor our main content will ever load.
+In those situations it is not desirable to still have ads compete on bandwidth against the main content of your site. Even less so with news sites as sometimes they spread vital information, like informing people when a bigger incident happened and what to do. If we leave ads on even at 2G speeds, chances are that neither those nor our main content will ever load.
 
 So how we took that into account was to look for the presence of the [Network Information API](https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API) and if available to check a visitor's effective connection speed:
 
@@ -247,7 +246,7 @@ So what we did was introducing a new type of placeholder slot, that would always
 
 That way, we get around the need to resize the slot once the ad is loaded, thereby reducing the layout shift.
 
-One thing one needs to know though with `position: sticky`, and which is not mentioned a lot around the internets, is that it stops working the moment one of its ancestors uses `overflow: hidden`. It turned out we had quite had few elements on our page set to `overflow: hidden`, mostly to clear floats or to stop things from exceeding the horizontal boundaries of the page on mobile. So we had to refactor these. 
+One thing you need to know though with `position: sticky`-elements which is not mentioned a lot around the internets, is that it stops working the moment one of the ancestors uses `overflow: hidden`. It turned out we had quite had few elements on our page set to `overflow: hidden`, mostly to clear floats or to stop things from exceeding the horizontal boundaries of the page on mobile. So we had to refactor these. 
 
 In order to find ad slots that are affected with such a constellation, I created the following snippet which I could run in the browser console:
 
@@ -354,6 +353,6 @@ Working with ads is messy and also a bit delicate, because of course you don't w
 
 I think I'd like to probe them to see where exactly they waste processing time. My hopes are that force-debouncing scroll events and mapping layout trashing reads to less expensive, maybe even async methods in the background will manage to reduce the pressure on our site.
 
-What I would wish for even more is for companies like Google and Meetrics to put their code on Github and to allow people to send them pull-requests that improve their code. But I guess this will never happen.
+What I would wish for even more is for companies like Google and Meetrics to put out their code on Github and to allow people to send them pull-requests that improve it. But I guess this will never happen.
 
 Do you have similar experiences with ads? Have you also tried decreasing the harm they do on your site? If so, I'd love to hear from you on the Twitters! My handle is [@derSchepp](https://twitter.com/derSchepp). 
