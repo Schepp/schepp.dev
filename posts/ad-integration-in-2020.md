@@ -402,4 +402,6 @@ We think we'd like to probe them to see where exactly they waste processing time
 
 What we would wish for even more is for companies like Google and Meetrics to put out their code on Github and to allow people to send them pull-requests that improve it. But this will never happen.
 
-Do you have similar experiences with ads? Have you also tried decreasing the harm they do on your site? If so, I'd love to hear from you on the Twitters! My handle is [@derSchepp](https://twitter.com/derSchepp). 
+Do you have similar experiences with ads? Have you also tried decreasing the harm they do on your site? If so, I'd love to hear from you on the Twitters! My handle is [@derSchepp](https://twitter.com/derSchepp).
+
+_PS: A thousand thanks go out to [Stefan Judis](https://www.stefanjudis.com/), who was so kind to check this huge post ❤_  
