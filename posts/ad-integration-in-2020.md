@@ -219,7 +219,8 @@ Our solution was to manipulate the viewport meta tag in a way that we force tabl
         window.matchMedia && 
         matchMedia('screen and (min-width: 45.3125em)').matches
       ) {
-      // In the first step we also turn off user scaling so that the browser zooms out
+      // In the first step we also turn off user scaling 
+      // so that the browser zooms out
       document
         .querySelector('meta[name="viewport"]')
         .setAttribute('content', 'width=1325, user-scalable=no');
@@ -311,9 +312,9 @@ In order to find ad slots that are affected with such a constellation, we create
                         .getPropertyValue('overflow') === 'hidden');
   
   if (problematicParents.length) {
-    console.warn('Sticky will break in ad slot:', adSlot, problematicParents);
+    console.warn('Sticky will break in slot:', adSlot, problematicParents);
   } else {
-    console.info('Sticky will work in portal:', adSlot);
+    console.info('Sticky will work in slot:', adSlot);
   }
 });
 ```
@@ -357,7 +358,8 @@ Since we don't want that to happen and we could not lock out the third party, we
   const allowedSelectors = [];
   
   // Store the real value access
-  const realValue = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value');
+  const realValue = 
+     Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value');
 
   // Remap the former .value to a new .realValue property
   Object.defineProperty(HTMLInputElement.prototype, 'realValue', {
@@ -378,8 +380,7 @@ Since we don't want that to happen and we could not lock out the third party, we
       }
       
       // Otherwise send an alarm and return an empty value
-      console.info('A script just tried to access an input\'s value ', this);
-      console.trace();
+      console.trace('A script just tried to access an input\'s value', this);
       return '';
     },
   });
