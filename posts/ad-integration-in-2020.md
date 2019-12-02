@@ -207,7 +207,10 @@ Our solution was to manipulate the viewport meta tag in a way that we force tabl
     // If tablet or bigger, fix viewport to create space for the ads
     // Our cut-off point was at a width of 725 pixels
     // (also see: https://mydevice.io/devices/#sortTablets)
-    if (window.matchMedia && matchMedia('screen and (min-width: 45.3125em)').matches) {
+    if (
+        window.matchMedia && 
+        matchMedia('screen and (min-width: 45.3125em)').matches
+      ) {
       // In the first step we also turn off user scaling so that the browser zooms out
       document
         .querySelector('meta[name="viewport"]')
@@ -216,7 +219,8 @@ Our solution was to manipulate the viewport meta tag in a way that we force tabl
       // Then we re-enable zooming
       window.setTimeout(function () {
         document
-          .querySelector('meta[name="viewport"]').setAttribute('content', 'width=1325');
+          .querySelector('meta[name="viewport"]')
+          .setAttribute('content', 'width=1325');
       }, 1000);
     }
   </script>
