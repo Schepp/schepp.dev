@@ -30,9 +30,9 @@ Back in the days, the newspaper I work for had a standard website for desktops a
 * you constantly have to keep your list of devices and corresponding user agent strings up to date to continue sending visitors to the right site
 * you constantly had to troubleshoot your URL scheme. 
 
-These drawbacks were the reason why for our relaunch, we wanted to go the responsive route.
+These drawbacks were the reason why for our relaunch, we wanted to go the responsive route, which would make user agent sniffing redundant, too.
 
-We also wanted to get rid of server-side user agent sniffing. Thi meant we had to find a way to send down the ad codes both, for desktops and for mobile devices, down the wire and then to have the client somehow sort out which one of the two to execute. Not too hard to achieve. But now comes the real challenge: The people working in the ads division putting corresponding code into our site are no programmers. They do get isolated code snippets via email or from documentation, either for a mobile or a desktop ad and all they do is paste those into textareas labeled "mobile ad code" and "desktop ad code". They are not able to transform and combine them into one responsive ad loading code. We had to develop something generic that would handle the task.
+We had to find a way to send down the ad codes both, for desktops and for mobile devices, down the wire and then to have the client somehow sort out which one of the two to execute. Not too hard to achieve. But now comes the real challenge: The people working in the ads division putting corresponding code into our site are no programmers. They do get isolated code snippets via email or from documentation, either for a mobile or a desktop ad and all they do is paste those into textareas labeled "mobile ad code" and "desktop ad code". They are not able to transform and combine them into one responsive ad loading code. We had to develop a generic solution that would handle the task.
 
 One way to do this is to leverage the power of Web Components by putting both snippets in separate `<template>` elements and then to import the correct one into the current DOM, like so:  
 
@@ -58,7 +58,7 @@ One way to do this is to leverage the power of Web Components by putting both sn
 
 Note that you can't go "all in" with Web Components and make it a full custom element, as ads often rely on being able to reach into the rest of the document. Browser support for the above is quite good, with only IE and Edge &lt; 15 not supporting both [`document.currentScript`](https://caniuse.com/#feat=document-currentscript) and [`document.importNode`](https://caniuse.com/#feat=template) at the same time.
 
-The above was not the route we chose, though. When we started developing our site in late 2017, Edge was not yet there in terms of support and we still had a considerable amount of IE traffic that we wanted to monetize. So our approach was a different one. The route was still to deliver both ad codes but to use `document.write` to render one of them useless at parse time. One idea would have been to use an HTML comment, like so:
+The above was not the route we chose, though. When we started developing our site in late 2017, Web Components support in Edge was not yet there and we still had a considerable amount of IE traffic that we wanted to monetize. So our approach was a different one. The ay to go was still to deliver both ad codes but to use `document.write` to render one of them useless at parse time. One idea would have been to use an HTML comment, like so:
 
 ```html
 <div class="ad">
@@ -87,7 +87,7 @@ The above was not the route we chose, though. When we started developing our sit
 
 The closing comment declarations would be hardcoded into the HTML (`-->`), whereas the opening declarations would be inserted depending on the device type (`<!--`), thereby disabling the code in between. But again, this wasn't good enough. Since our people managing the ads would probably just copy & paste code into the respective CMS textareas, we were fully prepared for them to also carry over any HTML comments that they would come across in their code snippets. Just one such occurrence would be enough to transform our whole site into a Frankenstein, due to messed up HTML nesting.
 
-I remembered one more discovery I made a few years back, in regards to HTML, and that was the `<xmp>` element. This tag has been marked deprecated in HTML 3.2 and completely removed in HTML 5. But browsers still support it. The `<xmp>` was once meant to display preformatted text and was superseded by the `<pre>` element. But `<xmp>` has one huge advantage over `<pre>` in that it does not need HTML to be entity encoded inside it. Similarly to the `<template>` element, it mutes the effect of any contained HTML, with the only difference being that it would visibly show up in the browser and not hide itself. And the probability of an ad code to break it with a closing `</xmp>` tag is close to zero. This is the code we went live with:
+I remembered one more discovery I made a few years back, in regards to HTML, and that was the `<xmp>` element. This tag has been marked deprecated in HTML 3.2 and completely removed in HTML 5. But browsers still support it. The `<xmp>` was once meant to display preformatted text and was superseded by the `<pre>` element. But `<xmp>` has one huge advantage over `<pre>`: it does not need HTML to be entity encoded inside it. Similarly to the `<template>` element, it mutes the effect of any contained HTML, with the only difference being that it would visibly show up in the browser and not hide itself. And the probability of an ad code to break it with a closing `</xmp>` tag is close to zero. This is the code we went live with:
 
 ```html
 <div class="ad">
@@ -114,13 +114,13 @@ I remembered one more discovery I made a few years back, in regards to HTML, and
 </div>
 ```
 
-And it worked like a charm, except maybe for Firefox complaining about having to render an unbalanced DOM tree:
+And it worked like a charm, except for Firefox complaining about having to render an unbalanced DOM tree:
 
 ![the Firefox console complaining about an unbalanced DOM tree](/img/unbalanced-dom-tree.jpg)
 
 ## Lazy Loading Ads for better performance
 
-But our ad people would not be who they are if they didn't crank the difficulty level up one notch. So after a certain amount of time they asked if it would be possible to have ad slots loaded lazily, when they scroll into view. Because some ads pay off only when they are seen by the user, not when they are loaded. So from a performance standpoint it makes total sense to only load them on demand.
+But our ad people would not be who they are if they didn't crank the difficulty level up one notch. After a certain amount of time they asked if it would be possible to have ad slots loaded lazily, when they scroll into view. Because some ads pay off only when they are seen by the user, not when they are loaded. So from a performance standpoint it makes total sense to only load them on demand.
 
 Triggering actions once an element enters the viewport got pretty easy nowadays thanks to the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) (and the available [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)). The more difficult problem to tackle was how to postpone the execution of arbitrarily shaped scripts into the future. As you might know, just reading out the ad's HTML snippet and injecting it into the DOM via `.innerHTML` would not execute contained `<script>` elements. One possibility could have been to parse out any `script` tags, to recreate them via `document.createElement`, and then to append them. But then again, how would we handle `document.write`? Since our base document has finished parsing and is now considered "closed", such a late `document.write` [would replace the whole document](https://developer.mozilla.org/en-US/docs/Web/API/Document/open#Notes), instead of just adding little pieces to it. A `<template>` element together with `document.importNode` could solve the problem, but as already outlined above, they are not (yet) an option for us. But I stumbled upon one more interesting DOM feature capable of helping me out: the Range object and its [`.createContextualFragment()`](https://developer.mozilla.org/en-US/docs/Web/API/Range/createContextualFragment) method, creating a, well, Contextual Fragment. 
 
@@ -165,7 +165,13 @@ The above snippet enables us to have `<script>` elements in our code and even `d
 
 One thing we did not account for, though, is that externally loaded scripts can also contain `document.write`. Those document.writes won't be caught by our Contextual Fragment, as these scripts are only loaded and executed after we injected and executed our initial code block. External scripts doing document.writes do not happen very often, but unfortunately often enough to consider them. Since we really liked what we saw, we didn't want to give up. We rolled up our sleeves and went ahead to patch `document.write`.
 
-We wanted to change `document.write` into something that would catch the output that was supposed to be written into the DOM, then I wanted to create another Contextual Fragment, which I would finally append right after the script calling it. Here is how that came together:
+We had to patch `document.write` into something that 
+
+a) would catch what was supposed to be written into the DOM, then 
+b) create another Contextual Fragment with that content, which would 
+c) be appended right after the script calling it. 
+
+Here is how that came together:
 
 ```js
   (() => {
