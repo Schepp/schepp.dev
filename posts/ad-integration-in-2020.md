@@ -204,7 +204,7 @@ The above code uses ES6 as this time it is not an inline script and so can be tr
 
 Okay, **NOW** we're finally done. Now we have **responsive**, and **lazily loadable** ad slots that **work for any type of copy & paste code** snippet in the world!
 
-"But what about tablets?", you may ask. Valid remark! For advertisers the tablet category does not exist. For them there is just desktop or mobile, nothing in between. This means it is upon you as a publisher to decide which of those two categories to serve to tablet users. Since desktop ads bring more revenue, we chose to serve those to tablet users. Now, not every tablet offers the screen size to flank our main content with skyscrapers and the likes. But those bring most of the money!
+"But what about tablets?", you may ask. Valid remark! For advertisers the tablet category does not exist. For them there is just desktop or mobile, nothing in between. This differentiation means it is upon you as a publisher to decide which of those two categories to serve to tablet users. Since desktop ads bring more revenue, we chose to serve those to tablet users. Now, not every tablet offers the screen size to flank our main content with skyscrapers and the likes. But those bring most of the money!
 
 Our solution was to manipulate the viewport meta tag in a way that we force tablets into creating a virtual drawing canvas of 1325 pixels, similarly to what they fall back to when no viewport meta tag is set at all:
 
@@ -288,9 +288,9 @@ According to the [Chrome User Experience Report](https://developers.google.com/w
 
 ## Bringing stability back to layout
 
-One other side effect of having ads on your page is that slots pop open once an ad gets loaded into a slot, thereby pushing the content below it and to its side around. The same happens if you use fixed-sized placeholders in slots and it then turns out that there is no ad with those dimensions left in the pool to deliver, but only smaller or taller ones. Then the slot shrinks or grows, pushing things around. Usability suffers tremendously as the human eye constantly loses orientation and the browser needs to re-layout the page each time (including paint and compositing). Most browsers try to compensate for it through a technique called "[Scroll Anchoring](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-anchor/Guide_to_scroll_anchoring)", but there are limits as to how good that works. The Chrome team recently added a new performance metric they call ["Cumulative Layout Shift"](https://web.dev/cls/) which aims to quantify these problems.
+One other side effect of having ads on your page is that slots pop open once an ad gets loaded into them, thereby pushing the content below it and to its side around. The same happens if you use fixed-sized placeholders in slots and it then turns out that there is no ad with those dimensions left in the pool to deliver, but only smaller or taller ones. Then the slot shrinks or grows, pushing things around. Usability suffers tremendously as the human eye constantly loses orientation and the browser needs to re-layout the page each time (including paint and compositing). Most browsers try to compensate for it through a technique called "[Scroll Anchoring](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-anchor/Guide_to_scroll_anchoring)", but there are limits as to how good that works. The Chrome team recently added a new performance metric they call ["Cumulative Layout Shift"](https://web.dev/cls/) which aims to quantify these problems.
 
-What we did was introducing a new type of placeholder slot, that would always be as large as the largest possible ad format it is configured for, and that would turn any ad being loaded inside of it into a `position: sticky` element that would slide along with the user scrolling the page:
+What we did was introducing a new type of placeholder slot, that would always be as large as the largest possible ad format it is configured for, and that would turn any loaded ad inside of it into a `position: sticky` element that would slide along with the user scrolling the page:
 
 <video width="300" height="520" autoplay muted loop>
   <source src="/img/position-sticky-ad.mp4" type="video/mp4">
@@ -342,7 +342,7 @@ Of course, what this meant for us was to revert to `document.querySelector('body
 
 (at least a little bit)
 
-In an ideal world, what we would do is lock every ad into either an iframe or a Web Component custom element to block it from accessing the rest of the page. In practice, we can not do this, as a lot of ads rely on being able to reach outside of their initial slot. An ad could, for example, turn out to be a fireplace ad which in turn needs to add plenty of graphic elements on all sides and also needs to move the content area of the page around. Or there are so-called "understitials", which open up a hole in your text content, through which to see the ad. Or you have a sticky ad that needs to attach itself to the body. So we cannot restrict them.
+In an ideal world, what we would do is to lock every ad into either an iframe or a Web Component custom element to block it from accessing the rest of the page. In practice, we can not do this, as a lot of ads rely on being able to reach outside of their initial slot. An ad could, for example, turn out to be a fireplace ad which in turn needs to add plenty of graphic elements on all sides and also needs to move the content area of the page around. Or there are so-called "understitials", which open up a hole in your text content, through which to see the ad. Or you have a sticky ad that needs to attach itself to the body. So we cannot restrict them.
 
 Restricting access would be wise, though, as these ads can observe you and read out everything that you type into any sort of input field. And they do! For example, they try to [trigger your browser's form autofill feature](https://lifehacker.com/your-browsers-autofill-data-can-be-phished-heres-how-t-1791084371) or [hope for autofill to just run](https://www.theverge.com/2017/12/30/16829804/browser-password-manager-adthink-princeton-research) to get very sensible data. Maybe to fingerprint and track you across different sites. Maybe to sell your profile data, who knows. And other types of third party scripts do too! If you use the Facebook pixel, it constantly reads out every input you do on the page. The same goes for Google's Recaptcha. Maybe they do that to ensure you are not a robot. Maybe not.
 
@@ -400,11 +400,11 @@ The patch does not change anything in regards to normal HTML-based form submissi
 
 ## Closing Notes
 
-Working with ads is messy and also a bit delicate, because of course you don't wanna break stuff in a way that cuts off revenue (e.g. break an advertiser's measurement tools). One thing on our list is to take on common scripts like Google's `osd.js` or Meetrics' `mtrcs.js` monitoring tool, as both tend to burn most of our CPU cycles. 
+Working with ads is messy and also a bit delicate, because you don't wanna break stuff in a way that cuts off revenue (e.g. break an advertiser's measurement tools). One thing on our list is to take on common scripts like Google's `osd.js` or Meetrics' `mtrcs.js` monitoring tool, as both tend to burn most of our CPU cycles. 
 
 ![Chrome Devtools Call Tree showing that osd.js and mtrcs.js take up most time](/img/osd-and-meetrics-javascript.png)
 
-We think we'd like to probe them to see where exactly they waste processing time. Our hopes are that force-debouncing scroll events and mapping layout trashing reads to less expensive, maybe even async methods in the background will manage to reduce the pressure on our site.
+We think we'd like to probe them to see where exactly they waste processing time. We hope that force-debouncing scroll events and mapping layout trashing reads to less expensive, maybe even async methods in the background will manage to reduce the pressure on our site.
 
 What we would wish for even more is for companies like Google and Meetrics to put out their code on Github and to allow people to send them pull-requests that improve it. But this will never happen.
 
