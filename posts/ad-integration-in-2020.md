@@ -293,7 +293,7 @@ That way, we get around the need to resize the slot once the ad is loaded, there
 
 One thing you need to know though with `position: sticky`-elements which is not mentioned a lot around the internets, is that it stops working the moment one of the ancestors uses `overflow: hidden`. It turned out we had quite had few elements on our page set to `overflow: hidden`, mostly to clear floats or to stop things from exceeding the horizontal boundaries of the page on mobile. So we had to refactor these. 
 
-In order to find ad slots that are affected with such a constellation, I created the following snippet which I could run in the browser console:
+In order to find ad slots that are affected with such a constellation, we created the following snippet which we could run in the browser console:
 
 ```js
 [...document.querySelectorAll('.ad')].forEach((adSlot) => {
@@ -314,9 +314,9 @@ Now we still needed to find a solution for when there's no remaining ad in the a
 
 ## Winning the z-Index Wars
 
-As I wrote in the introductory section a few types of ads tend to break out of their given place and to cover up important site UI like the header or the navigation. Typical candidates are (sticky) skyscrapers flanking the page that extend to the top and bottom of the viewport, ignoring that there might be a header bar that they shouldn't cover. Another ad format is the fireplace ad that tries to lay itself all around the content: to the left, to the right and above. Covering up navigation leads to people feeling like they lost control over the site.
+As mentioned in the introductory section a few types of ads tend to break out of their given place and to cover up important site UI like the header or the navigation. Typical candidates are (sticky) skyscrapers flanking the page that extend to the top and bottom of the viewport, ignoring that there might be a header bar that they shouldn't cover. Another ad format is the fireplace ad that tries to lay itself all around the content: to the left, to the right and above. Covering up navigation leads to people feeling like they lost control over the site.
 
-And then there are ads which do sit where they are supposed to be but that boast such a high z-index that they will even sit there when you've opened your off-canvas menu and then they'll cover that up, too. While there are guidelines by the IAB, the "Interactive Advertising Bureau", on which z-indexes to use as a site owner and which ones to use as an ad creator, seeing what crap comes in over the ad servers makes me have no faith in that standard being applied correctly. Which is why I prefer to take things into my own hands.
+And then there are ads which do sit where they are supposed to be but that boast such a high z-index that they will even sit there when you've opened your off-canvas menu and then they'll cover that up, too. While there are guidelines by the IAB, the "Interactive Advertising Bureau", on which z-indexes to use as a site owner and which ones to use as an ad creator, seeing what crap comes in over the ad servers makes me have no faith in that standard being applied correctly. Which is why we prefer to take things into our own hands.
 
 What we noticed was that all those ads that ended up covering up things were accessing `document.body` to append themselves to it. That's when we got the idea to patch `document.body`! Instead of returning the `<body>` element, we would return a `<div>` that extends over the whole surface of the `<body>` element, but that would come equipped with `z-index: 0`. And then those ads would become children of that element instead. What seemingly only a few people know is that once a parent of an element is already part of a stacking context child elements cannot stick out higher in the stack than the parent. So now even ads with a z-index in the millions range could not go higher than the stacking height of that new element, which was 0. We then equipped our header with `z-index: 4` and our off-canvas menus with `z-index: 3` and from that moment on they remained forever uncovered. And how did we patch `document.body`? With a property getter, supported in all relevant browsers:
 
@@ -392,12 +392,12 @@ The patch does not change anything in regards to normal HTML-based form submissi
 
 ## Closing Notes
 
-Working with ads is messy and also a bit delicate, because of course you don't wanna break stuff in a way that cuts off revenue (e.g. break an advertiser's measurement tools). One thing on my list is to take on common scripts like Google's `osd.js` or Meetrics' `mtrcs.js` monitoring tool, as both tend to burn most of our CPU cycles. 
+Working with ads is messy and also a bit delicate, because of course you don't wanna break stuff in a way that cuts off revenue (e.g. break an advertiser's measurement tools). One thing on our list is to take on common scripts like Google's `osd.js` or Meetrics' `mtrcs.js` monitoring tool, as both tend to burn most of our CPU cycles. 
 
 ![Chrome Devtools Call Tree showing that osd.js and mtrcs.js take up most time](/img/osd-and-meetrics-javascript.png)
 
-I think I'd like to probe them to see where exactly they waste processing time. My hopes are that force-debouncing scroll events and mapping layout trashing reads to less expensive, maybe even async methods in the background will manage to reduce the pressure on our site.
+We think we'd like to probe them to see where exactly they waste processing time. Our hopes are that force-debouncing scroll events and mapping layout trashing reads to less expensive, maybe even async methods in the background will manage to reduce the pressure on our site.
 
-What I would wish for even more is for companies like Google and Meetrics to put out their code on Github and to allow people to send them pull-requests that improve it. But I guess this will never happen.
+What we would wish for even more is for companies like Google and Meetrics to put out their code on Github and to allow people to send them pull-requests that improve it. But this will never happen.
 
 Do you have similar experiences with ads? Have you also tried decreasing the harm they do on your site? If so, I'd love to hear from you on the Twitters! My handle is [@derSchepp](https://twitter.com/derSchepp). 
