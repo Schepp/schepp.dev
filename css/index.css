@@ -301,3 +301,8 @@ a[href].direct-link:focus:visited,
     display: inline-block;
     padding-right: 1em;
 }
+
+twitter-widget {
+    margin-left: auto;
+    margin-right: auto;
+}
