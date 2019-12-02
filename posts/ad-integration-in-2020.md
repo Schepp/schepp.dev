@@ -6,7 +6,7 @@ tags:
   - adtech
 layout: layouts/post.njk
 ---
-![Mordor from Lord of the Rings](/img/lord-of-the-rings-mordor-mount-doom-eye-of-sauron.jpg)
+![Mordor from Lord of the Rings](/img/lord-of-the-rings-mordor-mount-doom-eye-of-sauron-resized.jpg)
 
 As you may know, I currently work for a news company in Germany, the Rheinische Post Mediengruppe. My task there is to concept and build the frontend for a bunch of news sites in the form of a white label framework. Sadly, but not surprisingly my client is still depending on ads to generate revenue. Which is why we wanted to adjust our frontend to be in a better position to deal with them. Mostly because...
 
