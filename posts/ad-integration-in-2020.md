@@ -150,7 +150,6 @@ And here is how I put it to use (Media Queries and IntersectionObserver code are
       var xmp = ad.querySelector(isMobile ? '.ad__mobile' : '.ad__desktop');
       var activateCode = function activateCode(html) {
           var range = document.createRange();
-          var html = elem.textContent;
 
           range.setStart(ad, 0);
           ad.appendChild(range.createContextualFragment(html));
