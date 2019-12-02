@@ -373,7 +373,7 @@ Since we don't want that to happen and we could not lock out the third party, we
     get() {
       // Go though the allowlist and if a selector matches,
       // return the real value
-      for (let selector of allowedSelectors) {
+      for (const selector of allowedSelectors) {
         if (this.matches(selector)) {
           return realValue.get.call(this);
         }
