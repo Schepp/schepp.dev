@@ -247,7 +247,7 @@ Sometimes your connection happens to be super slow. You don't need to live in po
 
 In those situations it is not desirable to still have ads compete on bandwidth against the main content of your site. Even less so with news sites as sometimes they spread vital information, like informing people when a sgnificant incident happened and what to do. If we leave ads on even at 2G speeds, chances are that neither those nor our main content will ever load.
 
-WSe wanted to take the user connection into account using the [Network Information API](https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API). If this API is available we check a visitor's effective connection speed:
+We wanted to take the user connection into account using the [Network Information API](https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API). If this API is available we check a visitor's effective connection speed:
 
 ```js
 const hasFastConnection = () => {
