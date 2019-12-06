@@ -295,7 +295,6 @@ What we did was introducing a new type of placeholder slot, that would always be
 
 <video width="300" height="520" autoplay muted loop>
   <source src="/img/position-sticky-ad.mp4" type="video/mp4">
-  <img src="/img/position-sticky-ad.gif">
 </video>
 
 That way, we get around the need to resize the slot once the ad is loaded, thereby reducing the layout shift.
