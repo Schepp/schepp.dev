@@ -25,4 +25,4 @@ The nicest trick I pull off is the one for the auto-forward:
 1. first I slowly offset the scroll snap points to the right, making the scroll area follow along due to being snapped to them.
 2. after having scrolled the width of a whole slide, I deactivate the snapping. The scroll area is now untied from the scroll snap points.
 3. Now I let the scroll snap points jump back to their initial positions without them "snap-dragging" the scroll area back with them
-4. Then I re-engage the snapping which now lets the scroll area snap to a different snap point 🤯 Whatever... look at the code 🙃
+4. Then I re-engage the snapping which now lets the scroll area snap to a different snap point 🤯 Whatever... [look at the code](https://codepen.io/Schepp/pen/WNbQByE?editors=1100) 🙃
