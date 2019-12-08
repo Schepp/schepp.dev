@@ -14,7 +14,7 @@ I've recently [read about](https://24ways.org/2019/beautiful-scrolling-experienc
 
 [Link to Codepen](https://codepen.io/Schepp/pen/WNbQByE?editors=1100)
 
-Here are a few things to note:
+## Here are a few things to note:
 
 Accessibility is in line with all other CSS-only experiments: it can only be considered mediocre in term of semantics and visual indicators. Don't do this in production.
 
