@@ -22,6 +22,11 @@ body {
     background-color: var(--white);
 }
 
+iframe {
+  width: 100%;
+  border: none;
+}
+
 * {
     scrollbar-color: #7f7f7f transparent; /* thumb and track color */
     scrollbar-width: thin;
