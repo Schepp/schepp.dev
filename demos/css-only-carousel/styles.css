@@ -69,6 +69,10 @@ body {
   border: none;
 }
 
+* {
+  -ms-overflow-style: none;
+}
+
 ol, li {
   list-style: none;
   margin: 0;
@@ -192,23 +196,33 @@ ol, li {
 
 .carousel::before,
 .carousel__prev {
-  content: '\2BC7';
   left: -1rem;
 }
 
 .carousel::after,
 .carousel__next {
-  content: '\2BC8';
   right: -1rem;
 }
 
 .carousel::before,
 .carousel::after {
+  content: '';
   z-index: 1;
   background-color: #333;
+  background-size: 1.5rem 1.5rem;
+  background-repeat: no-repeat;
+  background-position: center center;
   color: #fff;
   font-size: 2.5rem;
   line-height: 4rem;
   text-align: center;
   pointer-events: none;
+}
+
+.carousel::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,50 80,100 80,0' fill='%23fff'/%3E%3C/svg%3E");
+}
+
+.carousel::after {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='100,50 20,100 20,0' fill='%23fff'/%3E%3C/svg%3E");
 }
