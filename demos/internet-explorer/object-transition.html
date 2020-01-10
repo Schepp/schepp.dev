@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Object Transition</title>
+  <style>
+    body {
+      width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    img {
+      display: inline;
+      float: left;
+      width: 200px;
+      height: 260px;
+      margin: 0 20px 20px 0;
+      zoom: 1;
+    }
+  </style>
+</head>
+<body>
+<img src="unsplash-photo-a.jpg" width="1080" height="1620">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<script>
+  (function () {
+    var srcs = [
+      'unsplash-photo-a.jpg',
+      'unsplash-photo-b.jpg'
+    ];
+    var img = document.getElementsByTagName('IMG')[0];
+    var activeSrcIndex = 0;
+    var crossfade = function crossfade() {
+      activeSrcIndex = 1 - activeSrcIndex;
+      img.filters.blendTrans.apply();
+      img.src = srcs[activeSrcIndex];
+      img.filters.blendTrans.play();
+    };
+
+    img.style.filter = 'blendTrans(duration=0.600)';
+
+    window.setInterval(crossfade, 2000);
+  })();
+</script>
+</body>
+</html>

@@ -27,6 +27,22 @@ iframe {
   border: none;
 }
 
+.video {
+  position: relative;
+  width: 100%;
+  padding-top: calc((9 / 16) * 100%);
+}
+
+.video > iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 * {
     scrollbar-color: #7f7f7f transparent; /* thumb and track color */
     scrollbar-width: thin;
@@ -315,4 +331,31 @@ twitter-widget {
 
 li {
   margin-bottom: 0.7em;
+}
+
+blockquote {
+  position: relative;
+  margin: 0 0 1em 0;
+  padding: 0 3em;
+  font-family: "Times New Roman", serif;
+  font-style: italic;
+  quotes: "“" "”" "‘" "’";
+}
+
+blockquote::before,
+blockquote::after {
+  position: absolute;
+  font-size: 300%;
+}
+
+blockquote::before {
+  content: open-quote;
+  top: -0.1em;
+  left: 0;
+}
+
+blockquote::after {
+  content: close-quote;
+  right: 0;
+  bottom: -0.6em;
 }
