@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Vector Converter</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link type="text/css" href="vc.css" rel="stylesheet" />
+<script language="JavaScript">
+
+function checkPost(form)
+	{
+	
+	selected_e=form.conversion_type.value.substring(0,3);
+	
+	input_e=form.file_htm.value.substring(form.file_htm.value.length - 3);
+	if (input_e=="tml") input_e="vml";
+	
+	if (input_e != selected_e) {
+	
+		alert("Wrong selection");	
+		}
+	else {
+		form.action=form.conversion_type.value+".php";
+		form.submit();
+		}
+	return true;
+
+	}	
+
+</script>
+</head>
+
+<body>
+	<div id="logo">
+		<span class="titolo">University of Bologna <br />Department of Computer Science</span>
+	</div>	
+
+<div id="main">
+
+
+<h1>Vector Converter</h1>
+
+<form action="" method="post" enctype="multipart/form-data" name="form" target="_blank">
+
+<p>Select a file:
+<input name="file_htm" type="file" id="file_htm" size="75" />
+</p>
+
+<p>Select conversion type:
+<select name='conversion_type'>
+	<option  value="vml2svg">VML -&gt; SVG</option>
+	<option  value="vml2gif">VML -&gt; GIF</option>
+	<option  value="svg2vml">SVG -&gt; VML</option>
+	<option  value="svg2gif">SVG -&gt; GIF</option>                                         
+	<option  value="gif2vml">GIF -&gt; VML</option>
+	<option  value="gif2svg">GIF -&gt; SVG</option>
+</select></p>
+
+  <p> 
+    <input type="button" name="Submit" value="Convert" onclick="checkPost(this.form)" />
+  </p>
+</form>
+<div id="foot">February 2007 - Read the <a href="Documentation.html">documentation</a></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Vector Converter - Documentation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+<link type="text/css" href="vc.css" rel="stylesheet" />
+</head>
+
+<body id="doc">
+	<div id="logo">
+		<span class=titolo>University of Bologna <br/>Department of Computer Science</span>
+	</div>	
+
+<div id="main">
+<p><a href="index.html">Vector Converter Home</a></p>	
+<h2>Vector Converter Documentation</h2>
+<p><strong>Vector Converter</strong> allows automatic conversion between two vector graphic formats, SVG and VML, and the GIF format, thanks to PHP functions and XSLT language.
+
+<ol>
+	<li><strong><a href="#req">Requirements</a></strong></li>
+	<li><strong><a href="#inst">Install</a></strong></li>
+	<li><strong><a href="#file">Vector Converter files structure</a></strong></li>
+	<li><strong><a href="#cont">Contacts</a></strong></li>
+</ol>
+
+Documentation version: <strong><em>Documentation.html 2007-02-25</em></strong> </p>
+
+<h3><a id="req"></a>1. Requirements</h3>
+
+<p>
+<ul>
+	<li><strong>PHP</strong> (version 4 and 5 supported)
+		
+
+		<ul>
+			<li>You need <em>GD2 (for more info see: <a href="http://www.php.net/manual/en/ref.image.php">GD manual</a> on php.net) </em> and <em>xsl</em> extension enabled to display all images correctly</li>	
+			<li>
+			<strong>GD version</strong>
+				<ul>
+					<li>Between version 1.6 and 2.0.28, <em>GIF</em> support in GD library has been suspended, so make sure you have a greater version</li>
+				</ul>
+			</li>
+			<li>
+			<strong>PHP 4</strong>
+				<ul>
+					<li>Since PHP 4.3 there is a bundled version of the GD library</li>
+				</ul>
+			</li>
+			<li>
+			<strong>PHP 5</strong>
+				<ul>
+					<li>You need a <em>wrapper</em> (included in this version) to display SVG and VML correctly</li>
+				</ul>
+			</li>
+
+		</ul>
+	</li>
+
+	<li><strong>Web Browser</strong>
+		<ul>
+			<li><strong>Mozilla</strong> to correctly view SVG image file and <strong>Internet Explorer</strong> for VML.</li>
+		</ul>
+	</li>
+	<li><strong>Web Server</strong> (<em>i.e.</em> Apache) installed on your computer</li>
+	<li><strong>Operating System</strong> 
+		<ul>
+			<li><strong>Windows</strong> or <strong>Linux</strong></li>
+		</ul>
+	</li>
+</ul>	
+</p>
+
+<h3><a id="inst"></a>2. Install</h3>
+<p>
+	<ol>
+		<li>Unzip the ditribution in your webserver's document directory (<em>i.e.</em> C:/Server/Apache/htdocs) </li>
+		<li>Ensure that your web server is running</li>
+		<li>Open your preferred browser and go to <em>index.html</em> under the project directory</li>
+	</ol>
+	 
+</p>
+<h3><a id="file"></a>3. Vector Converter files structure</h3>
+<p>
+<ul>
+	<p><strong>MAIN FILES</strong></p>
+	<li><em><u>gif2svg.php</u></em>: include a GIF image in an SVG</li>
+	<li><em><u>gif2vml.php</u></em>: include a GIF image in a VML</li>
+		<li><em><u>svg2gif</u></em>: transform, thanks to PHP GD2 library, an SVG image in a GIF format</li>
+		<li><em><u>svg2vml</u></em>: convert SVG in a VML, through XSLT language</li>
+		<li><em><u>vml2gif</u></em>:  transform, thanks to PHP GD2 library, a VML image in a GIF format</li>
+		<li><em><u>vml2svg</u></em>: convert VML in a SVG, through XSLT language</li>
+		<li><em><u>xslt-php4-to-php5.php</u></em>: wrapper that ensure compatibility with 
+		PHP4 xslt function calls and allows <strong>Vector Converter</strong> 
+		to work quite properly</li>
+		<li><em><u>svg2vml.xsl</u></em> and <em><u>vml2svg.xsl</u></em>: main stylesheets that enables transformations between SVG and VML</li>
+		<p><strong>MAIN FOLDERS</strong></p> 
+		<li><em><u>FONT/</u></em>: truetype fonts</li>
+		<li><em><u>XSL/</u></em>: sub-stylesheets for VML to SVG conversion</li>
+		<li><em><u>XSL2/</u></em>: sub-stylesheets for SVG to VML conversion</li>
+	</ul>
+</p>
+
+<p>
+<h3><a id="cont"></a>4. Contacts</h3>
+<ul>
+	<li><strong>Giorgio Massaro</strong> - <em>massaro@cs.unibo.it</em></li>
+	<li><strong>Angelo Di Iorio</strong> - <em>diiorio@cs.unibo.it</em></li>
+	<li><strong>Fabio Vitali</strong>    - <em>fabio@cs.unibo.it</em></li>
+</ul>
+</p>
+</div>
+</body>
+</html>

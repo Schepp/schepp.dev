@@ -1,0 +1,258 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="http://www.cs.unibo.it/~zonta/TESI/XSL/VML/vml2svg.xsl"?>
+<HTML xmlns:v = "urn:schemas-microsoft-com:vml"
+      xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from www.cs.unibo.it/~zonta/TESI/ESEMPI/VML/ES-TESI/esempio2vml.html by HTTrack Website Copier/3.x [XR&CO'2004], Thu, 12 Jan 2006 22:42:35 GMT -->
+<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+<HEAD><TITLE>Rect</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+<OBJECT id="VMLRender" classid="CLSID:10072CEC-8CC1-11D1-986E-00A0C955B42E"></OBJECT>
+<STYLE>v\:* {
+    BEHAVIOR: url(#VMLRender)
+}
+</STYLE>
+</HEAD>
+<BODY>
+
+<v:group style="position: absolute; width: 12cm; height: 12cm;  top:0; left:0;"
+coordorigin="-40 -40" coordsize="1200 1200">
+
+<!-- XXXXXXXXXXXXXXXXXXXX rettangolo contenitore XXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<v:rect style="position: absolute; left: 0; top: 0; width: 1160; height: 1160; "
+ strokecolor="blue"  strokeweight="5"  >
+    <v:fill on="false" />
+</v:rect>
+
+<!-- XXXXXXXXXXXXXXXXXXXX Curve XXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<v:group style="position: absolute; width: 1200; height: 1200;" 
+    coordorigin="0 0" coordsize="2400 2400">
+<v:curve  from="100 100" to="600 150" control1="250 200" control2="100 250" >
+<v:stroke on ="true" color="purple" weight="6" />
+</v:curve>
+<v:curve  from="100 200" to="600 250" control1="250 300" control2="100 350" >
+<v:stroke on ="true" color="purple" weight="6" opacity="0.7" />
+</v:curve>
+
+<v:curve  from="100 300" to="600 350" control1="250 400" control2="100 450" >
+<v:stroke on ="true" color="purple" weight="6" opacity="0.5" />
+</v:curve>
+
+<v:curve  from="100 400" to="600 450" control1="250 500" control2="100 550" >
+<v:stroke on ="true" color="purple" weight="6" opacity="0.3" />
+</v:curve>
+
+<v:curve  from="100 500" to="600 550" control1="250 600" control2="100 650" >
+<v:stroke on ="true" color="purple" weight="6" opacity="0.1" />
+</v:curve>
+</v:group>
+
+<!-- XXXXXXXXXXXXXXXXXXXX Archi XXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<v:arc  style=" position:absolute; top:50; left:500; width: 300; height: 300;" 
+startangle="0" endangle="90" >
+<v:stroke on ="true" color="red" weight="5" />
+<v:fill on="false" color="yellow" />
+</v:arc>
+
+<v:arc  style=" position:absolute; top:100; left:500; width: 250; height: 250;" 
+startangle="0" endangle="90" >
+<v:stroke on ="true" color="red" weight="5" />
+<v:fill on="false" color="yellow" />
+</v:arc>
+
+<v:arc  style=" position:absolute; top:50; left:600; width: 400; height: 400;" 
+startangle="0" endangle="160" >
+<v:stroke on ="true" color="red" weight="5" />
+<v:fill on="false" color="yellow" />
+</v:arc>
+
+<v:arc  style=" position:absolute; top:-50; left:800; width: 600; height: 600;" 
+startangle="180" endangle="270" >
+<v:stroke on ="true" color="red" weight="5" />
+<v:fill on="false" color="yellow" />
+</v:arc>
+
+<v:arc  style=" position:absolute; top:-50; left:750; width: 400; height: 600;" 
+startangle="180" endangle="270" >
+<v:stroke on ="true" color="red" weight="5" />
+<v:fill on="false" color="yellow" />
+</v:arc>
+
+<v:shape style="position: absolute; left: 530; top: 50; width: 2000; height: 1200; "  coordsize="2400 1440" >
+    <v:stroke on="false"  />
+    <v:fill on="true" color="red" />
+    <v:path  textpathok="true" v="M 500,20 C 600,120 700,220 550,400 e"  />
+    <v:textpath style="font-family:Arial; font-size:50" on="true" string="Archi" />
+</v:shape> 
+
+<v:shape style="position: absolute; left: 530; top: 50; width: 2000; height: 1200; "  coordsize="2400 1440" >
+    <v:stroke on="true" color="black"  />
+    <v:fill on="false" />
+    <v:path   v="M 500,20 C 600,120 700,220 550,400 e"  />
+</v:shape> 
+
+<!-- XXXXXXXXXXXXXXXXXXXX rettangoli ruotati XXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<v:roundrect style="position: absolute; left: 150; top: 400; width: 50; height: 300; " 
+    arcsize="30">
+<v:fill on="true" color="blue" opacity="1" />
+<v:stroke on="true" style="single"  joinstyle="round" color="maroon" weight="2.5" opacity="0.1" />
+</v:roundrect>
+
+<v:roundrect style="position: absolute; left: 150; top: 400; width: 50; height: 300; rotation:30;" 
+    arcsize="30"  >
+<v:fill on="true" color="blue" opacity="0.7" />
+<v:stroke on="true" style="single"  joinstyle="round" color="maroon" weight="2.5" opacity="0.3" />
+</v:roundrect>
+
+<v:roundrect style="position: absolute; left: 150; top: 400; width: 50; height: 300; rotation:60;" 
+    arcsize="30">
+<v:fill on="true" color="blue"  opacity="0.5" />
+<v:stroke on="true" style="single"  joinstyle="round" color="maroon" weight="2.5" opacity="0.5" />
+</v:roundrect>
+
+<v:roundrect style="position: absolute; left: 150; top: 400; width: 50; height: 300; rotation:90;" 
+    arcsize="30">
+<v:fill on="true" color="blue"  opacity="0.3" />
+<v:stroke on="true" style="single"  joinstyle="round" color="maroon" weight="2.5" opacity="0.7" />
+</v:roundrect>
+
+<v:roundrect style="position: absolute; left: 150; top: 400; width: 50; height: 300; rotation:120;" 
+    arcsize="30">
+<v:fill on="true" color="blue"  opacity="0.1" />
+<v:stroke on="true" style="single"  joinstyle="round" color="maroon" weight="2.5" opacity="1" />
+</v:roundrect>
+
+<v:roundrect style="position: absolute; left: 150; top: 400; width: 50; height: 300; rotation:150;" 
+    arcsize="30">
+<v:fill on="true" color="blue"  opacity="0.5" />
+<v:stroke on="true" style="single"  joinstyle="round" color="maroon" weight="2.5" opacity="0.5" />
+</v:roundrect>
+
+
+<v:shape style="position: absolute; left: 150; top: 700; width: 2000; height: 1200; "  coordsize="4800 2880" >
+    <v:stroke on="false"  />
+    <v:fill on="true" color="red" />
+    <v:path  textpathok="true" v="t 30,100 r 470,0 r 50,-50 r 0,-550 e"  />
+    <v:textpath style="font-family:Times; font-size:13" on="true" string="Rettangoli arrotondati e ruotati" />
+</v:shape> 
+
+<!-- XXXXXXXXXXXXXXXXXXXX path ruotati XXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<v:shapetype id="path1" >
+    <v:stroke on="true" color="blue" />
+    <v:fill on="false" />
+    <v:path  v="t 100,10 v 100,100 200,200 400,10  100,100 200,200 10,400 
+                 -100,-100 -200,-200 -400,-10   -100,-100 -200,-200 -10 -400e"  />
+</v:shapetype>
+
+<v:shape type="#path1" 
+         style="position: absolute; left: 640; top: 540; width: 200; height: 120; "
+         coordsize="480 288" >
+    <v:stroke on="true" color="blue" />
+    <v:fill on="true" color="gray" opacity="1" />
+</v:shape>
+<v:shape type="#path1" 
+         style="position: absolute; left: 740; top: 700; width: 200; height: 120; rotation:30;"  
+         coordsize="480 288" >
+    <v:stroke on="true" color="blue" />
+    <v:fill on="true" color="gray" opacity="0.7" />
+</v:shape>
+
+<v:shape type="#path1" 
+         style="position: absolute; left: 740; top: 860; width: 200; height: 120; rotation:60;"  
+         coordorigin="0 0" coordsize="480 288" >
+    <v:stroke on="true" color="blue" />
+    <v:fill on="true" color="gray" opacity="0.5" />
+</v:shape>
+
+<v:shape type="#t1" style="position: absolute; width: 500; height: 500; left:300; top:50;"   
+ coordorigin="-30 -30" coordsize="500 500" >
+<v:fill on="true=" />
+<v:stroke weight="2" />
+<v:textbox> <div style="font-family: Verdana;" ><b style="color:purple">C</b>
+            <b style="color:rgb(153, 50, 204)">U</b>
+            <b style="color:rgb(255, 0, 255)">R</b>
+            <b style="color:red; font-size:20;">V</b>
+            <b style="color:rgb(255, 192, 203); font-size:20;">E</b>
+            </div>
+            </v:textbox>
+
+</v:shape> 
+
+<v:shape style="position: absolute; left: 900; top: 650; width: 2000; height: 1200; "  coordsize="4800 2880" >
+    <v:stroke on="false"  color="blue" />
+    <v:fill on="true" color="blue" />
+    <v:path  textpathok="true" v="t 100,100 r 100,20 r 50,200 r 100,40 r -80,200 r 150,20 e"  />
+    <v:textpath style="font-family:Times; font-size:20" on="true" string="PaTh RuoTaTi" />
+</v:shape> 
+
+<v:rect 
+
+ style="width:5pt;height:5pt; top:800; left:50;"
+  strokecolor="black" strokeweight="3pt">
+
+ <v:fill color2="blue" 
+
+  angle="-90" type="gradient"/>
+</v:rect>
+
+
+ <v:shapetype id="irregularSeal1" coordorigin="17, 8" coordsize="12000, 15000"
+   path="m10800,5800l8352,2295,7312,6320,370,2295,4627,7617,,8615,3722,11775,135,14587,
+      5667,13937,4762,17617,7715,15627,8485,21600,10532,14935,13247,19737,14020,
+      14457,18145,18095,16837,12942,21600,13290,17607,10475,21097,8137,16702,7315,
+      18380,4457,14155,5325,14522,0xe">
+  <v:stroke on="false" joinstyle="miter"  />
+  <v:path gradientshapeok="t" />
+ </v:shapetype>
+ 
+ <v:shape type="#irregularSeal1"
+   style="position: absolute;
+          left: 350; top: 260; width: 150; height: 120"
+   fillcolor="#f06">
+  <v:fill type="gradient" colors="20% red , 80% black, 99% black"
+   method="linear sigma" angle="90" focus="100%"/>
+
+ </v:shape>
+
+<v:polyline
+  points="50 1100 100 1050 150 1100 200 1050 250 1050 250 1100 300 1100 300 1050 320 1050">
+<v:stroke on="true" color="maroon" weight="5" joinstyle="miter" endcap="round"  />
+</v:polyline>
+
+<v:polyline
+  points="330 1050 350 1050 350 1100 400 1100 400 1050 450 1100 450 1050 500 1050 500 1100 520 1100">
+<v:stroke on="true" color="red" weight="5" joinstyle="round" endcap="flat" />
+</v:polyline>
+
+<v:polyline
+  points="530 1100 550 1100 600 1050 650 1050 650 1100 750 1100">
+<v:stroke on="true" color="rgb(255, 69, 0)" weight="5" joinstyle="bevel" endcap="square" />
+</v:polyline>
+
+<v:oval style="position: absolute; left: 300; top: 800; width: 50; height: 200; "
+ strokecolor="blue"  strokeweight="5"  >
+    <v:fill on="true" color="green" opacity="0.8" />
+    <v:stroke opacity="0.5" />
+</v:oval>
+
+<v:oval style="position: absolute; left: 400; top: 750; width: 80; height: 250; "
+ strokecolor="blue"  strokeweight="5" >
+    <v:fill on="true" color="green" opacity="0.5" />
+      <v:stroke opacity="0.5" />
+</v:oval>
+
+<v:oval style="position: absolute; left: 530; top: 700; width: 110; height: 300; "
+ strokecolor="blue"  strokeweight="5" >
+    <v:fill on="true" color="green" opacity="0.2" />
+      <v:stroke opacity="0.5" />
+</v:oval>
+
+
+
+
+</v:group>
+<!--<P>VML Sample</P>-->
+</BODY>
+<!-- Mirrored from www.cs.unibo.it/~zonta/TESI/ESEMPI/VML/ES-TESI/esempio2vml.html by HTTrack Website Copier/3.x [XR&CO'2004], Thu, 12 Jan 2006 22:42:35 GMT -->
+<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+</HTML>

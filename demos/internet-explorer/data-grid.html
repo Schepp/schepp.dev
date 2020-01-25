@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Grid</title>
+  <style>
+    xml {
+      display: none;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid #666;
+      font-family: Calibri, Helvetica, sans-serif;
+    }
+
+    thead {
+      background-color: #f3f3f3;
+    }
+
+    th, td {
+      padding: 2px 6px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+<xml id="people">
+  <?xml version="1.0" encoding="UTF-8" ?>
+  <records>
+    <record>
+      <name>Willa Galloway</name>
+      <email>tortor@dictum.com</email>
+      <phone>098-122-8540</phone>
+      <city>Tenali</city>
+    </record>
+    <record>
+      <name>Lara Best</name>
+      <email>dictum.eleifend.nunc@etlibero.co.uk</email>
+      <phone>086-297-3263</phone>
+      <city>Judenburg</city>
+    </record>
+    <record>
+      <name>Maggy Perez</name>
+      <email>Nulla@mifringilla.co.uk</email>
+      <phone>000-032-3473</phone>
+      <city>Compiègne</city>
+    </record>
+    <record>
+      <name>Dustin Velasquez</name>
+      <email>ac@magnaseddui.org</email>
+      <phone>030-783-5941</phone>
+      <city>Gmunden</city>
+    </record>
+    <record>
+      <name>Abdul Medina</name>
+      <email>sem@liberolacus.net</email>
+      <phone>034-501-1780</phone>
+      <city>Kirkland</city>
+    </record>
+    <record>
+      <name>Adele Johns</name>
+      <email>mauris.blandit.mattis@dapibusligula.edu</email>
+      <phone>040-284-7483</phone>
+      <city>Monterrey</city>
+    </record>
+    <record>
+      <name>Clinton Case</name>
+      <email>Proin@Proinnon.com</email>
+      <phone>002-628-8062</phone>
+      <city>Iquique</city>
+    </record>
+    <record>
+      <name>Aquila Donovan</name>
+      <email>Vivamus.sit@nulla.ca</email>
+      <phone>068-621-3785</phone>
+      <city>Buenaventura</city>
+    </record>
+    <record>
+      <name>Yolanda Chan</name>
+      <email>est.Mauris.eu@vel.ca</email>
+      <phone>071-372-2234</phone>
+      <city>Zamora</city>
+    </record>
+    <record>
+      <name>Jolie Barlow</name>
+      <email>est@sedhendrerita.co.uk</email>
+      <phone>057-599-5295</phone>
+      <city>Lossiemouth</city>
+    </record>
+    <record>
+      <name>Irma Miller</name>
+      <email>egestas.Aliquam@scelerisque.ca</email>
+      <phone>007-915-5936</phone>
+      <city>Knoxville</city>
+    </record>
+    <record>
+      <name>Flynn Pace</name>
+      <email>convallis.dolor.Quisque@luctusCurabituregestas.ca</email>
+      <phone>059-728-4841</phone>
+      <city>Northumberland</city>
+    </record>
+    <record>
+      <name>Xavier Ware</name>
+      <email>sed.pede@neque.co.uk</email>
+      <phone>093-176-7315</phone>
+      <city>Pudukkottai</city>
+    </record>
+    <record>
+      <name>Lesley Nelson</name>
+      <email>magna@quamdignissim.com</email>
+      <phone>012-970-0444</phone>
+      <city>Ercolano</city>
+    </record>
+    <record>
+      <name>Tate Snow</name>
+      <email>ipsum.Suspendisse.non@adipiscingelitCurabitur.org</email>
+      <phone>021-399-0087</phone>
+      <city>Marbais</city>
+    </record>
+    <record>
+      <name>Elvis Berg</name>
+      <email>mollis.lectus@atrisusNunc.com</email>
+      <phone>026-511-6991</phone>
+      <city>Kessel</city>
+    </record>
+    <record>
+      <name>Dustin Grimes</name>
+      <email>aliquet@mauris.com</email>
+      <phone>093-480-9693</phone>
+      <city>Lier</city>
+    </record>
+    <record>
+      <name>Tobias Doyle</name>
+      <email>ac.mattis.velit@aliquam.org</email>
+      <phone>060-302-4386</phone>
+      <city>Marystown</city>
+    </record>
+    <record>
+      <name>Nerea Hodge</name>
+      <email>turpis@Nullamfeugiat.net</email>
+      <phone>091-624-4289</phone>
+      <city>Tramutola</city>
+    </record>
+    <record>
+      <name>Clarke Christian</name>
+      <email>Proin.eget@amet.net</email>
+      <phone>056-012-2623</phone>
+      <city>Rycroft</city>
+    </record>
+    <record>
+      <name>Eugenia Cortez</name>
+      <email>Maecenas@vitaedolorDonec.org</email>
+      <phone>040-392-3456</phone>
+      <city>San Leucio del Sannio</city>
+    </record>
+    <record>
+      <name>Freya Hahn</name>
+      <email>enim.non@facilisis.com</email>
+      <phone>043-237-3938</phone>
+      <city>Beaufays</city>
+    </record>
+    <record>
+      <name>Carlos Sharp</name>
+      <email>egestas@eget.com</email>
+      <phone>052-099-0486</phone>
+      <city>Montignies-sur-Sambre</city>
+    </record>
+    <record>
+      <name>Mannix Waters</name>
+      <email>vel@at.ca</email>
+      <phone>004-966-2386</phone>
+      <city>Paularo</city>
+    </record>
+    <record>
+      <name>Lucian Obrien</name>
+      <email>sit.amet@sitamet.ca</email>
+      <phone>089-548-6270</phone>
+      <city>Worcester</city>
+    </record>
+    <record>
+      <name>Unity Brady</name>
+      <email>Nulla.eu.neque@nequeseddictum.net</email>
+      <phone>017-673-9656</phone>
+      <city>Nieuwkerken-Waas</city>
+    </record>
+    <record>
+      <name>Aladdin Fuller</name>
+      <email>eu@mi.edu</email>
+      <phone>095-221-9363</phone>
+      <city>Les Bulles</city>
+    </record>
+    <record>
+      <name>Noelani Wilder</name>
+      <email>Duis@arcuSed.org</email>
+      <phone>028-808-7329</phone>
+      <city>Hoeke</city>
+    </record>
+    <record>
+      <name>Jermaine Kane</name>
+      <email>malesuada.vel@ligulaDonecluctus.net</email>
+      <phone>098-890-7575</phone>
+      <city>Vezin</city>
+    </record>
+    <record>
+      <name>Yen Fuentes</name>
+      <email>facilisis.eget.ipsum@dolor.co.uk</email>
+      <phone>042-362-1611</phone>
+      <city>Saltara</city>
+    </record>
+    <record>
+      <name>Fritz Jensen</name>
+      <email>vel.arcu.eu@Praesentinterdumligula.net</email>
+      <phone>083-806-0078</phone>
+      <city>Gelbressee</city>
+    </record>
+    <record>
+      <name>Shannon Valencia</name>
+      <email>cubilia@nasceturridiculus.net</email>
+      <phone>034-326-4782</phone>
+      <city>Çeşme</city>
+    </record>
+    <record>
+      <name>Scott Morgan</name>
+      <email>mi.fringilla@ametultricies.com</email>
+      <phone>024-332-5539</phone>
+      <city>Suwałki</city>
+    </record>
+    <record>
+      <name>Cairo Mitchell</name>
+      <email>ut@massa.net</email>
+      <phone>077-324-0438</phone>
+      <city>Cortil-Noirmont</city>
+    </record>
+    <record>
+      <name>Adrian Camacho</name>
+      <email>risus.quis@amet.edu</email>
+      <phone>068-272-0215</phone>
+      <city>Oudergem</city>
+    </record>
+    <record>
+      <name>Francesca Bullock</name>
+      <email>tincidunt.neque.vitae@Ut.com</email>
+      <phone>038-840-1758</phone>
+      <city>La Higuera</city>
+    </record>
+    <record>
+      <name>Hashim Simon</name>
+      <email>Suspendisse.dui.Fusce@eutellusPhasellus.net</email>
+      <phone>044-885-7330</phone>
+      <city>Río Bueno</city>
+    </record>
+    <record>
+      <name>Micah Gonzales</name>
+      <email>Nam.tempor.diam@nunc.ca</email>
+      <phone>023-462-4444</phone>
+      <city>Bogor</city>
+    </record>
+    <record>
+      <name>Brady Garrett</name>
+      <email>Aenean.massa@Cumsociisnatoque.com</email>
+      <phone>067-169-7853</phone>
+      <city>Ways</city>
+    </record>
+    <record>
+      <name>Nash Maddox</name>
+      <email>laoreet.lectus.quis@auctor.org</email>
+      <phone>056-104-5346</phone>
+      <city>Calmar</city>
+    </record>
+    <record>
+      <name>Dolan Walls</name>
+      <email>tristique@Suspendissesed.ca</email>
+      <phone>000-286-8455</phone>
+      <city>Gespeg</city>
+    </record>
+    <record>
+      <name>Hannah Moore</name>
+      <email>vitae.sodales.nisi@metus.edu</email>
+      <phone>006-963-8039</phone>
+      <city>Dordrecht</city>
+    </record>
+    <record>
+      <name>Seth Grant</name>
+      <email>Vestibulum.ante@elementum.edu</email>
+      <phone>079-136-2216</phone>
+      <city>Ekeren</city>
+    </record>
+    <record>
+      <name>Constance Burch</name>
+      <email>ligula.Donec.luctus@elementum.org</email>
+      <phone>008-738-7765</phone>
+      <city>Valdivia</city>
+    </record>
+    <record>
+      <name>Dale Franco</name>
+      <email>mattis.Cras@etpede.com</email>
+      <phone>025-311-7962</phone>
+      <city>Hindupur</city>
+    </record>
+    <record>
+      <name>Rhonda Good</name>
+      <email>est.Mauris.eu@ornareegestasligula.co.uk</email>
+      <phone>009-064-9003</phone>
+      <city>Gualdo Tadino</city>
+    </record>
+    <record>
+      <name>Reed Sargent</name>
+      <email>tellus@elitNulla.net</email>
+      <phone>057-395-0540</phone>
+      <city>Barra do Corda</city>
+    </record>
+    <record>
+      <name>Harrison Booker</name>
+      <email>tortor.Integer@sagittis.co.uk</email>
+      <phone>079-061-1875</phone>
+      <city>Cumbernauld</city>
+    </record>
+    <record>
+      <name>Mira Bowman</name>
+      <email>Nam.ligula@ametnulla.edu</email>
+      <phone>089-146-9661</phone>
+      <city>Gosselies</city>
+    </record>
+    <record>
+      <name>Brooke Golden</name>
+      <email>consequat.auctor.nunc@risus.org</email>
+      <phone>045-998-0520</phone>
+      <city>Latour</city>
+    </record>
+    <record>
+      <name>Shoshana Jones</name>
+      <email>euismod@Fusce.net</email>
+      <phone>071-283-0990</phone>
+      <city>Posina</city>
+    </record>
+    <record>
+      <name>Anthony Branch</name>
+      <email>Donec.egestas.Duis@natoquepenatibuset.edu</email>
+      <phone>075-636-7022</phone>
+      <city>Parramatta</city>
+    </record>
+    <record>
+      <name>Micah Walton</name>
+      <email>Nam.porttitor@eget.org</email>
+      <phone>042-426-8533</phone>
+      <city>Toronto</city>
+    </record>
+    <record>
+      <name>Levi Cook</name>
+      <email>sem@Sedcongue.ca</email>
+      <phone>050-429-4296</phone>
+      <city>Lakeland County</city>
+    </record>
+    <record>
+      <name>Mechelle Mcbride</name>
+      <email>Proin@inlobortis.edu</email>
+      <phone>086-375-4100</phone>
+      <city>Newport</city>
+    </record>
+    <record>
+      <name>Iona Lawrence</name>
+      <email>luctus.ipsum.leo@neccursus.edu</email>
+      <phone>045-630-4537</phone>
+      <city>Macerata</city>
+    </record>
+    <record>
+      <name>Thomas Fowler</name>
+      <email>egestas.lacinia@dignissim.com</email>
+      <phone>005-313-3096</phone>
+      <city>Ichalkaranji</city>
+    </record>
+    <record>
+      <name>Zachery Good</name>
+      <email>in@sitametdapibus.org</email>
+      <phone>029-218-3849</phone>
+      <city>New Sarepta</city>
+    </record>
+    <record>
+      <name>Orli Hoover</name>
+      <email>ridiculus@molestie.co.uk</email>
+      <phone>084-209-9367</phone>
+      <city>Marcq-en-Baroeul</city>
+    </record>
+    <record>
+      <name>Natalie Stein</name>
+      <email>Cum.sociis.natoque@elitpellentesque.edu</email>
+      <phone>093-591-4384</phone>
+      <city>Las Palmas</city>
+    </record>
+    <record>
+      <name>Demetria Ruiz</name>
+      <email>vitae.velit.egestas@DonecfringillaDonec.co.uk</email>
+      <phone>097-659-0363</phone>
+      <city>Ozherelye</city>
+    </record>
+    <record>
+      <name>Ulric Brooks</name>
+      <email>volutpat.ornare@nisinibh.edu</email>
+      <phone>063-828-8861</phone>
+      <city>Ranst</city>
+    </record>
+    <record>
+      <name>Colette Weiss</name>
+      <email>eu.odio@arcueu.net</email>
+      <phone>057-079-9317</phone>
+      <city>Illapel</city>
+    </record>
+    <record>
+      <name>Steven Dudley</name>
+      <email>dui.nec@Nuncmauris.co.uk</email>
+      <phone>025-555-5563</phone>
+      <city>Gujranwala</city>
+    </record>
+    <record>
+      <name>Maisie Meyers</name>
+      <email>Sed.eu@elementumdui.net</email>
+      <phone>064-575-9967</phone>
+      <city>Mansfield-et-Pontefract</city>
+    </record>
+    <record>
+      <name>Mufutau Klein</name>
+      <email>Curabitur.vel@ipsumdolorsit.org</email>
+      <phone>049-816-9888</phone>
+      <city>Armungia</city>
+    </record>
+    <record>
+      <name>Hoyt Fulton</name>
+      <email>nibh.Quisque@lorem.org</email>
+      <phone>066-402-0894</phone>
+      <city>San Rosendo</city>
+    </record>
+    <record>
+      <name>Elizabeth Long</name>
+      <email>orci.in.consequat@acorciUt.ca</email>
+      <phone>086-828-6609</phone>
+      <city>Gboko</city>
+    </record>
+    <record>
+      <name>Whoopi Henry</name>
+      <email>auctor.odio@aclibero.edu</email>
+      <phone>098-599-0390</phone>
+      <city>Sparwood</city>
+    </record>
+    <record>
+      <name>Rose Thompson</name>
+      <email>faucibus@lacusNulla.org</email>
+      <phone>027-369-1273</phone>
+      <city>Vernon</city>
+    </record>
+    <record>
+      <name>Xanthus Mccullough</name>
+      <email>dolor.sit.amet@diamPellentesque.org</email>
+      <phone>012-312-6962</phone>
+      <city>Nice</city>
+    </record>
+    <record>
+      <name>Ryan Mcintosh</name>
+      <email>dictum@egetvolutpatornare.com</email>
+      <phone>072-763-2900</phone>
+      <city>Hudson Bay</city>
+    </record>
+    <record>
+      <name>Colton Frost</name>
+      <email>tempus@malesuada.edu</email>
+      <phone>080-430-2034</phone>
+      <city>Renlies</city>
+    </record>
+    <record>
+      <name>Lynn Boone</name>
+      <email>nisl.Maecenas@ullamcorper.ca</email>
+      <phone>095-056-3677</phone>
+      <city>Kobbegem</city>
+    </record>
+    <record>
+      <name>Shad Prince</name>
+      <email>netus.et@sedfacilisisvitae.net</email>
+      <phone>083-006-3270</phone>
+      <city>Porto Cesareo</city>
+    </record>
+    <record>
+      <name>Baker Hyde</name>
+      <email>sed@egetvenenatisa.org</email>
+      <phone>095-525-3086</phone>
+      <city>Caldarola</city>
+    </record>
+    <record>
+      <name>Odessa Bennett</name>
+      <email>natoque.penatibus.et@vitaediam.ca</email>
+      <phone>089-769-1618</phone>
+      <city>Rekem</city>
+    </record>
+    <record>
+      <name>Rashad Butler</name>
+      <email>dignissim.magna.a@velconvallisin.org</email>
+      <phone>009-629-9235</phone>
+      <city>Sellia Marina</city>
+    </record>
+    <record>
+      <name>Shannon Frederick</name>
+      <email>Proin@adipiscingnonluctus.co.uk</email>
+      <phone>024-824-3883</phone>
+      <city>Owensboro</city>
+    </record>
+    <record>
+      <name>Gary Wall</name>
+      <email>Sed.nulla.ante@Sedidrisus.edu</email>
+      <phone>064-365-8103</phone>
+      <city>West Vancouver</city>
+    </record>
+    <record>
+      <name>Kitra Noble</name>
+      <email>Duis.risus.odio@Suspendisseacmetus.com</email>
+      <phone>073-692-7734</phone>
+      <city>Popayán</city>
+    </record>
+    <record>
+      <name>Maile Conway</name>
+      <email>tortor.Integer@Vivamussitamet.net</email>
+      <phone>078-042-1410</phone>
+      <city>Great Falls</city>
+    </record>
+    <record>
+      <name>Maggy Atkins</name>
+      <email>sollicitudin.orci@euismod.com</email>
+      <phone>042-945-8137</phone>
+      <city>Gwadar</city>
+    </record>
+    <record>
+      <name>Calista Gross</name>
+      <email>id.erat.Etiam@risusMorbimetus.ca</email>
+      <phone>076-774-2314</phone>
+      <city>Pescantina</city>
+    </record>
+    <record>
+      <name>Noel Lynch</name>
+      <email>lacus.varius.et@justo.ca</email>
+      <phone>028-472-9348</phone>
+      <city>Montpelier</city>
+    </record>
+    <record>
+      <name>Ray Roach</name>
+      <email>dui@nisiCum.com</email>
+      <phone>008-723-2585</phone>
+      <city>Tierra Amarilla</city>
+    </record>
+    <record>
+      <name>Dennis Kane</name>
+      <email>lectus.Nullam.suscipit@ultrices.co.uk</email>
+      <phone>018-830-3433</phone>
+      <city>San Isidro de El General</city>
+    </record>
+    <record>
+      <name>Sonya Mcmillan</name>
+      <email>turpis.egestas@Suspendissealiquetsem.org</email>
+      <phone>054-991-3067</phone>
+      <city>Mauá</city>
+    </record>
+    <record>
+      <name>Roanna Cameron</name>
+      <email>parturient@elitfermentumrisus.net</email>
+      <phone>082-590-2811</phone>
+      <city>Houthalen-Helchteren</city>
+    </record>
+    <record>
+      <name>Sandra Casey</name>
+      <email>ipsum.primis.in@congue.edu</email>
+      <phone>026-034-7801</phone>
+      <city>Montese</city>
+    </record>
+    <record>
+      <name>Kelly Tyler</name>
+      <email>fermentum.convallis@sapienCras.com</email>
+      <phone>065-535-8840</phone>
+      <city>Exeter</city>
+    </record>
+    <record>
+      <name>Phoebe Nieves</name>
+      <email>justo.Praesent.luctus@gravidasagittis.com</email>
+      <phone>095-335-7274</phone>
+      <city>Bellevue</city>
+    </record>
+    <record>
+      <name>Gary Leblanc</name>
+      <email>Aenean@luctussit.edu</email>
+      <phone>099-173-3138</phone>
+      <city>Palagianello</city>
+    </record>
+    <record>
+      <name>Hayfa Slater</name>
+      <email>adipiscing.elit.Curabitur@Etiamimperdiet.edu</email>
+      <phone>006-224-5123</phone>
+      <city>Port Glasgow</city>
+    </record>
+    <record>
+      <name>Lionel Tyson</name>
+      <email>cursus.vestibulum.Mauris@dictumplacerat.ca</email>
+      <phone>023-184-2803</phone>
+      <city>Heestert</city>
+    </record>
+    <record>
+      <name>Jakeem Robertson</name>
+      <email>Aliquam.erat@montes.com</email>
+      <phone>076-695-8585</phone>
+      <city>Gdańsk</city>
+    </record>
+    <record>
+      <name>Nyssa Hardy</name>
+      <email>dis.parturient@metusInlorem.net</email>
+      <phone>073-377-8888</phone>
+      <city>Dongelberg</city>
+    </record>
+    <record>
+      <name>Vielka Ramsey</name>
+      <email>eu.nulla.at@vel.org</email>
+      <phone>000-472-0678</phone>
+      <city>Longaví</city>
+    </record>
+    <record>
+      <name>Randall Patrick</name>
+      <email>at.pede@dolor.co.uk</email>
+      <phone>088-984-4974</phone>
+      <city>Purén</city>
+    </record>
+    <record>
+      <name>Wylie Campbell</name>
+      <email>Aliquam.fringilla@Namacnulla.co.uk</email>
+      <phone>092-327-4805</phone>
+      <city>LiŽge</city>
+    </record>
+  </records>
+</xml>
+<table id="datagrid"
+       cellpadding="0"
+       cellspacing="0"
+       border="0"
+       datasrc="#people"
+       datapagesize="10">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>City</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><span datafld="name"></span></td>
+    <td><span datafld="email"></span></td>
+    <td><span datafld="phone"></span></td>
+    <td><span datafld="city"></span></td>
+  </tr>
+  </tbody>
+</table>
+<button onclick="datagrid.previousPage()">&lt; previous</button>
+<button onclick="datagrid.nextPage()">next &gt;</button>
+</body>
+</html>

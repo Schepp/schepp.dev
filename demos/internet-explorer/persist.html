@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>#default#userData</title>
+  <style type="text/css">
+    #store {
+      behavior: url(#default#userData);
+    }
+  </style>
+  <script>
+    function saveInput(){
+      store.setAttribute('sPersist', input.value);
+      store.save('exampleStore');
+    }
+    function restoreInput(){
+      store.load('exampleStore');
+      input.value = store.getAttribute('sPersist');
+    }
+  </script>
+</head>
+<body>
+  <span id="store"></span>
+  <input id="input">
+  <button onclick="restoreInput()">restore value</button>
+  <button onclick="saveInput()">save value</button>
+</body>
+</html>

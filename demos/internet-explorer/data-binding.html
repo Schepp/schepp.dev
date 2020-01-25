@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Binding</title>
+  <style>
+    xml {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<xml id="data">
+  <record>
+    <name></name>
+  </record>
+</xml>
+<h1>Hello, <span datasrc="#data" datafld="name">no-name</span>!</h1>
+<label>Your name: <input type="text" datasrc="#data" datafld="name" onkeyup="this.blur();this.focus()"></label>
+</body>
+</html>

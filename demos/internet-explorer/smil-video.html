@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns:t ="urn:schemas-microsoft-com:time">
+<head>
+  <?import namespace="t" implementation="#default#time2">
+  <style>
+    body { background-color: #111; color: #fff }
+    .player { position: relative }
+    video, t\:video { width: 640px; height: 480px; background-color: #000; object-fit: contain }
+    .controls { position: absolute; left: 0; bottom: 40px; width: 640px; text-align: center }
+  </style>
+</head>
+<body>
+  <div class="player">
+    <video id="html5video" autoplay muted>
+      <source src="video.mp4" type="video/mp4"/>
+      <t:video id="video" src="video.mpeg" type="video/mpeg"/>
+    </video>
+    <div class="controls">
+      <button type="button" onclick="html5video.play ? html5video.play() : video.resumeElement()">play</button>
+      <button type="button" onclick="html5video.pause ? html5video.pause() : video.pauseElement()">pause</button>
+      <button type="button" onclick="html5video.playbackRate = video.speed = 1">1x</button>
+      <button type="button" onclick="html5video.playbackRate = video.speed = 4">4x</button>
+    </div>
+  </div>
+</body>
+</html>
