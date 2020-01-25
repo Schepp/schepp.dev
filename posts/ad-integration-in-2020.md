@@ -7,11 +7,11 @@ tags:
   - adtech
 layout: layouts/post.njk
 ---
-![Mordor from Lord of the Rings](/img/lord-of-the-rings-mordor-mount-doom-eye-of-sauron-resized.jpg)
+![Mordor from Lord of the Rings](/img/lord-of-the-rings-mordor-mount-doom-eye-of-sauron.jpg)
 
 As you may know, I currently work for a news company in Germany, the Rheinische Post Mediengruppe. My task there is to concept and build the frontend for a bunch of news sites in the form of a white label framework. Sadly, but not surprisingly my client is still depending on ads to generate revenue. Which is why we wanted to adjust our frontend to be in a better position to deal with them. Mostly because...
 
-## Ads suck! 
+## Ads suck!
 
 And there are many ways in which they suck:
 
@@ -19,23 +19,23 @@ And there are many ways in which they suck:
 * Ads have a **substantial negative impact on a site's performance**, be it render time, time to interactive, or general input lag.
 * Ads take a massive toll on user happiness due to all the **layout shifts** they create, which make people lose their focus and which break the back button experience.
 * So-called skyscraper or wallpaper ads tend to make sure that they are always visible even if this means that they **cover essential site UI** like the header or menu.
-* And ads sometimes turn out to be trojan horses who's innards **try to steal sensitive data** from you without you noticing. 
+* And ads sometimes turn out to be trojan horses who's innards **try to steal sensitive data** from you without you noticing.
 
 Oh yes, ads really are a kind of its own. But for us, there was no way around them, so we needed to find ways to work with them and to minimize their impact.
 
 ## Ads & Responsiveness
 
-Back in the days, the newspaper I work for had a standard website for desktops and an mdot site for mobile. This setup made integrating ads into the site pretty straight forward, because we knew when to send the ad code for desktop devices and when the one for mobile devices. But maintaining two separate sites has a lot of drawbacks, too: 
+Back in the days, the newspaper I work for had a standard website for desktops and an mdot site for mobile. This setup made integrating ads into the site pretty straight forward, because we knew when to send the ad code for desktop devices and when the one for mobile devices. But maintaining two separate sites has a lot of drawbacks, too:
 
 * you need to develop many features twice
 * you constantly have to keep your list of devices and corresponding user agent strings up to date to continue sending visitors to the right site
-* you constantly had to troubleshoot your URL scheme. 
+* you constantly had to troubleshoot your URL scheme.
 
 These drawbacks were the reason why for our relaunch, we wanted to go the responsive route, which would make user agent sniffing redundant, too.
 
 We had to find a way to send down the ad codes both, for desktops and for mobile devices, down the wire and then to have the client somehow sort out which one of the two to execute. Not too hard to achieve. But now comes the real challenge: The people working in the ads division putting corresponding code into our site are no programmers. They do get isolated code snippets via email or from documentation, either for a mobile or a desktop ad and all they do is paste those into textareas labeled "mobile ad code" and "desktop ad code". They are not able to transform and combine them into one responsive ad loading code. We had to develop a generic solution that would handle the task.
 
-One way to do this is to leverage the power of Web Components by putting both snippets in separate `<template>` elements and then to import the correct one into the current DOM, like so:  
+One way to do this is to leverage the power of Web Components by putting both snippets in separate `<template>` elements and then to import the correct one into the current DOM, like so:
 
 ```html
 <div class="ad">
@@ -51,7 +51,7 @@ One way to do this is to leverage the power of Web Components by putting both sn
     const content = ad
       .querySelector(isMobile ? '.ad__mobile' : '.ad__desktop')
       .content;
-    
+
     ad.appendChild(document.importNode(content, true));
   </script>
 </div>
@@ -123,7 +123,7 @@ And it worked like a charm, except for Firefox complaining about having to rende
 
 But our ad people would not be who they are if they didn't crank the difficulty level up one notch. After a certain amount of time they asked if it would be possible to have ad slots loaded lazily, when they scroll into view. Because some ads pay off only when they are seen by the user, not when they are loaded. So from a performance standpoint it makes total sense to only load them on demand.
 
-Triggering actions once an element enters the viewport got pretty easy nowadays thanks to the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) (and the available [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)). The more difficult problem to tackle was how to postpone the execution of arbitrarily shaped scripts into the future. As you might know, just reading out the ad's HTML snippet and injecting it into the DOM via `.innerHTML` would not execute contained `<script>` elements. One possibility could have been to parse out any `script` tags, to recreate them via `document.createElement`, and then to append them. But then again, how would we handle `document.write`? Since our base document has finished parsing and is now considered "closed", such a late `document.write` [would replace the whole document](https://developer.mozilla.org/en-US/docs/Web/API/Document/open#Notes), instead of just adding little pieces to it. A `<template>` element together with `document.importNode` could solve the problem, but as already outlined above, they are not (yet) an option for us. But I stumbled upon one more interesting DOM feature capable of helping me out: the Range object and its [`.createContextualFragment()`](https://developer.mozilla.org/en-US/docs/Web/API/Range/createContextualFragment) method, creating a, well, Contextual Fragment. 
+Triggering actions once an element enters the viewport got pretty easy nowadays thanks to the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) (and the available [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)). The more difficult problem to tackle was how to postpone the execution of arbitrarily shaped scripts into the future. As you might know, just reading out the ad's HTML snippet and injecting it into the DOM via `.innerHTML` would not execute contained `<script>` elements. One possibility could have been to parse out any `script` tags, to recreate them via `document.createElement`, and then to append them. But then again, how would we handle `document.write`? Since our base document has finished parsing and is now considered "closed", such a late `document.write` [would replace the whole document](https://developer.mozilla.org/en-US/docs/Web/API/Document/open#Notes), instead of just adding little pieces to it. A `<template>` element together with `document.importNode` could solve the problem, but as already outlined above, they are not (yet) an option for us. But I stumbled upon one more interesting DOM feature capable of helping me out: the Range object and its [`.createContextualFragment()`](https://developer.mozilla.org/en-US/docs/Web/API/Range/createContextualFragment) method, creating a, well, Contextual Fragment.
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">TIL: Unlike innerHTML, if you create elements using createContextualFragment, scripts will execute <a href="https://t.co/CfqYAu5pZr">https://t.co/CfqYAu5pZr</a> (ht <a href="https://twitter.com/zcorpan?ref_src=twsrc%5Etfw">@zcorpan</a>)</p>&mdash; Jake Archibald (@jaffathecake) <a href="https://twitter.com/jaffathecake/status/806490306510290944?ref_src=twsrc%5Etfw">7. Dezember 2016</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -165,17 +165,17 @@ The above snippet enables us to have `<script>` elements in our code and even `d
 
 One thing we did not account for, though, is that externally loaded scripts can also contain `document.write`. Those document.writes won't be caught by our Contextual Fragment, as these scripts are only loaded and executed after we injected and executed our initial code block. External scripts doing document.writes do not happen very often, but unfortunately often enough to consider them. Since we really liked what we saw, we didn't want to give up. We rolled up our sleeves and went ahead to patch `document.write`.
 
-We had to patch `document.write` into something that 
+We had to patch `document.write` into something that
 
-a) would catch what was supposed to be written into the DOM, then 
-b) create another Contextual Fragment with that content, which would 
-c) be appended right after the script calling it. 
+a) would catch what was supposed to be written into the DOM, then
+b) create another Contextual Fragment with that content, which would
+c) be appended right after the script calling it.
 
 Here is how that came together:
 
 ```js
   (() => {
-    // We store the original since we still need 
+    // We store the original since we still need
     // it outside of ad containers
     const originalDocumentWrite = document.write;
 
@@ -198,7 +198,7 @@ Here is how that came together:
       sourceScript.after(range.createContextualFragment(html));
     };
   })();
-``` 
+```
 
 The above code uses ES6 as this time it is not an inline script and so can be transpiled. And I am using [`.closest()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest) and [`.after()`](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/after), which you need to polyfill in older Edge browsers, as well as [`document.currentScript`](https://github.com/amiller-gh/currentScript-polyfill)).
 
@@ -216,15 +216,15 @@ Our solution was to manipulate the viewport meta tag in a way that we force tabl
     // Our cut-off point was at a width of 725 pixels
     // (also see: http://mydevice.io/#compare-devices)
     if (
-        window.matchMedia && 
+        window.matchMedia &&
         matchMedia('screen and (min-width: 45.3125em)').matches
       ) {
-      // In the first step we also turn off user scaling 
+      // In the first step we also turn off user scaling
       // so that the browser zooms out
       document
         .querySelector('meta[name="viewport"]')
         .setAttribute('content', 'width=1325, user-scalable=no');
-      
+
       // Then we re-enable zooming
       window.setTimeout(function () {
         document
@@ -276,12 +276,12 @@ const initAds = () => {
     console.info('Disabling ads due to slow connection');
     return;
   }
-  
+
   // initialize the ads
 };
 ```
 
-You can try it out yourself by throttling the network in Chrome Devtools to "Slow 3G" and then go visit [rp-online.de](https://rp-online.de). 
+You can try it out yourself by throttling the network in Chrome Devtools to "Slow 3G" and then go visit [rp-online.de](https://rp-online.de).
 
 ![The Chrome Devtools with the areas highlighted which you need to set to try this out](/img/disabling-ads-for-slow-connections.png)
 
@@ -299,7 +299,7 @@ What we did was introducing a new type of placeholder slot, that would always be
 
 That way, we get around the need to resize the slot once the ad is loaded, thereby reducing the layout shift.
 
-One thing you need to know though with `position: sticky`-elements which is not mentioned a lot around the internets, is that it stops working the moment one of the ancestors uses `overflow: hidden`. It turned out we had quite had few elements on our page set to `overflow: hidden`, mostly to clear floats or to stop things from exceeding the horizontal boundaries of the page on mobile. So we had to refactor these. 
+One thing you need to know though with `position: sticky`-elements which is not mentioned a lot around the internets, is that it stops working the moment one of the ancestors uses `overflow: hidden`. It turned out we had quite had few elements on our page set to `overflow: hidden`, mostly to clear floats or to stop things from exceeding the horizontal boundaries of the page on mobile. So we had to refactor these.
 
 In order to find ad slots that are affected with such a constellation, we created the following snippet which we could run in the browser console:
 
@@ -309,7 +309,7 @@ In order to find ad slots that are affected with such a constellation, we create
     .filter(elem => elem.contains(adSlot))
     .filter(elem => getComputedStyle(elem)
                         .getPropertyValue('overflow') === 'hidden');
-  
+
   if (problematicParents.length) {
     console.warn('Sticky will break in slot:', adSlot, problematicParents);
   } else {
@@ -352,12 +352,12 @@ Since we don't want that to happen and we could not lock out the third party, we
 
 ```js
 (() => {
-  // This will hold a list of CSS selectors of inputs, 
+  // This will hold a list of CSS selectors of inputs,
   // that can be read out the standard way:
   const allowedSelectors = [];
-  
+
   // Store the real value access
-  const realValue = 
+  const realValue =
      Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value');
 
   // Remap the former .value to a new .realValue property
@@ -377,14 +377,14 @@ Since we don't want that to happen and we could not lock out the third party, we
           return realValue.get.call(this);
         }
       }
-      
+
       // Otherwise send an alarm and return an empty value
       console.trace('A script just tried to access an input\'s value', this);
       return '';
     },
   });
 
-  // Create an interface with which one can 
+  // Create an interface with which one can
   // mark certain forms as okay via CSS selector
   window.safeInputs = {
     allowSelector: (selector) => {
@@ -400,7 +400,7 @@ The patch does not change anything in regards to normal HTML-based form submissi
 
 ## Closing Notes
 
-Working with ads is messy and also a bit delicate, because you don't wanna break stuff in a way that cuts off revenue (e.g. break an advertiser's measurement tools). One thing on our list is to take on common scripts like Google's `osd.js` or Meetrics' `mtrcs.js` monitoring tool, as both tend to burn most of our CPU cycles. 
+Working with ads is messy and also a bit delicate, because you don't wanna break stuff in a way that cuts off revenue (e.g. break an advertiser's measurement tools). One thing on our list is to take on common scripts like Google's `osd.js` or Meetrics' `mtrcs.js` monitoring tool, as both tend to burn most of our CPU cycles.
 
 ![Chrome Devtools Call Tree showing that osd.js and mtrcs.js take up most time](/img/osd-and-meetrics-javascript.png)
 
