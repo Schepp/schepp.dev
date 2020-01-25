@@ -181,7 +181,7 @@ pre[class*="language"][class*="language"] {
 
 /* allow highlighting empty lines */
 .highlight-line:empty:before {
-  content: " ";
+  content: "";
 }
 
 /* avoid double line breaks when using display: block; */
