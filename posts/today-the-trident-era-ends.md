@@ -643,13 +643,13 @@ Instead of a CSV file you could also [establish a connection to your database se
 
 (Note how the `classid` attribute changes depending on the type of data.)
 
-And finally you could also reference an external XML file via `<xml>` tag...
+And finally you could also reference an external XML file via `<xml>` tag…
 
 ```html
 <xml src="http://localhost/xmlFile.xml"></xml>
 ```
 
-...use embedded inline XML in HTML as your data source:
+…or use embedded inline XML in HTML as your data source:
 
 ```html
 <body>
