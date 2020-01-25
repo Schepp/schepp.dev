@@ -1,7 +1,7 @@
 ---
 title: Today, the Trident Era Ends
 description: About the rise and fall of Microsoft's take on the web.
-image: /img/natalya-letunova-gF8aHM445P4-unsplash.jpg
+image: https://schepp.dev/img/natalya-letunova-gF8aHM445P4-unsplash.jpg
 date: 2019-01-15
 tags:
   - ecosystem
@@ -201,7 +201,7 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*, *::before, *::after {
   box-sizing: inherit;
 }
 ```
@@ -235,7 +235,7 @@ The code above is assigned to a more or less irrelevant CSS property: `zoom`. Th
 The reason CSS Expressions were dropped so early from IE was that they quickly acquired themselves a bad image. And that was because with CSS Expressions you could quickly tank a website's rendering performance, bringing it to a crawl. The "problem" with CSS Expressions was that they executed after every single event that the browser registered, which also included `resize`, `scroll` and `mousemove`. Have a look at the following example:
 
 ```css
-background: expression('#'+Math.floor(Math.random()*16777215).toString(16));
+background: expression('#'+Math.floor(Math.random()*16777216).toString(16));
 ```
 
 The above code would randomly calculate a HEX color which would then be assigned as background.
@@ -536,7 +536,7 @@ Or you could embed a video or audio in HTML, similarly to how you use `<video>` 
   <?import namespace="t" implementation="#default#time2">
 </head>
 <body>
-  <t:video src="video.mpeg" type="video/mpeg"/>
+  <t:video id="video" src="video.mpeg" type="video/mpeg"/>
   <div class="controls">
     <button type="button" onclick="video.resumeElement()">play</button>
     <button type="button" onclick="video.pauseElement()">pause</button>
