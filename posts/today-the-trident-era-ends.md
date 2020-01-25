@@ -132,7 +132,7 @@ The filter category most people still remember from Internet Explorer 4+ is effe
 
 ![Screenshot of the grey filter in Internet Explorer 6](/img/ie-grey-filter.png)
 
-You could also use Internet Explorer's Matrix Filter to do things that would later be introduced by CSS Transforms:
+You could also use Internet Explorer's Matrix Filter [to do things](http://extremelysatisfactorytotalitarianism.com/blog/?p=1002) that would later be introduced by CSS Transforms:
 
 ```css
 transform: rotate(15deg);
