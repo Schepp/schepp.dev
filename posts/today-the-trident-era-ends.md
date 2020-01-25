@@ -1,6 +1,6 @@
 ---
 title: Today, the Trident Era Ends
-description:
+description: About the rise and fall of Microsoft's take on the web.
 image: /img/natalya-letunova-gF8aHM445P4-unsplash.jpg
 date: 2019-01-15
 tags:
