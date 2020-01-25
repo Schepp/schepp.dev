@@ -524,7 +524,7 @@ Or, switching to the XML namespace variant, you could animate HTML attributes li
 ```
 
 <video width="676" height="478" autoplay muted loop>
-  <source src="/img/ie-smil-text.mp4" type="video/mp4">
+  <source src="/img/ie-smil-background-color.mp4" type="video/mp4">
 </video>
 
 Or you could embed a video or audio in HTML, similarly to how you use `<video>` or `<audio>` nowadays, and even have accessible HTML controls:
