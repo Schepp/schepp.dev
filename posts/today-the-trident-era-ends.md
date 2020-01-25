@@ -572,7 +572,7 @@ You could even combine the Microsoft specific format with HTML5:
 </div>
 ```
 
-You find the demo [here](/demos/internet-explorer/smil-video.html). You'll need a ([virtual](https://archive.org/details/ie6.xp.virtualbox)) machine with IE 6-8 to experience the IE implementation which you see in the above video.
+You find the demo [here](/demos/internet-explorer/smil-video.html). You'll need a ([virtual](https://archive.org/details/ie6.xp.virtualbox)) machine with IE 5.5-8 to experience the IE implementation which you see in the above video.
 
 ### Vector Markup Language
 
