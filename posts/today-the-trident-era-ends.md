@@ -801,7 +801,7 @@ script.src = '...';
 head.appendChild(script);
 ```
 
-How other browser did it was to fetch and execute such a script in the moment it was appended to the DOM. Internet Explorer had a more clever approach: it splitted up both steps. Fetching happened as soon as the `.src` property was assigned whereas only execution happened once the script was appended to the DOM. That way you could easily preload scripts without blocking the main thread. Something developers could only implement in a more complicated fashion in other browser, at least until we got [Resource Hints](https://www.smashingmagazine.com/2019/04/optimization-performance-resource-hints/).
+How other browser did it was to fetch and execute such a script in the moment it was appended to the DOM. Internet Explorer had a more clever approach: it splitted up both steps. Fetching happened as soon as the `.src` property was assigned whereas execution only happened once the script was appended to the DOM. That way you could easily preload scripts without blocking the main thread. Something developers could only implement in a more complicated fashion in other browser, at least until we got [Resource Hints](https://www.smashingmagazine.com/2019/04/optimization-performance-resource-hints/).
 
 Internet Explorer was also the first browser to introduce the `defer` attribute for scripts.
 
