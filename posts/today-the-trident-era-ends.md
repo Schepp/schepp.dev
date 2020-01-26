@@ -278,7 +278,7 @@ Microsoft and Monotype [submitted EOT to be standardized to the W3C in 2008](htt
 
 > Rather than embed the URL of a document in the font, it relies on an HTTP feature (the origin header), which allows to give the domain part of a document's URL: less precise than a full URL, but still good enough for most font makers. In the end, however, WOFF still adopted parts of EOT's MicroType Express algorithm, and a new compression algorithm (Brotli), because it allowed better compression than gzip.
 
-_Fun fact: Did you know that when you embed fonts into a Powerpoint 2007 or 2010 presentation that Powerpoint would embed that font as an EOT file in the corresponding `.pptx`?_
+_Fun fact: Did you know that when you chose to embed fonts into a Powerpoint 2007 or 2010 presentation, that Powerpoint would embed that font as an EOT file in the corresponding `.pptx`?_
 
 ### HTML Components: Attached Behaviors, Element Behaviors & Default Behaviors
 
