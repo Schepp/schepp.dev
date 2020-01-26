@@ -739,7 +739,7 @@ Internet Explorer also shipped with a native data grid implementation that you h
 
 ### Property Change Event
 
-Internet Explorer featured an interesting `propertychange` event, which you could attach to DOM elements and which would trigger each time a property of it would change programmatically. This could have happened via `setAttribute()` or via object property access. This allowed to create observed/instrumented objects for similar use cases you could use [ES Proxies](https://ponyfoo.com/articles/es6-proxies-in-depth) nowadays. All you needed was a dummy DOM element with `propertychange` event applied:
+Internet Explorer featured an interesting `propertychange` event, which you could attach to DOM elements and which would trigger each time one if its properties would be changed programmatically. This could have happened via `setAttribute()` or via object property access. This allowed to create observed/instrumented objects for similar use cases you could use [ES Proxies](https://ponyfoo.com/articles/es6-proxies-in-depth) nowadays. All you needed was a dummy DOM element with `propertychange` event applied:
 
 ```html
 <div id="store"></div>
