@@ -238,9 +238,9 @@ The reason CSS Expressions were dropped so early from IE was that they quickly a
 background: expression('#'+Math.floor(Math.random()*16777216).toString(16));
 ```
 
-The above code would randomly calculate a HEX color which would then be assigned as background.
+The above code would randomly calculate a HEX color which would then be assigned as background.You can see it in action in the following video (epilepsy warning because of flashing colors):
 
-<video width="1208" height="842" autoplay muted loop>
+<video width="1208" height="842" muted loop>
   <source src="/img/ie-expressions-going-wild.mp4" type="video/mp4">
 </video>
 
