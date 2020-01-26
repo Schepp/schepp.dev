@@ -192,7 +192,7 @@ Internet Explorer initially implemented the box model as if `box-sizing: border-
 
 > Logically, a box is measured from border to border. Take a physical box, any box. Put something in it that is distinctly smaller than the box. Ask anyone to measure the width of the box. He'll measure the distance between the sides of the box (the 'borders'). No one will think of measuring the content of the box. Web designers who create boxes for holding content care about the *visible* width of the box, about the distance from border to border. The borders, and not the content, are the visual cues for the user of the site. Nobody is interested in the width of the content.
 
-It was only with IE 6 that Microsoft added an additional browser rendering mode, this time sticking to the standards. It was not active by default so not to mess old layouts up. You had to opt-in to it, which you would do by [starting your HTML document with a doctype declaration](https://web.archive.org/web/20170531195606/http://www.satzansatz.de/cssd/quirksmode.html) (think of it as JavaScript's `use strict;`).
+It was only with IE 6 that Microsoft added an additional browser rendering mode, this time sticking to the standards. It was not active by default so not to mess old layouts up. You had to opt-in to it, which you would do by [starting your HTML document with a doctype declaration](https://web.archive.org/web/20170531195606/http://www.satzansatz.de/cssd/quirksmode.html) (think of it as JavaScript's `'use strict';`).
 
 Nowadays everyone goes back to IE's model by starting off their CSS with [resetting the box sizing](https://www.paulirish.com/2012/box-sizing-border-box-ftw/):
 
