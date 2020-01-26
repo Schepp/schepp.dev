@@ -850,4 +850,6 @@ The final nail in the coffin was that after the release of Internet Explorer 6, 
 
 ![Get Internet Explorer Badge](/img/ieget_animated.gif)
 
+_Update: don't miss the interesting discussion happening over [at Hacker News](https://news.ycombinator.com/item?id=22146629)._
+
 _The cover photo of this post is shot from within the ruins of the [Monument House of the Bulgarian Communist Party, built on Buzludzha Peak in central Bulgaria](https://en.wikipedia.org/wiki/Buzludzha) by [Natalya Letunova on Unsplash](https://unsplash.com/photos/gF8aHM445P4)_
