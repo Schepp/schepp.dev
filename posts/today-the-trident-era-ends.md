@@ -366,7 +366,7 @@ In order to use Element Behaviors it wasn't enough anymore to use CSS to tie an 
 ```
 
 Note that within the `.htc` file you had your own scoped `document` object to traverse.
-Now you were ready to go to use your custom element in your HTML markup like so:
+Now you were ready to go and use your custom element in your HTML markup like so:
 
 ```html
 <custom:rollimg src="logo.png">
