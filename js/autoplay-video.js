@@ -22,7 +22,7 @@
   };
   const options = {
     root: null,
-    rootMargin: '100px 0px 200px 0px',
+    rootMargin: '100px 0px 1000px 0px',
     threshold: 0.01,
   };
   const observer = window.IntersectionObserver ? new IntersectionObserver(callback, options) : {
