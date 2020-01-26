@@ -28,7 +28,7 @@
       video.setAttribute('autoplay', '');
     }
   };
-  const videos = document.querySelectorAll('video[muted]:not([controls])');
+  const videos = document.querySelectorAll('video[muted]:not([controls]):not([poster]');
   let i = 0;
 
   for (; i < videos.length; i++) {
