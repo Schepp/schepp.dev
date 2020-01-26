@@ -41,7 +41,7 @@ The last time Internet Explorer introduced new features driven by other business
 
 But to be able to model the Windows UI with web technologies, Microsoft had to add plenty of new capabilities to IE: CSS Grid, CSS Flexbox, CSS Scroll Snap Points and the Pointer Events API for touch and stylus interactions (the latter one was required as [Apple had filed a patent on the Touch API](https://books.google.de/books?id=vb4v9HNwWVgC&pg=PA569&lpg=PA569&dq=internet+explorer+pointer+events+patent&source=bl&ots=dlEPaUbP6_&sig=ACfU3U2I08YKVq1fPg5RTHcGC169SyOrEQ&hl=en&sa=X&ved=2ahUKEwj5l4zggtvmAhVPyqQKHS0dACUQ6AEwAXoECAoQAQ#v=onepage&q=internet%20explorer%20pointer%20events%20patent&f=false)).
 
-<video width="1920" height="1080" poster="/img/3-114-LG.jpg" controls>
+<video width="1920" height="1080" poster="/img/3-114-LG.jpg" controls preload="none">
   <source src="https://sec.ch9.ms/sessions/build/2012/3-114.mp4" type="video/mp4">
 </video>
 
