@@ -41,7 +41,9 @@ The last time Internet Explorer introduced new features driven by other business
 
 But to be able to model the Windows UI with web technologies, Microsoft had to add plenty of new capabilities to IE: CSS Grid, CSS Flexbox, CSS Scroll Snap Points and the Pointer Events API for touch and stylus interactions (the latter one was required as [Apple had filed a patent on the Touch API](https://books.google.de/books?id=vb4v9HNwWVgC&pg=PA569&lpg=PA569&dq=internet+explorer+pointer+events+patent&source=bl&ots=dlEPaUbP6_&sig=ACfU3U2I08YKVq1fPg5RTHcGC169SyOrEQ&hl=en&sa=X&ved=2ahUKEwj5l4zggtvmAhVPyqQKHS0dACUQ6AEwAXoECAoQAQ#v=onepage&q=internet%20explorer%20pointer%20events%20patent&f=false)).
 
-<div class="video"><iframe src="https://channel9.msdn.com/Events/Build/2012/3-114R/player" width="960" height="540" allowFullScreen frameBorder="0" title="HTML5 & CSS3 latest features in action! (Repeat) - Microsoft Channel 9 Video"></iframe></div>
+<video width="1920" height="1080" poster="/img/3-114-LG.jpg" controls>
+  <source src="https://sec.ch9.ms/sessions/build/2012/3-114.mp4" type="video/mp4">
+</video>
 
 Microsoft even invented what later became [Origin Trials](https://github.com/GoogleChrome/OriginTrials/blob/gh-pages/developer-guide.md), as documented in [a podcast interview we did with Jacob Rossi from the Edge team in 2015](https://workingdraft.de/211/).
 
@@ -122,7 +124,7 @@ img.src = 'different-src.jpg';
 img.filters.blendTrans.play();
 ```
 
-<video width="1208" height="842" autoplay muted loop>
+<video width="1208" height="842" muted loop>
   <source src="/img/ie-object-transition-filter.mp4" type="video/mp4">
 </video>
 
@@ -130,7 +132,7 @@ img.filters.blendTrans.play();
 
 The filter category most people still remember from Internet Explorer 4+ is effects filters. In 1997 they already offered, although in a lower fidelity, what CSS Filters brought to the table when they first appeared in 2012 in Apple Safari 6.
 
-![Screenshot of the grey filter in Internet Explorer 6](/img/ie-grey-filter.png)
+![Screenshot of the grey filter in Internet Explorer 6](/img/ie-grey-filter.jpg)
 
 You could also use Internet Explorer's Matrix Filter [to do things](http://extremelysatisfactorytotalitarianism.com/blog/?p=1002) that would later be introduced by CSS Transforms:
 
@@ -188,7 +190,7 @@ body {
 
 Internet Explorer initially implemented the box model as if `box-sizing: border-box` was set by default. Event though [many people found Microsoft's take a lot more logical and user friendly](https://www.jefftk.com/p/the-revenge-of-the-ie-box-model), the CSS WG ultimately chose another default where `width` was not referring to the outer width of a box but to width of the usable content space inside.
 
-![W3C and IE Box Models compared, courtesy of Wikipedia](/img/450px-W3C_and_Internet_Explorer_box_models.svg.png)
+![W3C and IE Box Models compared, courtesy of Wikipedia](/img/450px-W3C_and_Internet_Explorer_box_models.png)
 
 > Logically, a box is measured from border to border. Take a physical box, any box. Put something in it that is distinctly smaller than the box. Ask anyone to measure the width of the box. He'll measure the distance between the sides of the box (the 'borders'). No one will think of measuring the content of the box. Web designers who create boxes for holding content care about the *visible* width of the box, about the distance from border to border. The borders, and not the content, are the visual cues for the user of the site. Nobody is interested in the width of the content.
 
@@ -502,7 +504,7 @@ This feature was also encapsulated in a Default Behavior which you had to activa
 </body>
 </html>
 ```
-<video width="676" height="478" autoplay muted loop>
+<video width="676" height="478" muted loop>
   <source src="/img/ie-smil-text.mp4" type="video/mp4">
 </video>
 
@@ -523,7 +525,7 @@ Or, switching to the XML namespace variant, you could animate HTML attributes li
 </html>
 ```
 
-<video width="676" height="478" autoplay muted loop>
+<video width="676" height="478" muted loop>
   <source src="/img/ie-smil-background-color.mp4" type="video/mp4">
 </video>
 
@@ -547,7 +549,7 @@ Or you could embed a video or audio in HTML, similarly to how you use `<video>` 
 </html>
 ```
 
-<video width="676" height="478" autoplay muted loop>
+<video width="676" height="478" muted loop>
   <source src="/img/ie-smil-video.mp4" type="video/mp4">
 </video>
 
@@ -700,7 +702,7 @@ Not only could you bind data to an input, but also to arbitrary elements. And yo
 
 The only reason there is `onkeyup="this.blur();this.focus()"` is to trigger data flow after each key press, as otherwise the other connected elements would only receive the updated value *after* the user left the input.
 
-<video width="658" height="238" autoplay muted loop>
+<video width="658" height="238" muted loop>
   <source src="/img/ie-data-binding.mp4" type="video/mp4">
 </video>
 
@@ -733,7 +735,7 @@ Internet Explorer also shipped with a native data grid implementation that you h
 <button onclick="datagrid.nextPage()">next &gt;</button>
 ```
 
-<video width="1156" height="446" autoplay muted loop>
+<video width="1156" height="446" muted loop>
   <source src="/img/ie-tabular-data-control.mp4" type="video/mp4">
 </video>
 
