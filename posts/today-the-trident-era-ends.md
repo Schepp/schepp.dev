@@ -124,7 +124,7 @@ img.src = 'different-src.jpg';
 img.filters.blendTrans.play();
 ```
 
-<video width="1208" height="842" muted loop>
+<video width="1208" height="842" muted loop preload="none">
   <source src="/img/ie-object-transition-filter.mp4" type="video/mp4">
 </video>
 
@@ -242,7 +242,7 @@ background: expression('#'+Math.floor(Math.random()*16777216).toString(16));
 
 The above code would randomly calculate a HEX color which would then be assigned as background.You can see it in action in the following video (epilepsy warning because of flashing colors):
 
-<video width="1208" height="842" controls muted loop>
+<video width="1208" height="842" controls muted loop preload="none">
   <source src="/img/ie-expressions-going-wild.mp4" type="video/mp4">
 </video>
 
@@ -504,7 +504,7 @@ This feature was also encapsulated in a Default Behavior which you had to activa
 </body>
 </html>
 ```
-<video width="676" height="478" muted loop>
+<video width="676" height="478" muted loop preload="none">
   <source src="/img/ie-smil-text.mp4" type="video/mp4">
 </video>
 
@@ -525,7 +525,7 @@ Or, switching to the XML namespace variant, you could animate HTML attributes li
 </html>
 ```
 
-<video width="676" height="478" muted loop>
+<video width="676" height="478" muted loop preload="none">
   <source src="/img/ie-smil-background-color.mp4" type="video/mp4">
 </video>
 
@@ -549,7 +549,7 @@ Or you could embed a video or audio in HTML, similarly to how you use `<video>` 
 </html>
 ```
 
-<video width="676" height="478" muted loop>
+<video width="676" height="478" muted loop preload="none">
   <source src="/img/ie-smil-video.mp4" type="video/mp4">
 </video>
 
@@ -702,7 +702,7 @@ Not only could you bind data to an input, but also to arbitrary elements. And yo
 
 The only reason there is `onkeyup="this.blur();this.focus()"` is to trigger data flow after each key press, as otherwise the other connected elements would only receive the updated value *after* the user left the input.
 
-<video width="658" height="238" muted loop>
+<video width="658" height="238" muted loop preload="none">
   <source src="/img/ie-data-binding.mp4" type="video/mp4">
 </video>
 
@@ -735,7 +735,7 @@ Internet Explorer also shipped with a native data grid implementation that you h
 <button onclick="datagrid.nextPage()">next &gt;</button>
 ```
 
-<video width="1156" height="446" muted loop>
+<video width="1156" height="446" muted loop preload="none">
   <source src="/img/ie-tabular-data-control.mp4" type="video/mp4">
 </video>
 
