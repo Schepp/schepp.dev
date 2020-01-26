@@ -64,7 +64,7 @@ Internet Explorer had page transition filters which you would define as HTTP hea
       content="RevealTrans(Duration=0.600, Transition=6)">
 ```
 
-It the name implies, such a filter would smoothly transition the user from page to page upon navigation, instead of having pages appear as abruptly as we are used to. There was an extensive list of transition filters you could choose from by referencing them via number:
+As the name implies, such a filter would smoothly transition the user from page to page upon navigation, instead of having pages appear as abruptly as we are used to. There was an extensive list of transition filters you could choose from by referencing them via number:
 
 <div class="multicolumn">
 
