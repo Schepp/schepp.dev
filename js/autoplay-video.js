@@ -13,8 +13,10 @@
       const video = entry.target;
       if (entry.isIntersecting) {
         video.setAttribute('autoplay', '');
+        video.play();
       } else {
         video.removeAttribute('autoplay');
+        video.pause();
       }
     });
   };
