@@ -334,7 +334,7 @@ In order to use Element Behaviors it wasn't enough anymore to use CSS to tie an 
 </head>
 ```
 
-`custom` is a XML namespace name which you could freely chose. It could also be something else. The `<?import>` tag does what we previously used CSS for: to refer to a `.htc` file holding the code for that component. In the `.htc` file, you then needed to add a few more parts:
+`custom` is a XML namespace name which you could freely chose. It could also be something else. The `<?import>` tag does what we previously used CSS for: referring to a `.htc` file holding the code for that component. In the `.htc` file, you then needed to add a few more parts:
 
 1. You needed to define the custom HTML tag under which to use the element: `<public:component tagname="rollimg">`
 2. You had to define any HTML attributes this element allowed for, e.g.: `<public:property name="src" />`
