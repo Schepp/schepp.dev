@@ -270,7 +270,7 @@ See how the background color updates every time one moves the mouse? This is ind
 </style>
 ```
 
-But why not just use plain JavaScript? Well, it's true that you can do all of these things with pure JavaScript. One thing though, that I find super handy about expressions, is that they are easier to invoke on many different sorts of elements, as you can use CSS (selectors) to assign them to elements. And in the case of the pseudo-element polyfill expression it makes even more sense to have it your CSS as that's also the place where you would create real pseudo-elements. So it depends.
+But why not just use plain JavaScript? Well, it's true that you can do all of these things with pure JavaScript. One thing though, that I find super handy about expressions, is that they are easier to invoke on many different sorts of elements, as you can use CSS (selectors) to assign them to elements. And in the case of the pseudo-element polyfill expression it makes even more sense to have it in your CSS as that's also the place where you would create real pseudo-elements. So it depends.
 
 ### Fonts
 
