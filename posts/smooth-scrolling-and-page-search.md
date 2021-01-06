@@ -17,11 +17,11 @@ Yesterday, as I was browsing my Twitter timeline, a tweet from Chris Coyier popp
     <img src="/img/twitter-chris-coyer-smooth-scrolling-page-search.png" alt="Screenshot of Chris Coyier's tweet">
 </noscript>
 
-Apparently for the newest iteration of his site Chris had scrapped JavaScript-based smooth anchor scrolling in favor of a more modern, purely CSS-based solution. All one needs to do is slap a `scroll-behavior: smooth` on `html` and all of a sudden scrolls to different places on the page happen smoothly. And that's great!
+Apparently Chris had once switched out JavaScript-based smooth anchor scrolling in favor of a more modern, purely CSS-based solution. All you need to do is slap a `scroll-behavior: smooth` on `html` and all of a sudden scrolls to different places on the page happen smoothly. And that's great!
 
 ## Page Search
 
-Sadly, as with most things on the web, this solution is not all fine and dandy. As Chris points out it negatively affects the UX of page search, when a user cycles through search results:
+Sadly, as Chris points out in his tweet, native smooth scrolling it negatively affects the UX of page search when cycling through its search results:
 
 <video width="300" height="520" autoplay muted loop>
   <source src="/img/smooth-scroll-page-search.mp4" type="video/mp4">
