@@ -23,7 +23,7 @@ Apparently Chris had once switched out JavaScript-based smooth anchor scrolling 
 
 Sadly, as Chris points out in his tweet, native smooth scrolling it negatively affects the UX of page search when cycling through its search results:
 
-<video width="300" height="520" autoplay muted loop>
+<video width="1128" height="718" autoplay muted loop>
   <source src="/img/smooth-scroll-page-search.mp4" type="video/mp4">
 </video>
 
