@@ -27,13 +27,13 @@ Sadly, as Chris points out in his tweet, native smooth scrolling negatively affe
   <source src="/img/smooth-scroll-page-search.mp4" type="video/mp4">
 </video>
 
-Having the browser scroll to every single result is very time consuming. So for the page search it would be desirable for the browser to make an exception and to deactivate smooth scrolling.
+Smooth scrolling is consequently applied to everything. Always. Even when cycling through the browser's page search results. So for the page search it would be desirable for the browser to make an exception to that rule and to deactivate smooth scrolling.
 
-Until then here is a trick how to solve the problem with a little nit of extra CSS and HTML.
+Until the browser vendors fix it, here is a trick how to solve the problem on your own with a little nit of extra CSS and HTML.
 
 ## The Solution
 
-First you need to modify your assignment of `scroll-behavior` by replacing `html` with `html:focus-within`:
+First you need to modify your assignment of `scroll-behavior` by modifying the aforementioned `html` selector into `html:focus-within`:
 
 ```css
 html:focus-within {
