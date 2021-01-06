@@ -7,7 +7,7 @@ tags:
   - css
 layout: layouts/post.njk
 ---
-![A ballet dancer](/img/ballet-resized.jpg)
+![A ballet dancer](/img/ballet.jpg)
 
 Yesterday, as I was browsing my Twitter timeline, a tweet from Chris Coyier popped up, in which he mentioned feedback he got for his newest redesign of [CSS Tricks](https://css-tricks.com/). It went as follows:
 
