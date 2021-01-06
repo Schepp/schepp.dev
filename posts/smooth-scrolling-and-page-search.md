@@ -43,7 +43,9 @@ html:focus-within {
 
 Now everytime the user interacts with the surrounding browser interface, as is the case with the page search, smooth scrolling will be disabled and jumping to the results will be instantaneous.
 
-A new problem arising now is that anchor links (`<a href="#chapter2">`) also lose their smooth scrolling ability. This happens because most of our link targets are not focusable. Usually link targets are `<div>`s or headlines with an `id` slapped on them. And those types of HTML elements traditionally cannot receive focus. Therefore, once the user clicks on such a link the focus gets lost and `html:focus-with` doesn't hold true for our document any longer. So to solve this problem, you need to teach your anchor targets to receive focus by adding a `tabindex="-1"`.
+A new problem arising now is that anchor links (`<a href="#chapter2">`) also lose their smooth scrolling ability. This happens because most of our link targets are not focusable. Usually link targets are `<div>`s or headlines with an `id` slapped on them. And those types of HTML elements traditionally cannot receive focus. Therefore, once the user clicks on such an anchor link the focus gets lost and `html:focus-within` doesn't hold true for the document any longer. So to solve this problem, you need to teach your anchor targets to receive and hold focus by adding a `tabindex="-1"`.
+
+And that's it. Problem solved!
 
 _Thanks go out to [Matthias Ott](https://matthiasott.com/) and [Stefan Judis](https://www.stefanjudis.com/) for pushing me to publish this post ❤_
 
