@@ -27,7 +27,7 @@ Sadly, as Chris points out in his tweet, native smooth scrolling negatively affe
   <source src="/img/smooth-scroll-page-search.mp4" type="video/mp4">
 </video>
 
-Smooth scrolling is consequently applied to everything. Always. Even when cycling through the browser's page search results. So for the page search it would be desirable for the browser to make an exception to that rule and to deactivate smooth scrolling.
+Smooth scrolling is consequently applied to everything. Always. Even when cycling through the browser's page search results. At least that's the case for Chromium. So for the page search it would be desirable for the browser to make an exception to that rule and to deactivate smooth scrolling.
 
 Until the browser vendors fix it, here is a trick how to solve the problem on your own with a little nit of extra CSS and HTML.
 
