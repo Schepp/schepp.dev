@@ -1,6 +1,6 @@
 ---
 title: Fixing Smooth Scrolling & Page Search
-description: Native smooth scrolling is one more example of standards paving the cow path by declaring a wide-spread practice officially a thing: being able to smoothly scroll the viewport to another part of a page without the user losing their orientation. As good at it is, though, it also has an undesired side effect on the browser's built-in page search. This posts shows what the problem is and how to solve it.
+description: Native smooth scrolling is one more example of standards paving the cow path by declaring a wide-spread practice officially a thing\: being able to smoothly scroll the viewport to another part of a page without the user losing their orientation. As good at it is, though, it also has an undesired side effect on the browser's built-in page search. This posts shows what the problem is and how to solve it.
 image: https://schepp.dev/img/ballet.jpg
 date: 2020-01-06
 tags:
