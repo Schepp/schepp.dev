@@ -1,14 +1,14 @@
 ---
 title: Leaving out the `alt` Attribute
 description: If there is one thing everybody knows about accessibility, then it is the fact that you should always have an `alt` attribute on your <img> element. And that leaving it out also results in a HTML validation error. Interestingly, the latter is only partially true.
-image: https://schepp.dev/img/semantics.jpg
+image: https://schepp.dev/img/braille.jpg
 date: 2021-01-16
 tags:
   - html
   - a11y
 layout: layouts/post.njk
 ---
-![abstract cyberspace like graphic](/img/semantics.jpg)
+![An annotated Braille alphabet (A-Z) on a dark blue background](/img/braille.jpg)
 
 It seems I currently look at my Twitter timeline pretty often. This time it was a tweet from Šime Vidas that caught my attention:
 
