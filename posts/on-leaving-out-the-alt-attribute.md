@@ -61,7 +61,7 @@ This again is [perfectly valid HTML](https://html5.validator.nu/?doc=http%3A%2F%
 
 So basically when an image *is* meant for the user to be seen and it *does* convey information, but when at the same time it is technically impossible to offer, or generate, a textual alternative describing what can be seen, *then* it is allowed to leave away `alt` altogether, as an empty `alt=""` would mark the image as purely presentational - which it is not. One example mentioned above is a live webcam feed, another one would be a CAPTCHA. In both cases it is impossible at the time of authoring the HTML to say what later will be shown in the image. At the same time both types of images are important for the user and nothing to skip over. So dropping the `alt` attribute in these cases makes sense.
 
-So in the end things turn out again more nuanced than we initially thought (and maybe hoped for). But since omitting the `alt` attribute in the described cases is optional whereas all the other cases require it to be present, the easiest strategy is to keep sticking them to every image element, and you are good.
+So in the end things turn out again more nuanced than we initially thought (and maybe hoped for). But since omitting the `alt` attribute in the described cases is optional whereas all the other cases require it to be present, the easiest strategy is to keep adding them to every image element, and you are good.
 
 _Please have a look and subscribe to Šime's [Web Platform News](https://webplatform.news/) ❤_
 
