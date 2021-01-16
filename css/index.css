@@ -39,7 +39,7 @@ h1 + p > img {
   margin-left: calc((100vw - 100%) / -2);
   margin-right: calc((100vw - 100%) / -2);
   object-fit: cover;
-  object-position: 50% 25%;
+  object-position: 50% 15%;
 }
 
 h1 + p > img[src*="schepp"] {
