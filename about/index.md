@@ -4,7 +4,7 @@ title: About Me
 tags:
   - nav
 navtitle: About
-templateClass: tmpl-post
+templateClass: tmpl-about
 ---
 
 ![me with weird glasses on my head](/img/schepp-2019.jpg)

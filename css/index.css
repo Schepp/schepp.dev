@@ -35,7 +35,7 @@ iframe {
   border: none;
 }
 
-main h1 + p::before,
+main .h1--post + p::before,
 main h1 + p > img {
   content: '';
   display: block;
@@ -48,7 +48,7 @@ main h1 + p > img {
   object-position: 50% 15%;
 }
 
-main h1 {
+main .h1--post {
   position: absolute;
   z-index: 1;
   display: flex;
@@ -60,14 +60,14 @@ main h1 {
   text-shadow: 0 0 4px #000;
 }
 
-main h1 + p {
+main .h1--post + p {
   position: relative;
   margin-top: 0;
 }
 
-main h1 + p::before {
+main .h1--post + p::before {
   position: absolute;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
 }
 
 main h1 + p > img[src*="schepp"] {
