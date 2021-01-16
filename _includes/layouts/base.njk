@@ -13,9 +13,11 @@
   <meta name="twitter:description" content="{{ renderData.description or description or metadata.description }}">
   <meta name="twitter:image" content="{{ renderData.image or image or metadata.image }}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&font-display=swap">
+  <link rel="preload" href="{{ '/css/index.css' | url }}" as="styleheet">
+  <link rel="preload" href="{{ renderData.image or image or metadata.image }}" as="image">
   <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
-  <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}">
-  <link rel="stylesheet" href="{{ '/css/webmention.css' | url }}">
+  <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}" media="print" onload="this.onload='';this.media='all'">
+  <link rel="stylesheet" href="{{ '/css/webmention.css' | url }}" media="print" onload="this.onload='';this.media='all'">
   <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml"
         title="{{ metadata.title }}">
   <link rel="webmention" href="https://webmention.io/schepp.dev/webmention">

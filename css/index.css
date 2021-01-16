@@ -68,7 +68,7 @@ main .h1--post + p {
 
 main .h1--post + p::before {
   position: absolute;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0) 33%);
 }
 
 main h1 + p > img[src*="schepp"] {
