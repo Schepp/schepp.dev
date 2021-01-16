@@ -10,7 +10,7 @@ layout: layouts/post.njk
 ---
 ![An annotated Braille alphabet (A-Z) on a dark blue background](/img/braille.jpg)
 
-As it seems I'm currently looking at my Twitter timeline pretty often. Because this time it was a tweet from Šime Vidas that caught my attention:
+As it seems I'm currently looking at my Twitter timeline pretty often. Because this time it was [a tweet](https://twitter.com/simevidas/status/1350239918031855618) from [Šime Vidas](https://webplatform.news/) that caught my attention:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Do I need alt text if there’s a visible image description?<br><br>&lt;figure&gt;<br> &lt;img src=&quot;x.jpg&quot; width=&quot;900&quot; height=&quot;600&quot; alt=&quot;&quot;&gt;<br> &lt;figcaption&gt;Caption serves as alt text&lt;/figcaption&gt;<br>&lt;/figure&gt;</p>&mdash; Šime Vidas (@simevidas) <a href="https://twitter.com/simevidas/status/1350239918031855618?ref_src=twsrc%5Etfw">January 16, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -63,6 +63,6 @@ So basically when an image *is* meant for the user to be seen and it *does* conv
 
 So in the end things turn out again more nuanced than we initially thought (and maybe hoped for). But since omitting the `alt` attribute in the described cases is optional whereas all the other cases absolutely require it to be present, the easiest strategy is to keep sticking them to every image element, and you are good.
 
-_Thanks go out to [Matthias Ott](https://matthiasott.com/) and [Stefan Judis](https://www.stefanjudis.com/) for pushing me to publish this post ❤_
+_Please have a look and subscribe to Šime's [Web Platform News](https://webplatform.news/) ❤_
 
 _The cover image of this post is [Braille](https://www.shutterstock.com/de/image-illustration/braille-visually-impaired-writing-system-symbol-1858649119) by [80's Child](https://www.shutterstock.com/de/g/80s+Child)_
