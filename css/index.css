@@ -207,6 +207,7 @@ pre {
   padding: 1em;
   margin: .5em 0;
   background-color: #f6f6f6;
+  border-radius: 2px;
 }
 
 pre[class*="language"][class*="language"] {
