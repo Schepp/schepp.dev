@@ -7,7 +7,7 @@ tags:
   - ecosystem
 layout: layouts/post.njk
 ---
-![View from within the ruins of the Monument House of he Bulgarian Communist Party, built on Buzludzha Peak in central Bulgaria. Photo by Natalya Letunova on Unsplash](/img/natalya-letunova-gF8aHM445P4-unsplash.jpg)
+![](/img/natalya-letunova-gF8aHM445P4-unsplash.jpg)
 
 When I was a child, I was always fascinated by stories about ancient civilizations. I devoured books about Atlantis, or the story of [Heinrich Schliemann](https://en.wikipedia.org/wiki/Heinrich_Schliemann)'s discovery of Troy, stories about the Greek, the Romans, the [Inca Empire](https://en.wikipedia.org/wiki/Inca_Empire), or [Ancient Egypt](https://en.wikipedia.org/wiki/Ancient_Egypt). And I was always fascinated by the extent of their capabilities in the fields of [astronomy](https://blogs.scientificamerican.com/observations/the-astronomical-genius-of-the-inca/), [math](https://en.wikipedia.org/wiki/Pythagoras), and [medicine](https://en.wikipedia.org/wiki/Ancient_Egyptian_medicine), their incredible achievements, like building those vast monuments, or their highly functional social systems. What's even more incredible is that most of this already happened way before Jesus Christ first set foot on our Earth!
 

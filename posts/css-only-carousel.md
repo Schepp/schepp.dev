@@ -7,7 +7,7 @@ tags:
   - css
 layout: layouts/post.njk
 ---
-![A carousel spinning in front of a cloudy sky in sunset](/img/carousel.jpg)
+![](/img/carousel.jpg)
 
 I've recently [read about](https://24ways.org/2019/beautiful-scrolling-experiences-without-libraries/) and [discussed](https://twitter.com/AndyDavies/status/1202862028412661760) CSS Scroll Snapping so often that I felt like I should build a CSS-only carousel based on it. There it is:
 
