@@ -163,6 +163,10 @@ header:after {
   clear: both;
 }
 
+ul {
+  padding-left: 1em;
+}
+
 table {
   margin: 1em 0;
 }
@@ -178,6 +182,10 @@ code {
   background-color: #dfdfdf;
   font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
   line-height: 1.5;
+}
+
+code {
+  border-radius: 2px;
 }
 
 pre {
@@ -390,7 +398,7 @@ blockquote {
   position: relative;
   margin: 2em 0;
   padding: 0 2em 0 2.5em;
-  color: #000;
+  color: #444;
   font-family: 'Merriweather', serif;
   font-style: normal;
   font-size: 1em;
