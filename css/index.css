@@ -35,7 +35,7 @@ h1 + p > img {
   display: block;
   width: 100vw;
   max-width: none;
-  height: 75vmin;
+  height: 60vmin;
   margin-left: calc((100vw - 100%) / -2);
   margin-right: calc((100vw - 100%) / -2);
   object-fit: cover;
