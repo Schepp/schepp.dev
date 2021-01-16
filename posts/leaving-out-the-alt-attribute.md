@@ -18,7 +18,7 @@ As it seems I'm currently looking at my Twitter timeline pretty often. Because t
     <img src="/img/twitter-sime-vidas-alt-attribute.png" alt="Screenshot of Šime Vidas' tweet">
 </noscript>
 
-Basically, what Šime is asking is if `alt` could not be left out if the corresponding image is being described through other technical means, i.e. a `<figcation>`.
+Basically, what Šime is asking is if `alt` could not be left out if the corresponding image is being described through other technical means, i.e. a `<figcaption>`.
 
 As most commentators correctly answered: seen from the accessibility stand point you cannot leave it out. This is due to the different use cases between `alt` and `<figcaption>`:
 
