@@ -186,6 +186,7 @@ code {
 
 code {
   border-radius: 2px;
+  font-size: inherit !important;
 }
 
 pre {
