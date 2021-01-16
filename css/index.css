@@ -159,7 +159,7 @@ code {
 }
 
 pre {
-  font-size: 1rem;
+  font-size: 1rem !important;
   line-height: 1.375;
   direction: ltr;
   text-align: left;
