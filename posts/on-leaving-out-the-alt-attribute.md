@@ -28,13 +28,18 @@ As most commentators correctly answered: you cannot leave it out. This is due to
 
 So we need both, as `alt` and `<figcaption>` are not interchangeable.
 
-One more thing to spot in Šime's code example is that he leaves the `alt` attribute an empty string. This is only allowed when the corresponding image [doesn't convey any information for the user, or is not meant for the user to see at all](https://www.w3.org/TR/2011/WD-html5-author-20110809/the-img-element.html#an-image-not-intended-for-the-user):
+One more thing to spot in Šime's code example is that he leaves the `alt` attribute an empty string. This is only allowed when the corresponding image [is of purely presentational](https://www.w3.org/TR/2011/WD-html5-author-20110809/the-img-element.html#a-graphical-representation-of-some-of-the-surrounding-text):
+
+> In many cases, the image is actually just supplementary, and its presence merely reinforces the surrounding text. In these cases, the alt attribute must be present but its value must be the empty string.<br>
+  In general, an image falls into this category if removing the image doesn't make the page any less useful, but including the image makes it a lot easier for users of visual browsers to understand the concept.
+
+ &hellip;or when it [is not meant for the user to see at all](https://www.w3.org/TR/2011/WD-html5-author-20110809/the-img-element.html#an-image-not-intended-for-the-user):
 
 > Generally authors should avoid using img elements for purposes other than showing images.<br>
  If an img element is being used for purposes other than showing an image, e.g. as part of a service to count page views, then the alt attribute must be the empty string.<br>
  In such cases, the width and height attributes should both be set to zero.
 
-Would the above be true, then Šime's image would never be located inside a `<figure>` element to begin with.
+Would any the above be true, then Šime's image would probably never be located inside a `<figure>` element to begin with.
 
 Does it all boil down to something we already know, which is that the `alt` attribute is mandatory - end of the story? Not quite!
 

@@ -167,6 +167,11 @@ ul {
   padding-left: 1em;
 }
 
+a {
+  text-decoration-color: dodgerblue;
+  text-decoration-width: 4px;
+}
+
 table {
   margin: 1em 0;
 }
@@ -401,7 +406,7 @@ blockquote {
   color: #444;
   font-family: 'Merriweather', serif;
   font-style: normal;
-  font-size: 1em;
+  font-size: 0.9em;
   line-height: 1.2;
   quotes: "“" "”" "‘" "’";
 }
