@@ -246,7 +246,7 @@ pre[class*="language"][class*="language"] {
   padding: 0 1rem;
   float: left;
   margin: 1rem 0; /* 16px /16 */
-  font-size: 1em; /* 16px /16 */
+  font-size: 1.4rem;
 }
 
 .home :link:not(:hover) {
