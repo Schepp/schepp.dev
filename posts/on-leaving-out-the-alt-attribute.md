@@ -1,14 +1,14 @@
 ---
 title: On leaving out the alt Attribute
 description: If there is one thing everybody knows about accessibility, then it is the fact that you should always have an `alt` attribute on your <img> element. And that leaving it out also results in a HTML validation error. Interestingly, the latter is only partially true.
-image: https://schepp.dev/img/braille.jpg
+image: https://schepp.dev/img/colors.jpg
 date: 2021-01-16
 tags:
   - html
   - a11y
 layout: layouts/post.njk
 ---
-![An Braille alphabet going from A to Z, annotated with letters, on a bright background](/img/braille.jpg)
+![Bright Colors Coconut Shells](/img/colors.jpg)
 
 As it seems I'm currently looking at my Twitter timeline way too often. Because this time it was [a tweet](https://twitter.com/simevidas/status/1350239918031855618) from [Šime Vidas](https://webplatform.news/) that caught my attention:
 
@@ -65,4 +65,4 @@ So in the end things turn out again more nuanced than we initially thought (and 
 
 _Please have a look and subscribe to Šime's [Web Platform News](https://webplatform.news/) ❤_
 
-_The cover image of this post is [Braille](https://www.shutterstock.com/de/image-illustration/braille-visually-impaired-writing-system-symbol-1858674907) by [80's Child](https://www.shutterstock.com/de/g/80s+Child)_
+_The cover image of this post is [Bright Colors Coconut Shells](https://www.shutterstock.com/de/image-photo/bright-colours-coconut-shells-indian-holi-1008317254) by [Nataliya Druchkova](https://www.shutterstock.com/de/g/NataliyaDruchkova)_
