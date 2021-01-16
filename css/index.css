@@ -55,6 +55,7 @@ main .h1--post {
   align-items: flex-end;
   height: 55vmin;
   margin: 0;
+  margin-right: calc((100vw - 100%) / -2);
   padding: 1rem 0;
   color: #fff;
   text-shadow: 0 0 4px #000;
