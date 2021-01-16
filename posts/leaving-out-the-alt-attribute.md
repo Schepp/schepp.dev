@@ -4,7 +4,8 @@ description: If there is one thing everybody knows about accessibility, then it 
 image: https://schepp.dev/img/semantics.jpg
 date: 2021-01-16
 tags:
-  - css
+  - html
+  - a11y
 layout: layouts/post.njk
 ---
 ![abstract cyberspace like graphic](/img/semantics.jpg)
