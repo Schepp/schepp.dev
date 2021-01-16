@@ -10,7 +10,7 @@ layout: layouts/post.njk
 ---
 ![An annotated Braille alphabet (A-Z) on a dark blue background](/img/braille.jpg)
 
-It seems I currently look at my Twitter timeline pretty often. This time it was a tweet from Šime Vidas that caught my attention:
+As it seems I'm currently looking at my Twitter timeline pretty often. Because this time it was a tweet from Šime Vidas that caught my attention:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Do I need alt text if there’s a visible image description?<br><br>&lt;figure&gt;<br> &lt;img src=&quot;x.jpg&quot; width=&quot;900&quot; height=&quot;600&quot; alt=&quot;&quot;&gt;<br> &lt;figcaption&gt;Caption serves as alt text&lt;/figcaption&gt;<br>&lt;/figure&gt;</p>&mdash; Šime Vidas (@simevidas) <a href="https://twitter.com/simevidas/status/1350239918031855618?ref_src=twsrc%5Etfw">January 16, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
