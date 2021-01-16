@@ -43,8 +43,8 @@ h1 + p > img {
 }
 
 h1 + p > img[src*="schepp"] {
-  width: 50vmin;
-  height: 50vmin;
+  width: 33vmin;
+  height: 33vmin;
   margin: 0 auto;
   border-radius: 50%;
 }
