@@ -35,7 +35,9 @@ iframe {
   border: none;
 }
 
-h1 + p > img {
+main h1 + p::before,
+main h1 + p > img {
+  content: '';
   display: block;
   width: 100vw;
   max-width: none;
@@ -46,7 +48,29 @@ h1 + p > img {
   object-position: 50% 15%;
 }
 
-h1 + p > img[src*="schepp"] {
+main h1 {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  height: 55vmin;
+  margin: 0;
+  padding: 1rem 0;
+  color: #fff;
+  text-shadow: 0 0 4px #000;
+}
+
+main h1 + p {
+  position: relative;
+  margin-top: 0;
+}
+
+main h1 + p::before {
+  position: absolute;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+}
+
+main h1 + p > img[src*="schepp"] {
   width: 33vmin;
   height: 33vmin;
   margin: 0 auto;
@@ -124,7 +148,7 @@ a[href]:visited {
 }
 
 main {
-  padding: 1rem;
+  padding: 0 1rem 1rem 1rem;
 }
 
 main :first-child {
