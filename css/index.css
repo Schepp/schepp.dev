@@ -22,6 +22,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Lato', sans-serif;
+  font-size: 1.2rem;
   color: var(--darkgray);
   background-color: var(--white);
 }
@@ -155,7 +156,7 @@ code {
 }
 
 pre {
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 1.375;
   direction: ltr;
   text-align: left;
