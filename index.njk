@@ -7,7 +7,7 @@ navtitle: Home
 
 <h1>Latest Posts</h1>
 
-{% set postslist = collections.posts | head(-3) %}
+{% set postslist = collections.posts | head(-10) %}
 {% include "postslist.njk" %}
 
 <p>More posts can be found in <a href="{{ '/posts/' | url }}">the archive</a>.</p>
