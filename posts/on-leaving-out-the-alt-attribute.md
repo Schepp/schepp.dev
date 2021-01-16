@@ -68,4 +68,6 @@ So in the end things turn out again more nuanced than we initially thought (and 
 
 _Please have a look and subscribe to Šime's [Web Platform News](https://webplatform.news/) ❤_
 
+_Thanks go out again to [Stefan Judis](https://www.stefanjudis.com/) for proof reading this. ✨
+
 _The cover image of this post is [Audio Sound Wave](https://www.shutterstock.com/de/image-photo/audio-sound-wave-studio-editing-computer-1234708303) by [edwardolive](https://www.shutterstock.com/de/g/edwardolive)_
