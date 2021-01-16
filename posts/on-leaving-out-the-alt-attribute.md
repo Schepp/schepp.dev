@@ -36,7 +36,7 @@ One more thing to spot in Šime's code example is that he leaves the `alt` attri
 
 Would the above be true, then Šime's image would never be located inside a `<figure>` element to begin with.
 
-So in the end, does it all boil down to the fact we already know, which is that the `alt` attribute is a mandatory things? Not quite!
+So in the end, does it all boil down to something we already know, which is that the `alt` attribute is mandatory? Not quite!
 
 ## Comes in the HTML Spec
 
