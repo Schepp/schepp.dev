@@ -8,7 +8,7 @@ tags:
   - a11y
 layout: layouts/post.njk
 ---
-![Bright voice Coconut Shells](/img/voice.jpg)
+![](/img/voice.jpg)
 
 As it seems I'm currently looking at my Twitter timeline way too often. Because this time it was [a tweet](https://twitter.com/simevidas/status/1350239918031855618) from [Šime Vidas](https://webplatform.news/) that caught my attention:
 
