@@ -307,7 +307,7 @@ pre[class*="language"][class*="language"] {
 }
 
 .postlist-item-active .postlist-link {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .tmpl-home .postlist-link {

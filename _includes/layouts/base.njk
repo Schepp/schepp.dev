@@ -5,16 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ renderData.title or title or metadata.title }}</title>
   <meta name="description" content="{{ renderData.description or description or metadata.description }}">
-  <meta property="og:description" content="{{ renderData.description or description or metadata.description }}">
-  <meta property="og:image" content="{{ renderData.image or image or metadata.image }}">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@derSchepp">
-  <meta name="twitter:title" content="{{ renderData.title or title or metadata.title }}">
-  <meta name="twitter:description" content="{{ renderData.description or description or metadata.description }}">
-  <meta name="twitter:image" content="{{ renderData.image or image or metadata.image }}">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&font-display=swap">
   <link rel="preload" href="{{ '/css/index.css' | url }}" as="styleheet">
+  <link rel="preload" href="{{ '/fonts/lato-regular-webfont.woff2' | url }}" as="font" crossorigin="anonymous">
+  <link rel="preload" href="{{ '/fonts/lato-bold-webfont.woff2' | url }}" as="font" crossorigin="anonymous">
+  <link rel="preload" href="{{ '/fonts/lato-italic-webfont.woff2' | url }}" as="font" crossorigin="anonymous">
+  <link rel="preload" href="{{ '/fonts/merriweather-regular-webfont.woff2' | url }}" as="styleheet">
   <link rel="preload" href="{{ renderData.image or image or metadata.image }}" as="image">
+  <style>
+    @font-face {
+      font-family: 'Merriweather';
+      font-style: normal;
+      font-weight: 400;
+      src: url({{ '/fonts/merriweather-regular-webfont.woff2' | url }}) format('woff2'), url({{ '/fonts/merriweather-regular-webfont.woff' | url }}) format('woff');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 400;
+      src: url({{ '/fonts/lato-regular-webfont.woff2' | url }}) format('woff2'), url({{ '/fonts/lato-regular-webfont.woff' | url }}) format('woff');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 600;
+      src: url({{ '/fonts/lato-bold-webfont.woff2' | url }}) format('woff2'), url({{ '/fonts/lato-bold-webfont.woff' | url }}) format('woff');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Lato';
+      font-style: italic;
+      font-weight: 400;
+      src: url({{ '/fonts/lato-italic-webfont.woff2' | url }}) format('woff2'), url({{ '/fonts/lato-italic-webfont.woff' | url }}) format('woff');
+      font-display: swap;
+    }
+  </style>
   <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
   <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}" media="print" onload="this.onload='';this.media='all'">
   <link rel="stylesheet" href="{{ '/css/webmention.css' | url }}" media="print" onload="this.onload='';this.media='all'">
@@ -22,6 +51,13 @@
         title="{{ metadata.title }}">
   <link rel="webmention" href="https://webmention.io/schepp.dev/webmention">
   <link rel="pingback" href="https://webmention.io/schepp.dev/xmlrpc">
+  <meta property="og:description" content="{{ renderData.description or description or metadata.description }}">
+  <meta property="og:image" content="{{ renderData.image or image or metadata.image }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@derSchepp">
+  <meta name="twitter:title" content="{{ renderData.title or title or metadata.title }}">
+  <meta name="twitter:description" content="{{ renderData.description or description or metadata.description }}">
+  <meta name="twitter:image" content="{{ renderData.image or image or metadata.image }}">
   <meta name="monetization" content="$ilp.gatehub.net/928609350">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ '/img/apple-touch-icon.png' | url }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ '/img/favicon-32x32.png' | url }}">
