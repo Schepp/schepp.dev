@@ -5,6 +5,6 @@
   Cache-Control: immutable
 
 # Cache images for a week
-/images/*
+/img/*
   Cache-Control: public
   Cache-Control: max-age=1800
