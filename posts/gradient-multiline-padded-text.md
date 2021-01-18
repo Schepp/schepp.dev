@@ -9,7 +9,7 @@ layout: layouts/post.njk
 ---
 ![Example for a gradient multiline padded text with white text on a blue gradient background](/img/gradient-multiline-padded-text.png)
 
-For whatever reason a question from Dan Mall from 2018 popped up in my timeline where Dan Mall asked how to create multiline padded text with a consistent gradient background in CSS:
+For whatever reason a question from Dan Mall from 2018 popped up in my timeline where he was asking how to create multiline padded text with a consistent gradient background in CSS:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">CSS superfriends! Have you seen examples of how to do multi-line padded text like this article on <a href="https://twitter.com/css?ref_src=twsrc%5Etfw">@css</a> (<a href="https://t.co/2j8p4jmaT4">https://t.co/2j8p4jmaT4</a>), but with a gradient that doesn&#39;t reset for each line? <a href="https://t.co/MVPdAjxt1W">pic.twitter.com/MVPdAjxt1W</a></p>&mdash; Dan Mall (@danmall) <a href="https://twitter.com/danmall/status/1069729595384049665?ref_src=twsrc%5Etfw">December 3, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
