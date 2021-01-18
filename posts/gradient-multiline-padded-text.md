@@ -33,3 +33,5 @@ The trick is to set `background-attachment` to `fixed`, so that it uses the view
 The second relevant setting is `box-decoration-break: clone`, which repeats the padding on every line, instead of applying `padding-left` only in the first and `padding-right` only in the last line.
 
 Try commenting out both properties in the Codepen to see the differences.
+
+**Important caveat:** The background will only spread as far as the size of the viewport. If you need to style text in such a way, but below the fold, you're out of luck. So this only works well with the main headline.

@@ -36,7 +36,8 @@ iframe {
 }
 
 main .h1--post + p::before,
-main h1 + p > img {
+main h1 + p > img,
+.cp_embed_wrapper {
   content: '';
   display: block;
   width: 100vw;
@@ -46,6 +47,10 @@ main h1 + p > img {
   margin-right: calc((100vw - 100%) / -2);
   object-fit: cover;
   object-position: 50% 15%;
+}
+
+.cp_embed_iframe  {
+  height: 100%;
 }
 
 main .h1--post {
