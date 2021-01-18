@@ -26,7 +26,7 @@ Here is my take:
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-[Link to Codepen](https://codepen.io/Schepp/pen/WNbQByE?editors=1100)
+[Link to Codepen](https://codepen.io/Schepp/pen/zYKyXPq?editors=1100)
 
 The trick is to set `background-attachment` to `fixed`, so that it uses the viewport instead of the element (or rather inline fragments) as its reference. That keeps the background from resetting in each line and also from starting at different origins for each line.
 
