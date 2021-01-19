@@ -33,7 +33,7 @@ Until the Chromium team [fixes it](https://bugs.chromium.org/p/chromium/issues/d
 
 ## The Solution
 
-First you need to modify your assignment of `scroll-behavior` by modifying the aforementioned `html` selector into `html:focus-within`:
+First you need to move your assignment of `scroll-behavior` from `html` selector to `html:focus-within`. This will ensure that smooth scrolling is only active while the focus is within the page. Sadly Chrome and Firefox, upon clicking an on-page anchor link, both first assign and then remove focus from the document. Therefore you need to flank the above with two (identical) time-limited animations that force smooth scrolling onto the document for a certain period of time after the click.
 
 ```css
 @keyframes smoothscroll1 {
@@ -61,7 +61,7 @@ Now everytime the user interacts with the surrounding browser interface, as is t
 
 And that's it. Problem solved!
 
-**2021/01/17 Update:** My initial solution broke smooth scrolling on a perfectly working Firefox (due to this long standing [bug](https://bugzilla.mozilla.org/show_bug.cgi?id=308064)). So I reworked the code. The CSS got more complex, but on the winning side you don't need to add `tabindex`es to your HTML any more.
+**2021/01/17 Update:** My initial solution [broke smooth scrolling on a perfectly working Firefox](https://twitter.com/chrlsbr/status/1351284407794073606) (due to this long standing [bug](https://bugzilla.mozilla.org/show_bug.cgi?id=308064)). So I reworked the code. The CSS got more complex, but on the winning side you don't need to add `tabindex`es to your HTML any more.
 
 _Thanks go out to [Matthias Ott](https://matthiasott.com/) and [Stefan Judis](https://www.stefanjudis.com/) for pushing me to publish this post ❤_
 
