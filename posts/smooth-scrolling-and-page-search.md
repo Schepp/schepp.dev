@@ -45,8 +45,7 @@ First you need to move your assignment of `scroll-behavior` from `html` selector
 }
 
 html {
-  animation-name: smoothscroll1;
-  animation-duration: 1000ms;
+  animation: smoothscroll1 1s;
 }
 
 html:focus-within {
