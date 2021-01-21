@@ -27,7 +27,7 @@ The `wk` parameter indicating that you wanna use WebKit. Then you are greeted wi
 
 ![A pretty spartan WebKit window, running on Windows, showing the WebKit project page](/img/playwright-webkit-on-windows.jpg)
 
-Giving it a spin on [html5test.com](https://html5test.com) tells me that it trails Safari by quite a bit (477 vs 406 points). But the areas affected are basically due to proprietary things or the missing browser chrome and OS integration around it:
+Giving it a spin on [html5test.com](https://html5test.com) tells me that it trails Safari by quite a bit (492 vs 416 points). But the areas affected are basically due to proprietary things or the missing browser chrome and OS integration around it:
 
 * color input
 * fullscreen support
@@ -44,10 +44,9 @@ Giving it a spin on [html5test.com](https://html5test.com) tells me that it trai
 * WebRTC
 * Webcam support
 * Web Payments API
-* Service Workers
 * Objectstore blob support
 * Web SQL
 
-Looking though the list, missing Service Worker and video codec support seem the worst to me. The rest it pretty much irrelevant for the average site.
+Looking though the list, only the missing video codec support is a bummer. The rest it pretty much irrelevant for the average site.
 
 Have fun!
