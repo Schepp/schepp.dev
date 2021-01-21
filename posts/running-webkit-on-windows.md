@@ -15,9 +15,9 @@ Funnily enough, the WebKit project continued to have its bots create nightly bui
 
 There are two ways to do so: a manual and an automated one.
 
-Alexander Skachkov was kind enough to describe all required steps of the manual way [in a blog post three years ago](https://medium.com/@alSkachkov/how-to-load-the-latest-webkit-on-windows-962a9219c1e1). The only update from my side would be to not install Cygwin and Apple iTunes, as both are monsters, but instead to download the so-called "WebkitForWindows [WebKitRequirements](https://github.com/WebKitForWindows/WebKitRequirements/releases)" as ZIP and to put the content of their `bin64` folder into the one with the same name of your WebKit-Cairo folder. Afterwards you run `MiniBrowser.exe` and should greeted with a spartan browser window.
+Alexander Skachkov was kind enough to describe all required steps of the manual way [in a blog post three years ago](https://medium.com/@alSkachkov/how-to-load-the-latest-webkit-on-windows-962a9219c1e1). The only update from my side would be to not install Cygwin and Apple iTunes, as both are monsters, but instead to download the so-called "WebkitForWindows [WebKitRequirements](https://github.com/WebKitForWindows/WebKitRequirements/releases)" as ZIP and to put the content of their `bin64` folder into the one with the same name of your WebKit-Cairo folder. Afterwards you run `MiniBrowser.exe` and should be greeted with a spartan browser window.
 
-But you probably don't wanna jump through the hoops of manual installation, especially not everytime you need to upgrade WebKit. The automated way is to install and use "[Playwright](https://playwright.dev/)". Playwright is basically what Puppeteer is for Chrome, but for Chrome, Firefox and Safari at the same time. All you need to get going is [npm](https://www.npmjs.com/get-npm). Then you run it like this:
+But you probably don't wanna jump through the hoops of manual installation, especially not each and everytime you need to upgrade WebKit. The automated way is to install and use "[Playwright](https://playwright.dev/)". Playwright is basically what Puppeteer is for Chrome, but for Chrome, Firefox and Safari at the same time. All you need to get going is [npm](https://www.npmjs.com/get-npm). Then you run it like this:
 
 ```
 npx playwright wk https://webkit.org/
