@@ -18,7 +18,9 @@
                 {% set links = webmention.content.html | split("<a") %}
                 {% set breaks = webmention.content.html | split("<br") %}
                 {% set listitems = webmention.content.html | split("<li") %}
-                {% if links <= 4 and br <= 2 and listitems == 1 %}
+                {% set readtime = webmention.content.html | split("Read Time") %}
+                {% set comments = webmention.content.html | split("comments") %}
+                {% if links <= 4 and br <= 2 and listitems == 1 and readtime == 1 and comments == 1 %}
                 <li class="webmentions__item">
                     {% include 'webmention.njk' %}
                 </li>
