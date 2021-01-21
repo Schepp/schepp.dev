@@ -9,7 +9,7 @@ layout: layouts/post.njk
 ---
 ![](/img/webkit.png)
 
-Safari 5.1, released in 2010, was the last WebKit browser that somebody released for the Windows platform. Since then debugging things in WebKit came down to either buying a whole Mac or using a remote Safari in [Browserstack](https://www.browserstack.com/).
+Safari 5.1, back in 2010, was the last WebKit browser that somebody released for the Windows platform. Since then debugging things in WebKit came down to either buying a whole Mac or using a remote Safari in [Browserstack](https://www.browserstack.com/).
 
 Funnily enough, the WebKit project continued to have its bots create nightly builds for Windows together with those for the other platforms. It's just that Apple didn't want to invest anymore time in providing a browser UI around it. But it is still perfectly possible to get WebKit on Windows to start, with all the engine features of the newest Safari.
 
