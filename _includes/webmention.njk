@@ -21,6 +21,6 @@
         {% endif %}
     </div>
     <div class="webmention__content p-content">
-        {{ webmention.content.html | stripcertaintags | safe }}
+        {{ webmention.content.html | sanitize | safe }}
     </div>
 </article>
