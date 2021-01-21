@@ -2,6 +2,7 @@ const {DateTime} = require("luxon");
 const fs = require("fs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const sanitizeHtml = require('sanitize-html');
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
@@ -63,21 +64,9 @@ module.exports = function (eleventyConfig) {
     return str.split(seperator);
   });
 
-  eleventyConfig.addNunjucksFilter('stripcertaintags', (str) => ((_html) => {
-    var _tags = [], _tag = "";
-    for ( var _a = 1 ; _a < arguments.length ; _a++ ) {
-      _tag = arguments[_a].replace(/[<>\/]/g, '').trim();
-      if ( arguments[_a].length > 0 ) _tags.push( _tag );
-    }
-
-    if ( !( typeof _html == "string" ) && !( _html instanceof String ) ) return "";
-    else if ( _tags.length === 0 ) return _html.replace( /<\s*\/?[^>]+>/g, "" );
-    else
-    {
-      var _re = new RegExp( "<(?!\\s*\\/?(" + _tags.join("|") + ")\\s*\\/?>)[^>]*>", "g" );
-      return _html.replace( _re, '' );
-    }
-  })(str, 'p', 'b', 'strong', 'i', 'em', 'blockquote', 'a'));
+  eleventyConfig.addNunjucksFilter('sanitize', (str) => sanitizeHtml(str, {
+    allowedTags: [ 'p', 'b', 'strong', 'i', 'em', 'blockquote', 'a' ],
+  }));
 
   eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"));
 
