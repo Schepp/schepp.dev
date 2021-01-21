@@ -28,6 +28,7 @@ body {
 
 body {
   font-size: 1.1875rem;
+  overflow-wrap: break-word;
 }
 
 iframe {
