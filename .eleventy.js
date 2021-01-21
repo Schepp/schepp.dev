@@ -65,16 +65,17 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addNunjucksFilter('stripcertaintags', (str) => ((_html) => {
     var _tags = [], _tag = "";
-    for (var _a = 1; _a < arguments.length; _a++) {
-      _tag = arguments[_a].replace(/<|>/g, '').trim();
-      if (arguments[_a].length > 0) _tags.push(_tag, "/" + _tag);
+    for ( var _a = 1 ; _a < arguments.length ; _a++ ) {
+      _tag = arguments[_a].replace(/[<>\/]/g, '').trim();
+      if ( arguments[_a].length > 0 ) _tags.push( _tag );
     }
 
-    if (!(typeof _html == "string") && !(_html instanceof String)) return "";
-    else if (_tags.length === 0) return _html.replace(/<(\s*\/?)[^>]+>/g, "");
-    else {
-      var _re = new RegExp("<(?!(" + _tags.join("|") + ")\s*\/?)[^>]+>", "g");
-      return _html.replace(_re, '');
+    if ( !( typeof _html == "string" ) && !( _html instanceof String ) ) return "";
+    else if ( _tags.length === 0 ) return _html.replace( /<\s*\/?[^>]+>/g, "" );
+    else
+    {
+      var _re = new RegExp( "<(?!\\s*\\/?(" + _tags.join("|") + ")\\s*\\/?>)[^>]*>", "g" );
+      return _html.replace( _re, '' );
     }
   })(str, 'p', 'b', 'strong', 'i', 'em', 'blockquote', 'a'));
 
