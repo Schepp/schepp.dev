@@ -15,9 +15,12 @@
 
         <ol class="webmentions__list">
             {% for webmention in mentions | reverse %}
+                {% set links = webmention.content.html | split("<a") %}
+                {% if links <= 3 %}
                 <li class="webmentions__item">
                     {% include 'webmention.njk' %}
                 </li>
+                {% endif %}
             {% endfor %}
         </ol>
 
