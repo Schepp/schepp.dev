@@ -59,6 +59,10 @@ module.exports = function (eleventyConfig) {
             .map(clean)
     });
 
+    eleventyConfig.addNunjucksFilter('split', (str, seperator) => {
+      return str.split(seperator);
+    });
+
     eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"));
 
     eleventyConfig.addPassthroughCopy("img");
