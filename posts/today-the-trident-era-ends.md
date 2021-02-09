@@ -643,7 +643,7 @@ Instead of a CSV file you could also [establish a connection to your database se
 </object>
 ```
 
-(Note how the `classid` attribute changes depending on the type of data.)
+(Note how the `classid` attribute changes depending on the source of data?)
 
 And finally you could also reference an external XML file via `<xml>` tag…
 
