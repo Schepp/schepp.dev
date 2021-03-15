@@ -188,7 +188,7 @@ body {
 
 ### Box-Sizing
 
-Internet Explorer initially implemented the box model as if `box-sizing: border-box` was set by default. Event though [many people found Microsoft's take a lot more logical and user friendly](https://www.jefftk.com/p/the-revenge-of-the-ie-box-model), the CSS WG ultimately chose another default where `width` was not referring to the outer width of a box but to width of the usable content space inside.
+Internet Explorer initially implemented the box model as if `box-sizing: border-box` was set by default. Even though [many people found Microsoft's take a lot more logical and user friendly](https://www.jefftk.com/p/the-revenge-of-the-ie-box-model), the CSS WG ultimately chose another default where `width` was not referring to the outer width of a box but to width of the usable content space inside.
 
 ![W3C and IE Box Models compared, courtesy of Wikipedia](/img/450px-W3C_and_Internet_Explorer_box_models.png)
 
