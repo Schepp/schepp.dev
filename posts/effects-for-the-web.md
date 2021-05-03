@@ -5,6 +5,7 @@ image: /img/Mike-Matas-One-Week-In-Japan.jpg
 date: 2011-12-27
 tags:
   - css
+  - svg
 layout: layouts/post.njk
 ---
 ![](/img/Mike-Matas-One-Week-In-Japan.jpg)
