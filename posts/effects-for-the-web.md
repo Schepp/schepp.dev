@@ -207,4 +207,4 @@ img:hover {
 
 And that’s it, filter effects for everyone! Let 2012 be the year of the CSS filters and [have fun playing with’em](http://davidwalsh.name/dw-content/css-filters.php).
 
-_This blog post was originally published on [drublic.com/effects-for-the-web/](https://drublic.com/effects-for-the-web/)_
+_This blog post was originally published at [drublic.de/blog/effects-for-the-web/](http://drublic.de/blog/effects-for-the-web/)_
