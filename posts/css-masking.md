@@ -592,6 +592,6 @@ img {
 
 ## Final Words
 
-I admit it wasn't the shortest of all articles but I hope I got you interested in playing around with masks on the web. So if you happen to create some decent stuff with the aforementioned techniques please leave a link under this post or drop us a note on Twitter. Also if you have any further questions regarding masks, don't hesitate to give us a shout.
+I admit it wasn't the shortest of all articles but I hope I got you interested in playing around with masks on the web. So if you happen to create some decent stuff with the aforementioned techniques please leave a link under this post or drop us a note on Twitter. Also if you have any further questions regarding masks, don't hesitate to give me a shout.
 
 _This blog post was originally published at [thenittygritty.co/css-masking](http://thenittygritty.co/css-masking)_
