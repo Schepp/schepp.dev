@@ -161,7 +161,7 @@ This would be much harder and less efficient to do within an SVG.
 
 Finally the filter effects are planned to be extended with [OpenGL/WebGL vertex and fragment shaders](http://www.adobe.com/devnet/html5/articles/css-shaders.html). Vertex shaders will let you span a 2D mesh over an element and then let you distort the object by moving all the crossing points of the mesh following a mathematical formula of your choice. Fragment shaders on the other hand will allow you to do such mathematical processing on the colors of every pixel of that element. And all of it, on top, hardware accelerated on your graphics card.
 
-![Adobe's cinematic effects for the web](CSS-shaders-Cinematic-effects-for-the-web-Adobe-Developer-Connection-Google_2011-12-18_19-31-01.png)
+![Adobe's cinematic effects for the web](/img/CSS-shaders-Cinematic-effects-for-the-web-Adobe-Developer-Connection-Google_2011-12-18_19-31-01.png)
 
 Conveniently last week saw the first implementation of those filters in the [WebKit-Nightlies](http://nightly.webkit.org/), from were they quickly spawned over to [Chrome Canary](http://tools.google.com/dlpage/chromesxs). That means that within a 3 months timeframe CSS filter effects will be available in your everyday Chrome browser and probably not too much later also in Safari. And this means that we are not too far away from being able to serve some flavor of CSS filters to 90% – 95% of all browsers on the market!
 
