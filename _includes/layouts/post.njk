@@ -4,7 +4,9 @@ templateClass: tmpl-post
 ---
 <h1 class="h1--post">{{ title }}</h1>
 
-{{ content | safe }}
+<img role="presentation" src="{{ image }}" loading="eager" fetchpriority="high" alt="">
+
+{{ content | replace({'<img': '<img loading="lazy"'}) | safe }}
 
 {% include "webmentionlist.njk" %}
 

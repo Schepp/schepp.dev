@@ -12,11 +12,21 @@
       //   entry.time
       const video = entry.target;
       if (entry.isIntersecting) {
+        video.setAttribute('muted', '');
         video.setAttribute('autoplay', '');
-        video.play();
+        try {
+          video.play();
+        } catch (e) {
+          // noop
+        }
       } else {
+        video.removeAttribute('muted', '');
         video.removeAttribute('autoplay');
-        video.pause();
+        try {
+          video.pause();
+        } catch (e) {
+          // noop
+        }
       }
     });
   };

@@ -1,14 +1,12 @@
 ---
 title: A CSS-only Carousel
 description: I've recently read about and discussed CSS Scroll Snapping so often that I felt like I should build a CSS-only carousel based on it.
-image: /img/carousel.jpg
+image: https://schepp.dev/img/carousel.jpg
 date: 2019-12-08
 tags:
   - css
 layout: layouts/post.njk
 ---
-![](/img/carousel.jpg)
-
 I've recently [read about](https://24ways.org/2019/beautiful-scrolling-experiences-without-libraries/) and [discussed](https://twitter.com/AndyDavies/status/1202862028412661760) CSS Scroll Snapping so often that I felt like I should build a CSS-only carousel based on it. There it is:
 
 <iframe src="/demos/css-only-carousel/index.html" height="600" style="background-color: #eee">

@@ -7,8 +7,6 @@ tags:
   - css
 layout: layouts/post.njk
 ---
-![](/img/ballet.jpg)
-
 Yesterday, as I was browsing my Twitter timeline, a tweet from Chris Coyier popped up, in which he mentioned feedback he got for one of his [CSS Tricks](https://css-tricks.com/) experiments. It went as follows:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Anecdotal thing: when I had this on <a href="https://twitter.com/css?ref_src=twsrc%5Etfw">@CSS</a>, I had SO MANY reports of people annoyed that when they did &quot;find on page&quot; and ⬆️⬇️ through the results, the smooth scrolling was slow and annoying. Unfortunately, you can&#39;t control the speed or when it happens. <a href="https://t.co/HAio46bYQt">https://t.co/HAio46bYQt</a></p>&mdash; Chris Coyier (@chriscoyier) <a href="https://twitter.com/chriscoyier/status/1346513455516426242?ref_src=twsrc%5Etfw">January 5, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

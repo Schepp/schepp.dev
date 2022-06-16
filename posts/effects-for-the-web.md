@@ -1,15 +1,13 @@
 ---
 title: Effects for the Web!
 description: How to use the new filter-properties for CSS3 and combine them with methods implemented by most modern browsers.
-image: /img/Mike-Matas-One-Week-In-Japan.jpg
+image: https://schepp.dev/img/Mike-Matas-One-Week-In-Japan.jpg
 date: 2011-12-27
 tags:
   - css
   - svg
 layout: layouts/post.njk
 ---
-![](/img/Mike-Matas-One-Week-In-Japan.jpg)
-
 In the late nineties CSS 2.1 brought us a basic set of good-enough tools to finally get table-free layouts en route. Then came CSS3 which started off by providing us with more creative tools to carve out the details. Today we finally have embeddeable fonts, rounded corners, gradients, semitransparent elements and colors, box and text shadows and so on and so forth.
 
 Yet, comparing our toolset with that of an image editor like Photoshop we still discover a lot to desire. In Photoshop, for example, we have possibilities to desaturate parts of an image, or to sharpen or blur them. How might we need that for the web? Well, desaturating or blurring an area of a web page might be a means of directing your visitor’s attention to where you want it to be. Or it might help your visitor to concentrate better on an area, which you left untouched. Such a case might be magnifying pictures of a gallery:

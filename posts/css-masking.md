@@ -3,15 +3,13 @@ title: CSS Masks – How To Use Masking In CSS Now
 description: Almost one year ago I wrote an article that dealt with an emerging WebKit CSS technique, the CSS filter effects, and the question if we could not have/emulate them in other browsers, too. Turned out we could.
 
 Today I want to talk about another WebKit-only feature and show you how you might be able to use it across all of the browsers: This is about CSS Masks.
-image: /img/mask-box-image.jpg
+image: https://schepp.dev/img/mask-box-image.jpg
 date: 2012-12-20
 tags:
   - css
   - svg
 layout: layouts/post.njk
 ---
-![](/img/mask-box-image.jpg)
-
 Almost one year ago [I wrote an article](/posts/effects-for-the-web/) that dealt with an emerging WebKit CSS technique, the CSS filter effects, and the question if we could not have/emulate them in other browsers, too. Turned out we could.
 
 Today I want to talk about another WebKit-only feature and show you how you might be able to use it across all of the browsers: This is about…
