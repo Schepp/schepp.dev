@@ -4,7 +4,9 @@ templateClass: tmpl-post
 ---
 <h1 class="h1--post">{{ title }}</h1>
 
-<img role="presentation" src="{{ image }}" loading="eager" fetchpriority="high" alt="">
+<p>
+  <img role="presentation" src="{{ image }}" loading="eager" fetchpriority="high" alt="">
+</p>
 
 {{ content | replace({'<img': '<img loading="lazy"'}) | safe }}
 
