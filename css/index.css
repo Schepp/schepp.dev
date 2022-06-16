@@ -74,9 +74,10 @@ main .h1--post + p::before {
   mix-blend-mode: darken;
 }
 
-main h1 + p > img[src*="schepp"] {
+main h1 + p > img[src*="schepp-2019"] {
   width: 33vmin;
   height: 33vmin;
+  object-fit: cover;
   margin: 0 auto;
   border-radius: 50%;
 }
