@@ -78,6 +78,7 @@ main h1 + p > img[src*="schepp-2019"] {
   width: 33vmin;
   height: 33vmin;
   object-fit: cover;
+  object-position: center center;
   margin: 0 auto;
   border-radius: 50%;
 }
