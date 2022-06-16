@@ -8,7 +8,7 @@ templateClass: tmpl-post
   <img role="presentation" src="{{ image }}" loading="eager" fetchpriority="high" alt="">
 </p>
 
-{{ content | replace({'<img': '<img loading="lazy"'}) | safe }}
+{{ content | replace('<img', '<img loading="lazy"') | safe }}
 
 {% include "webmentionlist.njk" %}
 
