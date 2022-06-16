@@ -38,7 +38,6 @@ iframe {
 
 main .h1--post + p::before,
 main h1 + p > img {
-  content: '';
   display: block;
   width: 100vw;
   max-width: none;
@@ -47,6 +46,10 @@ main h1 + p > img {
   margin-right: calc((100vw - 100%) / -2);
   object-fit: cover;
   object-position: 50% 15%;
+}
+
+main .h1--post + p::before {
+  content: '';
 }
 
 main .h1--post {
