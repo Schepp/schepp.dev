@@ -100,13 +100,20 @@ main .h1--post + p::before {
   mix-blend-mode: darken;
 }
 
-.tmpl-about h1 + p img {
+.tmpl-about h1 + p > picture > img {
   width: 33vmin;
   height: 33vmin;
   object-fit: cover;
   object-position: center center;
   margin: 0 auto;
   border-radius: 50%;
+}
+
+.tmpl-about img[src^="https://"] {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: none;
 }
 
 .video {
