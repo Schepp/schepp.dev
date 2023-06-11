@@ -300,6 +300,7 @@ pre[class*="language"][class*="language"] {
 .postlist {
   list-style: none;
   padding: 0;
+  font-size: 0.9em;
 }
 
 .postlist-item {
