@@ -16,6 +16,7 @@
 }
 
 html {
+  height: 100%;
   overflow-x: hidden;
 }
 
@@ -29,8 +30,32 @@ body {
 }
 
 body {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr;
+  min-height: 100%;
   font-size: 1.1875rem;
   overflow-wrap: break-word;
+}
+
+header, main, footer {
+  max-width: 100vw;
+}
+
+header {
+  grid-area: header;
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
 }
 
 iframe {
@@ -48,7 +73,7 @@ main h1 + p > picture > img {
   margin-left: calc((100vw - 100%) / -2);
   margin-right: calc((100vw - 100%) / -2);
   object-fit: cover;
-  object-position: 50% 15%;
+  object-position: 50% 25%;
 }
 
 main .h1--post + p::before {
@@ -306,6 +331,7 @@ pre[class*="language"][class*="language"] {
 
 .postlist-item {
   counter-increment: start-from -1;
+  margin-bottom: 1em;
 }
 
 .postlist-date,
@@ -328,6 +354,8 @@ pre[class*="language"][class*="language"] {
 }
 
 .tmpl-home .postlist-link {
+  display: inline;
+  padding: 0;
   font-size: 1.1875em; /* 19px /16 */
   font-weight: 700;
 }
