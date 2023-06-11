@@ -1,5 +1,5 @@
 ---
-title: Chaining declarations via Animation Composition
+title: Chaining Declarations via Animation Composition
 description: How to chain CSS declarations non-destructively
 image: /img/rainbow-ponton.jpeg
 date: 2023-06-11
