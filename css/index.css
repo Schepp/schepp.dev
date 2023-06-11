@@ -39,7 +39,8 @@ iframe {
 }
 
 main .h1--post + p::before,
-main h1 + p > img {
+main h1 + p > img,
+main h1 + p > picture > img {
   display: block;
   width: 100vw;
   max-width: none;

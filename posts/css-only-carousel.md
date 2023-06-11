@@ -1,7 +1,7 @@
 ---
 title: A CSS-only Carousel
 description: I've recently read about and discussed CSS Scroll Snapping so often that I felt like I should build a CSS-only carousel based on it.
-image: https://schepp.dev/img/carousel.jpg
+image: /img/carousel.jpg
 date: 2019-12-08
 tags:
   - css

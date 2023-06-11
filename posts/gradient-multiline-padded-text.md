@@ -1,7 +1,7 @@
 ---
 title: Gradient Multiline Padded Text
 description: How to achieve multiline padded text with a gradient as background in CSS.
-image: https://schepp.dev/img/gradient-multiline-padded-text.png
+image: /img/gradient-multiline-padded-text.png
 date: 2021-01-18
 tags:
   - css

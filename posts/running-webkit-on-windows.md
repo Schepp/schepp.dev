@@ -1,7 +1,7 @@
 ---
 title: Running WebKit on Windows
 description: How to test your site on WebKit (Safari) without buying a Mac.
-image: https://schepp.dev/img/webkit.png
+image: /img/webkit.png
 date: 2021-01-21
 tags:
   - devtools

@@ -3,6 +3,7 @@ const fs = require("fs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const sanitizeHtml = require('sanitize-html');
+const Image = require("@11ty/eleventy-img");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
@@ -12,6 +13,32 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.setDataDeepMerge(true);
 
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
+
+  // Image plugin
+  eleventyConfig.addShortcode("image", async function(src, alt = "", sizes = "100%", loading = "eager") {
+    let metadata;
+    try {
+      metadata = await Image(`.${src}`, {
+        widths: [100, 200, 300, 400, 500, 600, 800, 1000],
+        formats: ["avif", "jpeg"],
+      });
+    } catch (err) {
+      console.error(err.message);
+      return "";
+    }
+
+    let imageAttributes = {
+      alt,
+      sizes,
+      loading,
+      decoding: loading === "eager" ? "sync" : "async",
+      fetchpriority: loading === "eager" ? "high" : "auto",
+    };
+
+    const html = Image.generateHTML(metadata, imageAttributes);
+
+    return `${html}`;
+  });
 
   eleventyConfig.addFilter('readableDate', dateObj => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('dd LLL yyyy')

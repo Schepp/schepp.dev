@@ -1,7 +1,7 @@
 ---
 title: Effects for the Web!
 description: How to use the new filter-properties for CSS3 and combine them with methods implemented by most modern browsers.
-image: https://schepp.dev/img/Mike-Matas-One-Week-In-Japan.jpg
+image: /img/Mike-Matas-One-Week-In-Japan.jpg
 date: 2011-12-27
 tags:
   - css
