@@ -1,6 +1,6 @@
 ---
-title: Filling the gaps with CSS Animation Composition
-description: Or how to chain CSS declarations non-destructively
+title: Chaining declarations with CSS Animation Composition
+description: How to chain CSS declarations non-destructively
 image: /img/puzzle.jpeg
 date: 2023-06-11
 tags:
