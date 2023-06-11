@@ -200,13 +200,23 @@ header:after {
   clear: both;
 }
 
+:is(h1, h2, h3, h4, h5, h6) {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+p:not([class]) + :is(h1, h2, h3, h4, h5, h6) {
+  margin-top: 2rem;
+}
+
 ul {
   padding-left: 1em;
 }
 
 a {
   text-decoration-color: dodgerblue;
-  text-decoration-width: 4px;
+  text-decoration-width: 2px;
+  text-decoration-thickness: 2px;
 }
 
 table {

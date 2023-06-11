@@ -146,6 +146,8 @@ The reason is that an individual rotate will always be applied *after* an indivi
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 
+### Solutions?
+
 One thing I was very surprised to learn from Amit is that when you set individual transforms *and* the classic transform at the same time the latter one would not clear out the individual declarations but queue itself up after them. So a solution can be to put our translate into the classic transform as it will then come in last:
 
 ```css
