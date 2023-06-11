@@ -140,7 +140,7 @@ While it's possible to do the following, the visual outcome will not be the same
 
 The reason is that an individual rotate will always be applied *after* an individual translate. So in the `:hover`-state, instead of the element first being rotated and then moved along the rotation axis, the element will first be moved and only then rotated.
 
-<p class="codepen" data-height="500" data-default-tab="html,result" data-slug-hash="BaGNwGB" data-user="Schepp" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+<p class="codepen" data-height="500" data-default-tab="css,result" data-slug-hash="BaGNwGB" data-user="Schepp" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
   <span>See the Pen <a href="https://codepen.io/Schepp/pen/BaGNwGB">
   Untitled</a> by Christian Schaefer (<a href="https://codepen.io/Schepp">@Schepp</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
@@ -158,7 +158,7 @@ One thing I was very surprised to learn from Amit is that when you set individua
 }
 ```
 
-<p class="codepen" data-height="500" data-default-tab="html,result" data-slug-hash="GRwJMwa" data-user="Schepp" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+<p class="codepen" data-height="500" data-default-tab="css,result" data-slug-hash="GRwJMwa" data-user="Schepp" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
   <span>See the Pen <a href="https://codepen.io/Schepp/pen/GRwJMwa">
   Individual Transforms Caveat</a> by Christian Schaefer (<a href="https://codepen.io/Schepp">@Schepp</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
@@ -181,7 +181,7 @@ While I think, this works well for the given example, where it falls short is wh
 
 ### Enters Animation Composition!
 
-An unorthodox way of solving this is by making use of, or rather misuse, [CSS Animation Composition](https://developer.chrome.com/articles/css-animation-composition/) to chain transforms after existing ones. [`animation-composition`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-composition) is a new animation longhand property, that allows you to determine if the effects of an animation should wipe out what may already be defined on an element or if its effects get added on top of what is already there. 
+An unorthodox way of solving this is by making use of, or rather misuse, [CSS Animation Composition](https://developer.chrome.com/articles/css-animation-composition/) to chain transforms after existing ones. [`animation-composition`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-composition) is a new animation property, that allows you to determine if the effects of an animation should wipe out what may already be defined on an element or if its effects get added on top of what is already there. 
 
 What you can do now is define an animation, which carries your additional transforms, which is paused and composited on top of the existing values. This is how this would look like, applied to our example:
 
@@ -200,7 +200,7 @@ What you can do now is define an animation, which carries your additional transf
 }
 ```
 
-<p class="codepen" data-height="500" data-default-tab="html,result" data-slug-hash="KKrpXYN" data-user="Schepp" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+<p class="codepen" data-height="500" data-default-tab="css,result" data-slug-hash="KKrpXYN" data-user="Schepp" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
   <span>See the Pen <a href="https://codepen.io/Schepp/pen/KKrpXYN">
   Combining individual and classic transforms</a> by Christian Schaefer (<a href="https://codepen.io/Schepp">@Schepp</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
@@ -238,7 +238,7 @@ This is what a solution via Animation Composition might look like:
   animation-composition: add;
 }
 ```
-<p class="codepen" data-height="500" data-default-tab="html,result" data-slug-hash="qBQdVVw" data-user="Schepp" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+<p class="codepen" data-height="500" data-default-tab="css,result" data-slug-hash="qBQdVVw" data-user="Schepp" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
   <span>See the Pen <a href="https://codepen.io/Schepp/pen/qBQdVVw">
   CSS Animation Composition for Composing Backgrounds</a> by Christian Schaefer (<a href="https://codepen.io/Schepp">@Schepp</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
