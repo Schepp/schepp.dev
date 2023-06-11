@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ renderData.title or title or metadata.title }}</title>
   <meta name="description" content="{{ renderData.description or description or metadata.description }}">
-  <link rel="preload" href="{{ '/css/index.css' | url }}" as="styleheet">
   <link rel="preload" href="{{ '/fonts/lato-regular-webfont.woff2' | url }}" as="font" crossorigin="anonymous">
   <link rel="preload" href="{{ '/fonts/lato-bold-webfont.woff2' | url }}" as="font" crossorigin="anonymous">
-  <link rel="preload" href="{{ renderData.image or image or metadata.image }}" as="image">
   <style>
     @font-face {
       font-family: 'Merriweather';
@@ -42,7 +40,9 @@
       font-display: swap;
     }
   </style>
-  <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
+  <style>
+    {% include 'css/index.css' %}
+  </style>
   <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}" media="print" onload="this.onload='';this.media='all'">
   <link rel="stylesheet" href="{{ '/css/webmention.css' | url }}" media="print" onload="this.onload='';this.media='all'">
   <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml"
@@ -50,12 +50,27 @@
   <link rel="webmention" href="https://webmention.io/schepp.dev/webmention">
   <link rel="pingback" href="https://webmention.io/schepp.dev/xmlrpc">
   <meta property="og:description" content="{{ renderData.description or description or metadata.description }}">
-  <meta property="og:image" content="https://schepp.dev{{ renderData.image or image or metadata.image }}">
+  {% if not image and (renderData.image or metadata.image) %}
+    {% if renderData.image %}
+      {% set image = renderData.image %}
+    {% elseif metadata.image %}
+      {% set image = metadata.image %}
+    {% endif %}
+  {% endif %}
+  {% if image %}
+    <meta name="og:image" content="{% socialimage image %}">
+  {% else %}
+    <meta name="og:image" content="https://schepp.dev{{ renderData.image or image or metadata.image }}">
+  {% endif %}
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@derSchepp">
   <meta name="twitter:title" content="{{ renderData.title or title or metadata.title }}">
   <meta name="twitter:description" content="{{ renderData.description or description or metadata.description }}">
-  <meta name="twitter:image" content="https://schepp.dev{{ renderData.image or image or metadata.image }}">
+  {% if image %}
+    <meta name="twitter:image" content="{% socialimage image %}">
+  {% else %}
+    <meta name="twitter:image" content="https://schepp.dev{{ renderData.image or image or metadata.image }}">
+  {% endif %}
   <meta name="monetization" content="$ilp.gatehub.net/928609350">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ '/img/apple-touch-icon.png' | url }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ '/img/favicon-32x32.png' | url }}">

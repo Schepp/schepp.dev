@@ -19,7 +19,7 @@ module.exports = function (eleventyConfig) {
     let metadata;
     try {
       metadata = await Image(`.${src}`, {
-        widths: [100, 200, 300, 400, 500, 600, 800, 1000],
+        widths: [100, 200, 300, 400, 500, 600, 800, 1000, 1200, 2000],
         formats: ["avif", "jpeg"],
       });
     } catch (err) {
@@ -38,6 +38,15 @@ module.exports = function (eleventyConfig) {
     const html = Image.generateHTML(metadata, imageAttributes);
 
     return `${html}`;
+  });
+
+  eleventyConfig.addShortcode("socialimage", async function(src) {
+    const hash = Image.getHash(`.${src}`, {
+      widths: [1200],
+      formats: ["jpeg"],
+    });
+
+    return `https://schepp.dev/img/${hash}-1200.jpeg`;
   });
 
   eleventyConfig.addFilter('readableDate', dateObj => {
