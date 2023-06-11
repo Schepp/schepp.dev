@@ -80,7 +80,7 @@ main .h1--post + p::before {
   mix-blend-mode: darken;
 }
 
-main h1 + p > img[src*="schepp-2019"] {
+.tmpl-about h1 + p img {
   width: 33vmin;
   height: 33vmin;
   object-fit: cover;
