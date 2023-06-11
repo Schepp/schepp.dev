@@ -205,7 +205,7 @@ header:after {
   margin-bottom: 0.5rem;
 }
 
-p:not([class]) + :is(h1, h2, h3, h4, h5, h6) {
+:is(ol, ul, p):not([class]) + :is(h1, h2, h3, h4, h5, h6) {
   margin-top: 2rem;
 }
 
@@ -422,7 +422,7 @@ a[href].direct-link:focus:visited,
 }
 
 .me {
-  display: block;
+  display: flex;
   list-style: none;
   margin: 0;
   padding: 1em;
@@ -430,8 +430,23 @@ a[href].direct-link:focus:visited,
 }
 
 .me li {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   padding-right: 1em;
+}
+
+.me a {
+  display: flex;
+  align-items: center;
+}
+
+.me svg {
+  width: 1.5rem;
+  height: auto;
+}
+
+.webmentions {
+  margin-top: 3rem;
 }
 
 twitter-widget {
