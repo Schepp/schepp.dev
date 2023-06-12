@@ -230,9 +230,7 @@ This is what a solution via Animation Composition might look like:
 }
 
 @keyframes background {
-  0% {
-    background: no-repeat center/cover url(bg.png);
-  }
+  0% { background: no-repeat center/cover url(bg.png) }
 }
 
 .element {
