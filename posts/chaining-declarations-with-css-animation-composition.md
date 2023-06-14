@@ -248,4 +248,4 @@ This would also work for composing complex shorthands like `font` or other layer
 
 ## But is it available in all browsers?
 
-As of writing this article, CSS Animation Composition is available in all browsers, except for Firefox, where the feature has still to be enabled via the `layout.css.animation-composition.enabled` flag. Hopefully, this will change soon!
+As of writing this article, CSS Animation Composition is available in all browsers, except for Firefox, where the feature still has to be enabled via the `layout.css.animation-composition.enabled` flag. Hopefully, this will change soon! 🤞🏼
