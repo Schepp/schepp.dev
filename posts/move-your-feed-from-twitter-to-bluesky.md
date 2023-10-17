@@ -1,5 +1,5 @@
 ---
-title: Restore you Follows from Twitter/X in BlueSky
+title: Restore your Follows from Twitter/X in BlueSky
 description: How to easily re-build your Twitter/X feed in BlueSky
 image: /img/blue-sky.jpeg
 date: 2023-10-17
