@@ -101,15 +101,8 @@ update();
   <label><code>visualViewport.scale</code>:
     <output id="vvs"></output>
   </label>
-  <h3>Layout Viewport</h3>
-  <label><code>window.innerWidth</code>:
-    <output id="lvw"></output>
-  </label><br>
-  <label><code>window.innerHeight</code>:
-    <output id="lvh"></output>
-  </label><br>
   <h3>Calculated unzoomed Visual Viewport</h3>
-  <label><code>visualViewport.width</code> &times; <code>visualViewport.scale</code> (should always be equal to <code>window.innerWidth</code>):
+  <label><code>visualViewport.width</code> &times; <code>visualViewport.scale</code> (should always be <span id="ivvw"></span>):
     <output id="clvw"></output>
   </label><br><br>
   <label><code>visualViewport.height</code> &times; <code>visualViewport.scale</code>:
@@ -118,6 +111,9 @@ update();
 </main>
 <script>
   (() => {
+    const initialWidth =  window.visualViewport.width;
+    document.getElementById('ivvw').textContent = initialWidth;
+
     function update() {
       const {width, height, scale} = window.visualViewport;
       const calculatedLvw = Math.round(width * scale);
@@ -130,7 +126,7 @@ update();
       document.getElementById('clvw').value = calculatedLvw;
       document.getElementById('clvh').value = calculatedLvh;
 
-      document.getElementById('clvw').classList[calculatedLvw !== window.innerWidth ? 'add' : 'remove']('incorrect');
+      document.getElementById('clvw').classList[calculatedLvw !== initialWidth ? 'add' : 'remove']('incorrect');
     }
 
     window.visualViewport.addEventListener('resize', update);
