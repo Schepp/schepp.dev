@@ -59,8 +59,11 @@
   <h2>When is this important?</h2>
   <p>When you have a fixed element that you place within the boundaries of the <strong>unzoomed</strong> visual viewport, so that it is never overlapped by the soft keyboard (like <code>svh</code>, but also factoring in the keyboard).</p>
   <p>Pinch-zooming in WebKit results in jumping and wiggling of that element during the zoom process, as Visual Viewport API data used for positioning calculations is inaccurate.</p>
-  <button type="button">Open fixed element</button>
+  <button type="button" class="dialog">Open fixed element</button>
   <dialog>
+    <form method="dialog">
+      <button style="position: absolute; right: 10px; top: 10px;">OK</button>
+    </form>
     <p>While pinch-zooming, this fixed positioned dialog and its contents should not jump or wiggle around, but be rock stable. Placement is done via <code>--width</code> and <code>--height</code>:</p>
 <pre><code><style style="display: block">dialog {
   position: fixed;
@@ -149,7 +152,7 @@ update();
     document.getElementById('lvw').value = window.innerWidth;
     document.getElementById('lvh').value = window.innerHeight;
 
-    document.querySelector('button').addEventListener('click', () => {
+    document.querySelector('.dialog').addEventListener('click', () => {
       document.querySelector('dialog').showModal();
     });
   })();

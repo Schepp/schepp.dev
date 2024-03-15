@@ -541,6 +541,10 @@ hgroup p {
   margin-top: -0.5em;
 }
 
+button {
+  font-size: inherit;
+}
+
 .incorrect {
   color: red;
 }
