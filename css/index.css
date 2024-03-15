@@ -200,13 +200,17 @@ header:after {
   clear: both;
 }
 
-:is(h1, h2, h3, h4, h5, h6) {
+:is(h1, h2, h3, h4, h5, h6, hgroup) {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
 }
 
 :is(ol, ul, p):not([class]) + :is(h1, h2, h3, h4, h5, h6) {
   margin-top: 2rem;
+}
+
+p {
+  text-size-adjust: from-font;
 }
 
 ul {
@@ -527,4 +531,16 @@ figcaption {
   width: min(80rem, 100vw);
   margin-block: 3rem;
   margin-inline: calc((min(80rem, 100vw) - 100%) / -2);
+}
+
+hgroup {
+  margin-bottom:
+}
+
+hgroup p {
+  margin-top: -0.5em;
+}
+
+.incorrect {
+  color: red;
 }

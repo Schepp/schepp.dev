@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebKit Visual Viewport API Bug</title>
+  <link rel="preload" href="/fonts/lato-regular-webfont.woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="/fonts/lato-bold-webfont.woff2" as="font" crossorigin="anonymous">
+  <style>
+    @font-face {
+      font-family: 'Merriweather';
+      font-style: normal;
+      font-weight: 400;
+      src: url('/fonts/merriweather-regular-webfont.woff2') format('woff2'), url('/fonts/merriweather-regular-webfont.woff') format('woff');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 400;
+      src: url('/fonts/lato-regular-webfont.woff2') format('woff2'), url('/fonts/lato-regular-webfont.woff') format('woff');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 600;
+      src: url('/fonts/lato-bold-webfont.woff2') format('woff2'), url('/fonts/lato-bold-webfont.woff') format('woff');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Lato';
+      font-style: italic;
+      font-weight: 400;
+      src: url('/fonts/lato-italic-webfont.woff2') format('woff2'), url('/fonts/lato-italic-webfont.woff') format('woff');
+      font-display: swap;
+    }
+  </style>
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+<main>
+  <h1>WebKit Visual Viewport API Bug</h1>
+  <p>WebKit has a bug where, when pinch-zooming, the product of <code>visualViewport.height</code> &times; <code>visualViewport.scale</code>
+    does not correspond to the layout viewport's<a href="footnote">*</a> height.</p>
+  <p><small>* = layout viewport, minus soft keyboard, that is</small></p>
+  <h2>Visual Viewport</h2>
+  <label><code>visualViewport.width</code>:
+    <output id="vvw"></output>
+  </label><br>
+  <label><code>visualViewport.height</code>:
+    <output id="vvh"></output>
+  </label><br>
+  <label><code>visualViewport.scale</code>:
+    <output id="vvs"></output>
+  </label>
+  <h2>Layout Viewport</h2>
+  <label>width:
+    <output id="lvw"></output>
+  </label><br>
+  <label>height:
+    <output id="lvh"></output>
+  </label><br>
+  <h2>Calculated Layout Viewport</h2>
+  <label>width:
+    <output id="clvw"></output>
+  </label><br>
+  <label>height:
+    <output id="clvh"></output>
+  </label><br>
+</main>
+<script>
+  (() => {
+    if (!window.visualViewport) {
+      return;
+    }
+
+    function update() {
+      const {width, height, scale} = window.visualViewport;
+      const calculatedLvw = Math.round(width * scale);
+      const calculatedLvh = Math.round(height * scale);
+
+      document.getElementById('vvw').value = width;
+      document.getElementById('vvh').value = height;
+      document.getElementById('vvs').value = scale;
+
+      document.getElementById('clvw').value = calculatedLvw;
+      document.getElementById('clvh').value = calculatedLvh;
+
+      document.getElementById('clvw').classList[calculatedLvw !== window.innerWidth ? 'add' : 'remove']('.incorrect');
+      document.getElementById('clvh').classList[calculatedLvh !== window.innerHeight ? 'add' : 'remove']('.incorrect');
+    }
+
+    window.visualViewport.addEventListener('resize', update);
+
+    update();
+
+    document.getElementById('lvw').value = window.innerWidth;
+    document.getElementById('lvh').value = window.innerHeight;
+  })();
+</script>
+</body>
+</html>
