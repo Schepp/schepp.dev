@@ -102,7 +102,7 @@ update();
     <output id="vvs"></output>
   </label>
   <h3>Calculated unzoomed Visual Viewport</h3>
-  <label><code>visualViewport.width</code> &times; <code>visualViewport.scale</code> (should always be <span id="ivvw"></span>):
+  <label><code>visualViewport.width</code> &times; <code>visualViewport.scale</code> (should always be <code>window.innerWidth</code> / <span id="ivvw"></span>):
     <output id="clvw"></output>
   </label><br><br>
   <label><code>visualViewport.height</code> &times; <code>visualViewport.scale</code>:
@@ -111,8 +111,16 @@ update();
 </main>
 <script>
   (() => {
-    const initialWidth =  window.visualViewport.width;
-    document.getElementById('ivvw').textContent = initialWidth;
+    let initialWidth = window.innerWidth;
+
+    const updateLayoutViewport = () => {
+      initialWidth = window.innerWidth;
+      document.getElementById('ivvw').textContent = initialWidth;
+    }
+
+    window.addEventListener('resize', updateLayoutViewport);
+
+    updateLayoutViewport(),
 
     function update() {
       const {width, height, scale} = window.visualViewport;
