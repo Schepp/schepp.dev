@@ -61,9 +61,8 @@
   <p>Pinch-zooming in WebKit results in jumping and wiggling of that element during the zoom process, as Visual Viewport API data used for positioning calculations is inaccurate.</p>
   <button type="button">Open fixed element</button>
   <dialog>
-    <p>While pinch-zooming, this fixed positioned dialog and its contents should not jump or wiggle around. Placement is done via <code>--width</code> and <code>--height</code>:</p>
-<pre><code>
-<style style="display: block">dialog {
+    <p>While pinch-zooming, this fixed positioned dialog and its contents should not jump or wiggle around, but be rock stable. Placement is done via <code>--width</code> and <code>--height</code>:</p>
+<pre><code><style style="display: block">dialog {
   position: fixed;
   inset: auto;
   left: calc(var(--width) / 2);
@@ -72,11 +71,9 @@
   max-height: calc(var(--height) * 0.9);
   transform: translate(-50%, -50%);
 }
-</style>
-</code></pre>
+</style></code></pre>
     <p>&hellip;which are being updated via JavaScript:</p>
-<pre><code>
-<script style="display: block">const update = () => {
+<pre><code><script style="display: block">const update = () => {
   const { width, height, scale } = window.visualViewport;
   const root = document.documentElement;
 
@@ -87,8 +84,7 @@
 window.visualViewport.addEventListener('resize', update);
 
 update();
-</script>
-</code></pre>
+</script></code></pre>
   </dialog>
   <h2>Readings &amp; Calculations:</h2>
   <h3>Visual Viewport</h3>
