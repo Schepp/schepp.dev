@@ -129,7 +129,7 @@ update();
 
     updateLayoutViewport();
 
-    function update() {
+    function updateVisualViewport() {
       const {width, height, scale} = window.visualViewport;
       const calculatedLvw = Math.round(width * scale);
       const calculatedLvh = Math.round(height * scale);
@@ -144,9 +144,9 @@ update();
       document.getElementById('clvw').classList[calculatedLvw !== initialWidth ? 'add' : 'remove']('incorrect');
     }
 
-    window.visualViewport.addEventListener('resize', update);
+    window.visualViewport.addEventListener('resize', updateVisualViewport);
 
-    update();
+    updateVisualViewport();
 
     document.getElementById('lvw').value = window.innerWidth;
     document.getElementById('lvh').value = window.innerHeight;
