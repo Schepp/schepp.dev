@@ -58,8 +58,8 @@
 
   <p><img src="qr-code.png" width="150" height="150" alt="" style="float: right; margin: 0 0 0.5em 0.5em"> QR-Code of this page for easier testing on mobile:</p>
   <h2>When is this important?</h2>
-  <p>When you have a fixed element that you place within the visual viewport, so that it is always fully visible - even when the soft keyboard is open.</p>
-  <p>Pinch-zooming results in jumping and wiggling of that element during the zoom process.</p>
+  <p>When you have a fixed element that you place within the boundaries of the <strong>unzoomed</strong> visual viewport, so that it is never overlapped by the soft keyboard.</p>
+  <p>Pinch-zooming in WebKit results in jumping and wiggling of that element during the zoom process, as Visual Viewport API data used for calculations is inaccurate.</p>
   <button type="button">Open fixed element</button>
   <dialog>
     <p>While pinch-zooming, this fixed positioned element should not jump around. Placement is done via <code>--width</code> and <code>--height</code>:</p>
@@ -109,11 +109,11 @@ update();
   <label><code>window.innerHeight</code>:
     <output id="lvh"></output>
   </label><br>
-  <h3>Calculated Layout Viewport</h3>
-  <label>width (should always be equal to <code>window.innerWidth</code>):
+  <h3>Calculated unzoomed Layout Viewport</h3>
+  <label><code>visualViewport.width</code> &times; <code>visualViewport.scale</code> (should always be equal to <code>window.innerWidth</code>):
     <output id="clvw"></output>
-  </label><br>
-  <label>height:
+  </label><br><br>
+  <label><code>visualViewport.height</code> &times; <code>visualViewport.scale</code>:
     <output id="clvh"></output>
   </label><br>
 </main>
@@ -131,8 +131,7 @@ update();
       document.getElementById('clvw').value = calculatedLvw;
       document.getElementById('clvh').value = calculatedLvh;
 
-      document.getElementById('clvw').classList[calculatedLvw !== window.innerWidth ? 'add' : 'remove']('.incorrect');
-      document.getElementById('clvh').classList[calculatedLvh !== window.innerHeight ? 'add' : 'remove']('.incorrect');
+      document.getElementById('clvw').classList[calculatedLvw !== window.innerWidth ? 'add' : 'remove']('incorrect');
     }
 
     window.visualViewport.addEventListener('resize', update);
