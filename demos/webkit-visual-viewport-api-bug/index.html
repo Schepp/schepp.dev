@@ -40,14 +40,58 @@
     }
   </style>
   <link rel="stylesheet" href="/css/index.css">
+  <style>
+    dialog {
+      position: fixed;
+      top: calc(var(--height, 100svh) / 2);
+      left: calc(var(--height, 100svh) / 2);
+      transform: translate(-50%, -50%);
+    }
+  </style>
 </head>
 <body>
 <main>
   <h1>WebKit Visual Viewport API Bug</h1>
-  <p>WebKit has a bug where, when pinch-zooming, the product of <code>visualViewport.height</code> &times; <code>visualViewport.scale</code>
-    does not correspond to the layout viewport's<a href="footnote">*</a> height.</p>
-  <p><small>* = layout viewport, minus soft keyboard, that is</small></p>
-  <h2>Visual Viewport</h2>
+  <p>WebKit has a bug where, when pinch-zooming, the results of <code>visualViewport.width</code> &times; <code>visualViewport.scale</code> and <code>visualViewport.height</code> &times; <code>visualViewport.scale</code>
+    do not correspond to the layout viewport's<a href="footnote">*</a> width and height.</p>
+  <p><small>* = layout viewport, minus browser chrome, minus soft keyboard, that is</small></p>
+
+  <p><img src="qr-code.png" width="150" height="150" alt="" style="float: right; margin: 0 0 0.5em 0.5em"> QR-Code of this page for easier testing on mobile:</p>
+  <h2>When is this important?</h2>
+  <p>When you have a fixed element that you place within the visual viewport, so that it is always fully visible - even when the soft keyboard is open. Pinch-zooming results in heavy jumping and wiggling of that element during the zoom process.</p>
+  <button type="button">Open fixed element</button>
+  <dialog>
+    <p>While pinch-zooming, this fixed positioned element should not jump around. Placement is done via <code>--width</code> and <code>--height</code>:</p>
+<pre><code>
+<style style="display: block">dialog {
+  position: fixed;
+  inset: auto;
+  left: calc(var(--width) / 2);
+  top: calc(var(--height) / 2);
+  max-width: calc(var(--width) * 0.95);
+  max-height: calc(var(--height) * 0.95);
+  transform: translate(-50%, -50%);
+}
+</style>
+</code></pre>
+    <p>&hellip;which are being updated via JavaScript:</p>
+<pre><code>
+<script style="display: block">const update = () => {
+  const { width, height, scale } = window.visualViewport;
+  const root = document.documentElement;
+
+  root.style.setProperty('--width', `${width * scale}px`);
+  root.style.setProperty('--height', `${height * scale}px`);
+}
+
+window.visualViewport.addEventListener('resize', update);
+
+update();
+</script>
+</code></pre>
+  </dialog>
+  <h2>Readings &amp; Calculations:</h2>
+  <h3>Visual Viewport</h3>
   <label><code>visualViewport.width</code>:
     <output id="vvw"></output>
   </label><br>
@@ -57,14 +101,14 @@
   <label><code>visualViewport.scale</code>:
     <output id="vvs"></output>
   </label>
-  <h2>Layout Viewport</h2>
-  <label>width:
+  <h3>Layout Viewport</h3>
+  <label><code>window.innerWidth</code>:
     <output id="lvw"></output>
   </label><br>
-  <label>height:
+  <label><code>window.innerHeight</code>:
     <output id="lvh"></output>
   </label><br>
-  <h2>Calculated Layout Viewport</h2>
+  <h3>Calculated Layout Viewport</h3>
   <label>width:
     <output id="clvw"></output>
   </label><br>
@@ -74,10 +118,6 @@
 </main>
 <script>
   (() => {
-    if (!window.visualViewport) {
-      return;
-    }
-
     function update() {
       const {width, height, scale} = window.visualViewport;
       const calculatedLvw = Math.round(width * scale);
@@ -100,6 +140,10 @@
 
     document.getElementById('lvw').value = window.innerWidth;
     document.getElementById('lvh').value = window.innerHeight;
+
+    document.querySelector('button').addEventListener('click', () => {
+      document.querySelector('dialog').showModal();
+    });
   })();
 </script>
 </body>
