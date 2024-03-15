@@ -190,7 +190,7 @@ main {
   padding: 0 1rem 1rem 1rem;
 }
 
-main :first-child {
+main:not(:first-child) :first-child {
   margin-top: 0;
 }
 
