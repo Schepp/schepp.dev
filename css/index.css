@@ -233,9 +233,11 @@ table th {
 }
 
 pre,
-code {
+code,
+.speculationrules {
   padding: 0 0.25em;
   background-color: #fff0b2;
+  color: var(--darkgray);
   border-radius: 2px;
   font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
   line-height: 1.5;
