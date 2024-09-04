@@ -71,6 +71,7 @@
 <body>
 <main style="padding-bottom: 300px">
   <h1>Style Recalc Impact of Speculation Rules</h1>
+  <p>This page has the following speculation rules configured:</p>
 <script class="speculationrules" type="speculationrules">{
   "prefetch": [{
     "where": { "selector_matches": ".demo-list a" },
@@ -78,6 +79,7 @@
   }]
 }</script>
   <button onclick="document.documentElement.classList.toggle('recalc')">Toggle a CSS class on the document root</button>
+  <p>The unordered list below bears the CSS class <code>.demo-list</code>. This CSS class is not used in any stylesheet, it is only used in the speculation rules as seen above. In spite of that the selector still impacts style recalc performance. if you do a performance capture of the page with "Enable CSS selector stats (slow)" turned on, you will find the selector <code>.demo-list a</code> listed as one of many slow offenders.</p>
   <ul class="demo-list">
     <li><a href="/">Link</a></li>
     <li><a href="/">Link</a></li>
