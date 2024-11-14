@@ -1,66 +1,24 @@
 ---
-title: Restore your Follows from Twitter/X in BlueSky
-description: How to easily re-build your Twitter/X feed in BlueSky
+title: Restore your Followings from Twitter/X in Bluesky
+description: How to easily re-build your Twitter/X feed in Bluesky
 image: /img/blue-sky.jpeg
-date: 2023-10-17
+date: 2024-11-14
 tags:
   - twitter
   - x
   - bluesky
 layout: layouts/post.njk
 ---
-As we all know X, née Twitter, is turning more and more into a shitshow. Time to move on to other platforms! Sadly, the people I used to follow flock into all sorts of directions: be it LinkedIn, Mastodon, BlueSky or all of them. Since BlueSky is currently invite only and I'm not the kind of person chasing after invites, I had no presence there yet. But last week at Smashing Conf Antwerp I met Claudia and she granted me with an invite. Thanks a bunch! So here I am: [@derschepp.bsky.social](https://bsky.app/profile/derschepp.bsky.social)
+As we all know X, née Twitter, is turning more and more into a shitshow. Time to move on to other platforms! Sadly, the people I used to follow flock into all sorts of directions: be it LinkedIn, Mastodon, Bluesky or all of them. So here I am on Bluesky: [@schepp.dev](https://bsky.app/profile/schepp.dev). 
 
-## Reinstating your Twitter/X followings on BlueSky
+After having made that first step I wondered if there was an easy way to reconnect with everyone I followed on X, ideally in an automated way as I follow almost 5.000 people on Twitter/X.
 
-While thanks to the [Movetodon](https://www.movetodon.org/) project it was easy to re-follow everyone on Mastodon that I followed on Twitter/X - back in the day when the Twitter API still worked, nowadays there's only [Fedifinder](https://fedifinder.glitch.me/) and the Chrome plugin [Sky Follower Bridge](https://chrome.google.com/webstore/detail/sky-follower-bridge/behhbpbpmailcnfbjagknjngnfdojpko) left to reconnect with your followings on BlueSky. The problem with both: you need to click a button for every single person you want to re-follow. There is no "follow them all" button.  But when you follow almost 5.000 people on Twitter/X, that's just not feasible! So I did what a front-end developer does, and wrote myself a script to execute in the browser console which works together with the Sky Follower Bridge plugin and automates the process of following the people dug up by it.
+Luckily there is a Chrome browser plugin called [Sky Follower Bridge](https://chrome.google.com/webstore/detail/sky-follower-bridge/behhbpbpmailcnfbjagknjngnfdojpko) that does everything for you. This is how it works:
 
-## Give me the Code
+## Reinstating your Twitter/X followings on Bluesky
 
-First make sure to install [Sky Follower Bridge](https://chrome.google.com/webstore/detail/sky-follower-bridge/behhbpbpmailcnfbjagknjngnfdojpko) and to bring it to work by running it on your Twitter/X "[Following](https://twitter.com/following)" page and then feeding it with a BlueSky app password, which you can generate [here](https://bsky.app/settings/app-passwords). Once the first "Follow on BlueSky" buttons appear, open the browser devtools, run this script and give it some time to work itself through all your followings:
-
-```js
-const wait = (milliseconds) => new Promise((resolve) => {
-  window.setTimeout(resolve, milliseconds);
-});
-
-const clickMoreButton = () => new Promise((resolve) => {
-  const lookForButton = () => {
-    const loadMoreButton = document.querySelector('.bsky-reload-btn');
-
-    if (!loadMoreButton) {
-      window.setTimeout(lookForButton, 200);
-      return;
-    }
-
-    loadMoreButton.scrollIntoView();
-    loadMoreButton.click();
-
-    resolve(loadMoreButton);
-  };
-
-  lookForButton();
-});
-
-const followAllResults = () => {
-  const followButtons = Array.from(document.querySelectorAll('.action-button:not(.action-button__being)'));
-
-  return followButtons.reduce(async (acc, button) => {
-    button.click();
-
-    await wait(200);
-
-    return true;
-  }, Promise.resolve());
-};
-
-const run = async () => {
-  await followAllResults();
-  await clickMoreButton();
-  await wait(2000);
-
-  return run();
-};
-
-await run();
-```
+1. Open (or [install](https://www.google.com/chrome/)) the Chrome browser and install the [Sky Follower Bridge](https://chrome.google.com/webstore/detail/sky-follower-bridge/behhbpbpmailcnfbjagknjngnfdojpko) extension. You should see a new icon appear in your browser bar at the top: ![The image shows a simple, minimalistic icon resembling an "S" shape with rounded edges, primarily in blue gradient tones. The design could represent a path, route, or connection, potentially indicating movement or progression, commonly seen in navigation or travel-related applications.](/img/sky-follower-bridge-icon.png)
+2. Then go to your Twitter/X "[Following](https://twitter.com/following)" page, click the icon, feed it with your Bluesky account handle and a Bluesky app password, which you can generate [here](https://bsky.app/settings/app-passwords), and finally click "Find Bluesky Users": <br>![The image shows a login interface for "Sky Follower Bridge." It has fields for entering a handle or email and a password, with the handle pre-filled as "@derschepp.bsky.social." Below the password field, there’s a recommendation to use an "App Password." At the bottom, there’s a large blue button labeled "Find Bluesky Users" for initiating the search.](/img/sky-follower-bridge-button.png)
+3. Then it'll scan all your followings bit by bit and is going to try to find them on Bluesky. That might take some time: <br>![The image shows a user interface indicating that "1374 users" have been detected. Below this count, there is a prominent blue button labeled "View Detected Users" for viewing the list of identified users. Additionally, there is an option below the button labeled "Resume Scanning," allowing the user to continue the scan process if needed.](/img/sky-follower-bridge-scan.png)
+4. Finally it'll present you with its findings. You can now go through the list and click "Follow on Bluesky" for each user you are interested in. If you want to follow them all then click the button "Follow all" on the lower left: <br>![The image displays a user interface for the "Sky Follower Bridge," showing a list of 1374 detected users on Bluesky. The left side includes filters for refining the list, such as "Followed users," "Same handle name," "Same display name," and "Included handle name in description," all of which are toggled on. Below these filters, there's an "Action" section with a prominent "Follow All" button. On the right, individual users are displayed with their profile information, handle, and a "Follow on Bluesky" button next to each entry, indicating the option to follow them directly.](/img/sky-follower-bridge-follow-all.png)
+5. And, boom, you are done!
