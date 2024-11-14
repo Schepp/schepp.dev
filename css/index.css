@@ -116,6 +116,10 @@ main .h1--post + p::before {
   border: none;
 }
 
+.tmpl-about li img {
+  margin: 0;
+}
+
 .video {
   position: relative;
   width: 100%;
