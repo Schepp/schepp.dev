@@ -9,7 +9,7 @@ templateClass: tmpl-about
 
 {% image '/img/schepp-2019.jpg', 'me with weird glasses on', '33vmin' %}
 
-Christian Schaefer, known as "Schepp" ([@derSchepp](https://twitter.com/derSchepp) / [@Schepp@mastodon.social](https://mastodon.social/@Schepp)), is a freelance frontend developer from Düsseldorf, Germany. 
+Christian Schaefer, known as "Schepp" ([@derSchepp](https://twitter.com/derSchepp) / [@Schepp@mastodon.social](https://mastodon.social/@Schepp) / [@schepp.dev](https://bsky.app/profile/schepp.dev)), is a freelance frontend developer from Düsseldorf, Germany. 
 
 Instead of hacking around with JS-Frameworks as almost every other frontend developer currently does, he works on traditional server-rendered component-based systems, uses bleeding edge CSS, has an eye on accessibility as well as the loading and runtime performance of a site. All of which didn't stop him from meshing up his own client-side renderer, based on Twig.js, Web Workers, Redux and MorphDOM. 
 

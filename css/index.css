@@ -25,6 +25,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Lato', sans-serif;
+  hyphens: auto;
   color: var(--darkgray);
   background-color: var(--white);
 }
@@ -64,11 +65,11 @@ main h1 + p > picture > img {
   display: block;
   width: 100vw;
   max-width: none;
-  height: 60vmin;
+  height: 40vmin;
   margin-left: calc((100vw - 100%) / -2);
   margin-right: calc((100vw - 100%) / -2);
   object-fit: cover;
-  object-position: 50% 25%;
+  object-position: 50% 50%;
 }
 
 main .h1--post + p::before {
@@ -80,12 +81,14 @@ main .h1--post {
   z-index: 1;
   display: flex;
   align-items: flex-end;
-  height: 60vmin;
+  height: 40vmin;
   margin: 0;
   margin-right: calc((100vw - 100%) / -2);
   padding: 1rem 0;
   color: #fff;
+  font-size: 7vmin;
   text-shadow: 0 0 4px #000;
+  text-wrap: balance;
 }
 
 main .h1--post + p {
@@ -97,7 +100,11 @@ main .h1--post + p::before {
   position: absolute;
   background: linear-gradient(to top, rgba(72, 31, 7, 1) 0%, rgba(72, 31, 7, 0.738) 19%, rgba(72, 31, 7, 0.541) 34%, rgba(72, 31, 7, 0.382) 47%, rgba(72, 31, 7, 0.278) 56.5%, rgba(72, 31, 7, 0.194) 65%, rgba(72, 31, 7, 0.126) 73%, rgba(72, 31, 7, 0.075) 80.2%, rgba(72, 31, 7, 0.042) 86.1%, rgba(72, 31, 7, 0.021) 91%, rgba(72, 31, 7, 0.008) 95.2%, rgba(72, 31, 7, 0.002) 98.2%, transparent 100%);
   box-shadow: inset 0 -0.5vw 0.5vw 0 rgba(72, 31, 7, 0.25), inset 0 0.5vw 0.5vw 0 rgba(72, 31, 7, 0.25);
-  mix-blend-mode: darken;
+  mix-blend-mode: multiply;
+  background-image: var(--image);
+  background-size: 1px 1px;
+  background-repeat: repeat;
+  mask-image: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(0, 0, 0, 0));
 }
 
 .tmpl-about h1 + p > picture > img {
@@ -215,6 +222,7 @@ header:after {
 
 p {
   text-size-adjust: from-font;
+  text-wrap: pretty;
 }
 
 ul {
@@ -248,7 +256,7 @@ code,
 }
 
 code {
-  font-size: inherit !important;
+  font-size: 1rem !important;
 }
 
 pre {
@@ -433,6 +441,8 @@ a[href].direct-link:focus:visited,
 
 .me {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   list-style: none;
   margin: 0;
   padding: 1em;
