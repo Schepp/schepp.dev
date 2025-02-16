@@ -257,6 +257,12 @@ code,
 
 code {
   font-size: 1rem !important;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  white-space: nowrap;
+  word-break: break-all;
 }
 
 pre {
@@ -281,6 +287,11 @@ pre {
 
 pre[class*="language"][class*="language"] {
   padding: 1.5em 0.5em;
+}
+
+pre code {
+  white-space: normal;
+  word-break: normal;
 }
 
 .highlight-line {
@@ -407,6 +418,11 @@ pre[class*="language"][class*="language"] {
 a[href].tag,
 a[href].tag:visited {
   color: #fff;
+}
+
+.info {
+  background-color: #b8dbff;
+  padding: 1em 0.625em; /* 16px 10px /16 */
 }
 
 /* Warning */
@@ -575,4 +591,8 @@ img[src*="sky-follower-bridge-icon.png"] {
   height: auto;
   margin: 0;
   vertical-align: middle;
+}
+
+aside {
+
 }
