@@ -26,6 +26,7 @@ body {
   margin: 0;
   font-family: 'Lato', sans-serif;
   hyphens: auto;
+  hyphenate-limit-chars: 10 4 4;
   color: var(--darkgray);
   background-color: var(--white);
 }
@@ -89,6 +90,11 @@ main .h1--post {
   font-size: 7vmin;
   text-shadow: 0 0 4px #000;
   text-wrap: balance;
+}
+
+main .h1--inverted {
+  color: #000;
+  text-shadow: 0 0 4px #fff;
 }
 
 main .h1--post + p {

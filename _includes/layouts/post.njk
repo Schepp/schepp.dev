@@ -2,7 +2,7 @@
 layout: layouts/base.njk
 templateClass: tmpl-post
 ---
-<h1 class="h1--post">{{ title }}</h1>
+<h1 class="h1--post{% if titleInverted %} h1--inverted{% endif %}">{{ title }}</h1>
 
 <p style="--image: url({{ image }})">
   {% image image %}

@@ -2,6 +2,7 @@
 title: "Rethinking Find-in-Page Accessibility: Making Hidden Text Work for Everyone"
 description: Discover how to enhance accessibility and improve find-in-page search functionality using hidden="until-found" for icon-only buttons and hidden text labels.
 image: /img/search.jpg
+titleInverted: true
 date: 2025-02-16
 tags:
   - accessibility
@@ -9,7 +10,7 @@ layout: layouts/post.njk
 ---
 I regularly attend [UX Graz](https://www.meetup.com/uxgraz/), a meetup covering diverse UX-related topics, alternating between in-person and remote events. At one recent event, [a blind speaker demonstrated how they navigate websites](https://www.meetup.com/uxgraz/events/305424662/). It wasn't my first time seeing someone blind use assistive technology for web navigation, but this experience stood out. Instead of relying on semantic elements like landmarks, headings, lists, or links, the speaker primarily used the browser's **find-in-page** functionality to navigate.
 
-This approach surprised me at first. As frontend developers, we've been taught to focus on semantic HTML to aid navigation for assistive technology users. But the more I thought about it, the more it made sense: find-in-page can be a much faster and more efficient way to locate content, especially when semantic structures are missing or poorly implemented. However, this technique isn't foolproof. It falters when text is hidden using attributes like `aria-label`, `title`, or `alt`, or when visible text is styled with `font-size: 0`---a method I often use for icon-only buttons.
+This approach surprised me at first. As frontend developers, we've been taught to focus on semantic HTML to aid navigation for assistive technology users. But the more I thought about it, the more it made sense: find-in-page can be a much faster and more efficient way to locate content, especially when semantic structures are missing or poorly implemented. However, this technique isn't foolproof. It falters when text is hidden using attributes like `aria-label`, `title`, or `alt`, or when visible text is styled with `font-size: 0` - a method I often use for icon-only buttons.
 
 The event left a lasting impression and plenty to think about.
 
@@ -23,7 +24,7 @@ The issue? Once again, the text label for the Slack link was hidden using `font-
 </a>
 ```
 
-![Icons representing subscription and feedback channels: RSS feed, podcast, Spotify, Patreon, email, Twitter, Mastodon, Butterfly (possibly representing an alternative platform), LinkedIn, and Slack, displayed in a horizontal row with the label 'Abo- & Feedback-Kanäle' above them.](./../img/workingdraft-icon-only-links.png)
+![Icons representing subscription and feedback channels: RSS feed, podcast, Spotify, Patreon, email, Twitter, Mastodon, Butterfly (possibly representing an alternative platform), LinkedIn, and Slack, displayed in a horizontal row with the label 'Abo- & Feedback-Kanäle' above them.](/img/workingdraft-icon-only-links.png)
 
 Vanessa asked:
 
@@ -64,7 +65,7 @@ Now, the text label is searchable. If matched during a search, it appears dynami
 }
 ```
 
-![Screenshot of a webpage showing the find-in-page functionality with the search term 'slack' highlighted in the search bar and within the content of the page. The term 'Slack' is prominently highlighted in the 'Abo- & Feedback-Kanäle' section, specifically next to the Slack icon, drawing attention to how the search term is visually emphasized in the interface.](./../img/workingdraft-search-term-highlighted.png)
+![Screenshot of a webpage showing the find-in-page functionality with the search term 'slack' highlighted in the search bar and within the content of the page. The term 'Slack' is prominently highlighted in the 'Abo- & Feedback-Kanäle' section, specifically next to the Slack icon, drawing attention to how the search term is visually emphasized in the interface.](/img/workingdraft-search-term-highlighted.png)
 
 ## Browser Compatibility and Accessibility
 
