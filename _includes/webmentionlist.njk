@@ -15,16 +15,24 @@
 
         <ol class="webmentions__list">
             {% for webmention in mentions | reverse %}
-                {% set links = webmention.content.html | split("<a") %}
-                {% set breaks = webmention.content.html | split("<br") %}
-                {% set listitems = webmention.content.html | split("<li") %}
-                {% set readtime = webmention.content.html | split("Read Time") %}
-                {% set comments = webmention.content.html | split("comments") %}
-                {% if links|length <= 8 and breaks|length <= 4 and listitems|length == 1 and readtime|length == 1 and comments|length == 1 %}
-                <li class="webmentions__item">
+              {% if webmention.content %}
+                {% if webmention.content.html %}
+                  {% set links = webmention.content.html | split("<a") %}
+                  {% set breaks = webmention.content.html | split("<br") %}
+                  {% set listitems = webmention.content.html | split("<li") %}
+                  {% set readtime = webmention.content.html | split("Read Time") %}
+                  {% set comments = webmention.content.html | split("comments") %}
+                  {% if links|length <= 8 and breaks|length <= 4 and listitems|length == 1 and readtime|length == 1 and comments|length == 1 %}
+                    <li class="webmentions__item">
+                        {% include 'webmention.njk' %}
+                    </li>
+                  {% endif %}
+                {% elseif webmention.content.text %}
+                  <li class="webmentions__item">
                     {% include 'webmention.njk' %}
-                </li>
+                  </li>
                 {% endif %}
+              {% endif %}
             {% endfor %}
         </ol>
 

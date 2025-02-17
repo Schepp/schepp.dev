@@ -21,6 +21,10 @@
         {% endif %}
     </div>
     <div class="webmention__content p-content">
+      {% if webmention.content.html %}
         {{ webmention.content.html | sanitize | safe }}
+      {% elseif webmention.content.text %}
+        {{ webmention.content.text }}
+      {% endif %}
     </div>
 </article>
