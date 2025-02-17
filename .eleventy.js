@@ -15,7 +15,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 
   // Image plugin
-  eleventyConfig.addShortcode("image", async function(src, alt = "", sizes = "100%", loading = "eager") {
+  eleventyConfig.addShortcode("image", async function(src, alt = "", sizes = "100vw", loading = "eager") {
     let metadata;
     try {
       metadata = await Image(`.${src}`, {
