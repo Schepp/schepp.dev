@@ -95,7 +95,7 @@ To address this, I added an `aria-label` to ensure assistive technology still re
 </a>
 ```
 
-For broader browser support, consider weighing in on [WebKit](https://bugs.webkit.org/show_bug.cgi?id=238266) and [Mozilla](https://bugzilla.mozilla.org/show_bug.cgi?id=1761043) bug trackers.
+Thankfully, `hidden="until-found"` is part of [this year's Interop project](https://web.dev/blog/interop-2025#the_details_element), representing one puzzle piece amongst many to align all browsers on the `<details>` element. If end of 2025 appears too late for you, consider weighing in on the [WebKit](https://bugs.webkit.org/show_bug.cgi?id=238266) and [Mozilla](https://bugzilla.mozilla.org/show_bug.cgi?id=1761043) bug trackers.
 
 ## Remaining Challenges
 
