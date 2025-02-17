@@ -317,7 +317,7 @@ pre {
 }
 
 pre[class*="language"][class*="language"] {
-  padding: 1.5em 0.5em;
+  padding: 0.75em 0.65em;
 }
 
 pre code {
@@ -454,13 +454,15 @@ a[href].tag:visited {
 
 .info {
   background-color: #b8dbff;
-  padding: 1em 0.625em; /* 16px 10px /16 */
+  padding: 0.75em 0.625em; /* 12px 10px /16 */
+  border-radius: 3px;
 }
 
 /* Warning */
 .warning {
   background-color: #ffc;
-  padding: 1em 0.625em; /* 16px 10px /16 */
+  padding: 0.75em 0.625em; /* 12px 10px /16 */
+  border-radius: 3px;
 }
 
 .warning ol:only-child {
@@ -625,6 +627,3 @@ img[src*="sky-follower-bridge-icon.png"] {
   vertical-align: middle;
 }
 
-aside {
-
-}

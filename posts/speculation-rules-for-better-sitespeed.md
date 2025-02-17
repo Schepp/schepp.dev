@@ -123,5 +123,7 @@ Despite these caveats, the Speculation Rules API offers a powerful toolset to si
 
 _I would like to express a big thank you to the Webperf community for always being ready to help with great tips and expertise. For this article, I would like to thank Barry Pollard, Andy Davies, and Noam Rosenthal in particular for providing very valuable background information. ❤️_
 
+_This post was [first published](https://www.htmhell.dev/adventcalendar/2024/28/) on Manuel Matozovíc's [HTMHell Advent Calendar](https://www.htmhell.dev/adventcalendar/)._
+
 
 
