@@ -14,7 +14,7 @@ This approach surprised me at first. As frontend developers, we've been taught t
 
 The event left a lasting impression and plenty to think about.
 
-Fast forward to last week: my podcast co-host, [Vanessa](https://vannsl.io/), messaged me about our Slack community. She needed the invite link, knew it was on our homepage, and hit `Cmd` + `F` to search for "Slack." Yet, nothing came up.
+Fast forward to last week: my podcast co-host, [Vanessa](https://vannsl.io/), messaged me about our Slack community. She needed the invite link, knew it was on [our homepage](https://workingdraft.de), and hit `Cmd` + `F` to search for "Slack." Yet, nothing came up.
 
 The issue? Once again, the text label for the Slack link was hidden using `font-size: 0`, as shown in this snippet:
 
@@ -99,7 +99,7 @@ For broader browser support, consider weighing in on [WebKit](https://bugs.webki
 
 ## Remaining Challenges
 
-1.  **Persistent Text Visibility**: Once text is revealed via find-in-page, it remains visible even after closing the search or starting a new one. Unfortunately, there's no native way to hide it again. A potential workaround is to listen for the [`beforematch`](https://developer.mozilla.org/en-US/docs/Web/API/Element/beforematch_event) event and reapply `hidden="until-found"` after a delay.
+1.  **Persistent Text Visibility**: Once text is revealed via find-in-page, it remains visible even after closing the search or starting a new one. Unfortunately, there's no native way to hide it again. A potential workaround is to listen for the [`beforematch`](https://developer.mozilla.org/en-US/docs/Web/API/Element/beforematch_event) event and reapply `hidden="until-found"` after a certain delay.
 
 2.  **Styling Search Matches**: It's currently impossible to style matched text directly. However, future CSS pseudo-elements like [`::search-text`](https://drafts.csswg.org/css-pseudo-4/#selectordef-search-text) and [`::search-text:current`](https://github.com/w3c/csswg-drafts/issues/10527) could allow fine-grained control over search result styling.
 
