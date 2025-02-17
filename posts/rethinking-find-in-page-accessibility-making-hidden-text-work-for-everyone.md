@@ -1,7 +1,7 @@
 ---
 title: "Rethinking Find-in-Page Accessibility: Making Hidden Text Work for Everyone"
 description: Discover how to enhance accessibility and improve find-in-page search functionality using hidden="until-found" for icon-only buttons and hidden text labels.
-image: /img/search.jpg
+image: /img/sunny-room.jpg
 titleInverted: true
 date: 2025-02-16
 tags:
@@ -10,7 +10,7 @@ layout: layouts/post.njk
 ---
 I regularly attend [UX Graz](https://www.meetup.com/uxgraz/), a meetup covering diverse UX-related topics, alternating between in-person and remote events. At one recent event, [a blind speaker demonstrated how they navigate websites](https://www.meetup.com/uxgraz/events/305424662/). It wasn't my first time seeing someone blind use assistive technology for web navigation, but this experience stood out. Instead of relying on semantic elements like landmarks, headings, lists, or links, the speaker primarily used the browser's **find-in-page** functionality to navigate.
 
-This approach surprised me at first. As frontend developers, we've been taught to focus on semantic HTML to aid navigation for assistive technology users. But the more I thought about it, the more it made sense: find-in-page can be a much faster and more efficient way to locate content, especially when semantic structures are missing or poorly implemented. However, this technique isn't foolproof. It falters when text is hidden using attributes like `aria-label`, `title`, or `alt`, or when visible text is styled with `font-size: 0` - a method I often use for icon-only buttons.
+This approach surprised me at first. As frontend developers, we've been taught to focus on semantic HTML to aid navigation for assistive technology users. But the more I thought about it, the more it made sense: find-in-page can be a much faster and more efficient way to locate content, especially when semantic structures are missing or are poorly implemented. However, this technique isn't foolproof. It falters when text is hidden using attributes like `aria-label`, `title`, or `alt`, or when visible text is styled with `font-size: 0` - a method I often use for icon-only buttons.
 
 The event left a lasting impression and plenty to think about.
 
@@ -30,7 +30,7 @@ Vanessa asked:
 
 > "Is it possible to solve this on the frontend so that the icon gets focused when you use Cmd+F to search for a specific term?"
 
-This reminded me of the meetup speaker's navigation pattern and how common find-in-page has become, even for sighted users like Vanessa. Her reply confirmed this:
+This reminded me of the meetup speaker's navigation pattern. When I told her about it, this is what she replied:
 
 > "Honestly, I use websites exactly the same way."
 
@@ -49,7 +49,7 @@ Here's how I updated our icon-only buttons:
 </a>
 ````
 
-Now, the text label is searchable. If matched during a search, it appears dynamically. For a polished user experience, I added a tooltip-like rendering for the revealed text using CSS:
+Now, the text label is searchable. If matched during a search, it appears dynamically. For a more pleasing user experience, I added a tooltip-like rendering for the revealed text using CSS:
 
 ```css
 .hidden-until-found:not([hidden="until-found"]) {
@@ -57,15 +57,30 @@ Now, the text label is searchable. If matched during a search, it appears dynami
   transform: translateX(calc(-50% - (var(--icon-width) / 2)));
   margin-top: -0.25rem;
   padding: 0 0.2rem 0.05rem 0.2rem;
-  background-color: var(--color-icon);
+  background-color: var(--brand-color);
   color: #fff;
   border-radius: 0.1rem;
   font-size: 1rem;
   filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
 }
+
+/* little pointer at the bottom */
+.hidden-until-found::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  bottom: -0.2rem;
+  width: 1rem;
+  height: 1rem;
+  transform: translateX(-50%) rotate(45deg);
+  background-color: inherit;
+}
 ```
 
-![Screenshot of a webpage showing the find-in-page functionality with the search term 'slack' highlighted in the search bar and within the content of the page. The term 'Slack' is prominently highlighted in the 'Abo- & Feedback-Kanäle' section, specifically next to the Slack icon, drawing attention to how the search term is visually emphasized in the interface.](/img/workingdraft-search-term-highlighted.png)
+The result 😍:
+
+![Same screenshot as before, but with one difference: the search term 'Slack' is highlighted in an orange box with a purple pointer, positioned above the Slack icon, demonstrating how the find-in-page functionality visually emphasizes searched text within the page.](/img/workingdraft-icon-link-search-term-highlighted.png)
 
 ## Browser Compatibility and Accessibility
 
@@ -88,4 +103,4 @@ For broader browser support, consider weighing in on [WebKit](https://bugs.webki
 
 2.  **Styling Search Matches**: It's currently impossible to style matched text directly. However, future CSS pseudo-elements like [`::search-text`](https://drafts.csswg.org/css-pseudo-4/#selectordef-search-text) and [`::search-text:current`](https://github.com/w3c/csswg-drafts/issues/10527) could allow fine-grained control over search result styling.
 
-This experience taught me the importance of accommodating diverse navigation patterns and highlighted how evolving standards can improve accessibility for everyone. While `hidden="until-found"` is a step forward, there's still work to be done to make find-in-page truly universal.
+This episode taught me the importance of accommodating diverse navigation patterns and highlighted (once more) how evolving standards can improve accessibility for everyone. But while `hidden="until-found"` is a good step forward, there's still work to be done to make find-in-page truly universal.
