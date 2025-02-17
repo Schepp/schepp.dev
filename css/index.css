@@ -66,7 +66,7 @@ main h1 + p > picture > img {
   display: block;
   width: 100vw;
   max-width: none;
-  height: 40vmin;
+  height: 40vh;
   margin-left: calc((100vw - 100%) / -2);
   margin-right: calc((100vw - 100%) / -2);
   object-fit: cover;
@@ -82,7 +82,7 @@ main .h1--post {
   z-index: 1;
   display: flex;
   align-items: flex-end;
-  height: 40vmin;
+  height: 40vh;
   margin: 0;
   margin-right: calc((100vw - 100%) / -2);
   padding: 1rem 0;
