@@ -1,8 +1,7 @@
 ---
 title: "Rethinking Find-in-Page Accessibility: Making Hidden Text Work for Everyone"
 description: Discover how to enhance accessibility and improve find-in-page search functionality using hidden="until-found" for icon-only buttons and hidden text labels.
-image: /img/sunny-room.jpg
-titleInverted: true
+image: /img/way-through-forest.jpg
 date: 2025-02-16
 tags:
   - accessibility
