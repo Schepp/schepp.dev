@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tests virtual keyboard behavior with input[inputmode="none"]</title>
+  <link rel="preload" href="/fonts/lato-regular-webfont.woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="/fonts/lato-bold-webfont.woff2" as="font" crossorigin="anonymous">
+  <style>
+    @font-face {
+      font-family: 'Merriweather';
+      font-style: normal;
+      font-weight: 400;
+      src: url('/fonts/merriweather-regular-webfont.woff2') format('woff2'), url('/fonts/merriweather-regular-webfont.woff') format('woff');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 400;
+      src: url('/fonts/lato-regular-webfont.woff2') format('woff2'), url('/fonts/lato-regular-webfont.woff') format('woff');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 600;
+      src: url('/fonts/lato-bold-webfont.woff2') format('woff2'), url('/fonts/lato-bold-webfont.woff') format('woff');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Lato';
+      font-style: italic;
+      font-weight: 400;
+      src: url('/fonts/lato-italic-webfont.woff2') format('woff2'), url('/fonts/lato-italic-webfont.woff') format('woff');
+      font-display: swap;
+    }
+  </style>
+  <style>
+    * {
+      font-family: 'Lato', sans-serif;
+    }
+  </style>
+</head>
+<body>
+<label for="input">This input has <code>inputmode="none"</code> set: </label><input id="input" inputmode="none">
+</body>
+</html>
