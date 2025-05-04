@@ -7,8 +7,8 @@
     "subtitle": "Writing about front-end development",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
-    "url": "https://myurl.com/feed/feed.xml",
-    "id": "https://myurl.com/"
+    "url": "https://schepp.dev/feed/feed.xml",
+    "id": "https://schepp.dev/"
   },
   "author": {
     "name": "Christian \"Schepp\" Schaefer",
