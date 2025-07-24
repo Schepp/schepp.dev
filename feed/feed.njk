@@ -14,6 +14,11 @@ eleventyExcludeFromCollections: true
 		<name>{{ metadata.author.name }}</name>
 		<email>{{ metadata.author.email }}</email>
 	</author>
+  <image>
+    <url>{{ metadata.url }}img/schepp-2019.jpg</url>
+    <title>{{ metadata.title }}</title>
+    <link>{{ metadata.url }}</link>
+  </image>
 	{%- for post in collections.posts %}
 	{% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}
 	<entry>
