@@ -138,7 +138,7 @@ I first thought of `:has()`, but it [intentionally cannot inspect pseudo-element
 
 However, clicking those buttons scrolls the scroller. And scroll position can drive animations. Enter scroll-driven animations!
 
-I turned the scroller into a animation timeline source: 
+I turned the scroller into an animation timeline source: 
 
 ```css
 head {
