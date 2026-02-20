@@ -301,7 +301,7 @@ meta:nth-of-type(3)::scroll-marker {
 body {
     max-width: 40rem;
     margin: 0 auto;
-    padding: 5vh 2rem 30vh;
+    padding: 10vh 2rem 30vh;
     background: var(--color-sky);
     color: #000;
 
