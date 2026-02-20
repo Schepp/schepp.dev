@@ -215,3 +215,5 @@ What I would ship is the learning.
 Because this experiment made something very clear: modern CSS is no longer just about presentation. It increasingly allows us to explore interaction, state, and progressive enhancement in places that used to be JavaScript territory.
 
 And sometimes, that’s exactly the kind of constraint that makes building for the web fun again.
+
+_Once more, many thanks go out to [Stefan Judis](https://www.stefanjudis.com/), who was so kind to proofread this post 👊🏻❤️_
