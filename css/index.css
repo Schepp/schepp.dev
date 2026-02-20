@@ -211,7 +211,7 @@ img, video {
 
 p,
 .tmpl-post li {
-  line-height: 1.45;
+  line-height: 1.35;
 }
 
 a[href] {
@@ -525,7 +525,7 @@ twitter-widget {
 }
 
 li {
-  margin-bottom: 0.7em;
+  margin-bottom: 0.4em;
 }
 
 li img {
