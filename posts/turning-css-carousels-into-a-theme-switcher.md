@@ -23,7 +23,7 @@ The event’s theme felt forward-looking and constructive, so a warm spring land
 The vector graphic came as a single EPS file, so I opened it in Illustrator and sliced it into layers - hills, sky, clouds, foreground elements - exporting each piece as SVG. That gave me two important affordances:
 
 * responsiveness (individual pieces can reposition and scale)
-* depth (layering elements with content creates a subtle parallax illusion)
+* depth (layering elements with content creates a subtle depth illusion)
 
 After a few hours of nudging values and fighting stacking contexts, the scheme felt coherent - and surprisingly robust across browsers.
 
