@@ -471,6 +471,7 @@ a[href].tag:visited {
 
 /* Direct Links / Markdown Headers */
 .direct-link {
+  position: absolute;
   font-family: sans-serif;
   text-decoration: none;
   font-style: normal;
