@@ -241,7 +241,7 @@ head {
     scroll-timeline-axis: inline;
     scroll-marker-group: after;
     scroll-behavior: auto;
-    margin-top: -2rem;
+    margin-top: -5rem;
     font-size: 0;
     white-space: nowrap;
 }
@@ -280,7 +280,6 @@ meta:nth-of-type(3) {
     display: inline-block;
     width: 100vw;
     height: 1lh;
-    border: 1px solid currentColor;
     font-size: 1rem;
     text-align: center;
     scroll-snap-align: center;
