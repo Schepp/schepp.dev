@@ -16,7 +16,7 @@ That constraint is exactly my kind of challenge!
 
 ## Painting the web a bit warmer
 
-I wanted something optimistic.Nature-inspired. Maybe a bit **solarpunk**.
+I wanted something optimistic. Nature-inspired. Maybe a bit **solarpunk**.
 
 The event’s theme felt forward-looking and constructive, so a warm spring landscape seemed like a fitting visual metaphor. I bought [a vector illustration of a bright landscape from Shutterstock](https://www.shutterstock.com/de/image-vector/sky-blue-cloud-spring-backgroundnature-landscape-2602082071), picked up the wonderfully playful [Leafy](https://app.envato.com/search/fonts/65919713-e671-48b5-bfab-60da4c09e536) font for the main heading, and paired it with [Barlow](https://fonts.google.com/specimen/Barlow) for the body text.
 
@@ -32,7 +32,7 @@ After a few hours of nudging values and fighting stacking contexts, the scheme f
 Respecting user preferences
 ---------------------------
 
-One of the design goals was to behave like a good citizen:
+One of the design goals was to behave like a good web citizen:
 
 * respect font size preferences
 * respect reduced motion
@@ -42,11 +42,11 @@ The first two are fairly straightforward these days. Color scheme, however, spar
 
 If light mode shows a sunny spring landscape… could dark mode show the same scene at night?
 
-With a handful of color tweaks and quite a lot of CSS filters I created a nighttime variant that still reads as the same place - just under moonlight. That continuity felt important.
+With a handful of color tweaks and quite a lot of CSS filters, I created a nighttime variant that still reads as the same place - just under moonlight.
 
 ![A nighttime illustration with rolling hills, silhouetted trees, and a large glowing moon in a deep blue sky. Decorative drop caps begin the paragraphs.](/img/theme-dark.png)
 
-Initially this was wired up through the usual `prefers-color-scheme` media query. Done. Ship it.
+Initially, this was wired up through the usual `prefers-color-scheme` media query. Done. Ship it.
 
 Except… it felt very much… buried.
 
@@ -71,9 +71,9 @@ So the question became:
 
 ## Turning `<head>` into a UI
 
-I needed something with children, present on every page, that I could safely play with. There is exactly one element that satisfies that requirement: `<head>`.
+First I needed an element with children that's present on every page, to safely play with the approach. There is exactly one element that satisfies that requirement: `<head>`.
 
-It isn’t rendered - but CSS can make it rendered. So I did, turned it into a horizontal scroller and instructed the browser to generate a dot navigation for it via `scroll-marker-group: after`:
+It isn’t rendered by default, but CSS can make it appear. So I did, and I also turned it into a horizontal scroller and instructed the browser to generate a dot navigation for it via `scroll-marker-group: after`:
 
 ```css
 head {    
@@ -134,7 +134,7 @@ Without HTML. Without JavaScript. Just CSS.
 
 Buttons alone aren’t enough - the stylesheet needs to know which one is active.
 
-I first thought of `:has()`, but it [intentionally cannot inspect pseudo-elements](https://drafts.csswg.org/selectors/#relational) like `::scroll-marker`.
+I first thought of `:has()`, [but it cannot inspect pseudo-elements like ::scroll-marker, by design](https://drafts.csswg.org/selectors/#relational).
 
 However, clicking those buttons scrolls the scroller. And scroll position can drive animations. Enter scroll-driven animations!
 
@@ -180,7 +180,7 @@ html {
 }
 ```
 
-At that point, scroll position had become theme state.
+At that point, the scroll position had become the theme state.
 
 ## Reacting to it with style queries
 
@@ -204,7 +204,7 @@ And a tiny row of buttons that exists only because CSS decided it should. ✨
 
 ## A small disclaimer
 
-I tried to make the interaction as accessible as possible - the controls are focusable, labelled and keyboard-operable.
+I tried to make the interaction as accessible as possible - the controls are focusable, labelled, and keyboard-operable.
 
 But it _is_ a creative misuse of functionality designed for a different purpose. The underlying semantics still resemble a tablist/scroll navigation rather than a theme switcher, and you can’t completely remove that conceptual mismatch.
 
@@ -212,6 +212,6 @@ So I wouldn’t ship this pattern blindly to production at scale.
 
 What I would ship is the learning.
 
-Because this experiment made something very clear: modern CSS is no longer just about presentation. It increasingly allows us to explore interaction, state and progressive enhancement in places that used to be JavaScript territory.
+Because this experiment made something very clear: modern CSS is no longer just about presentation. It increasingly allows us to explore interaction, state, and progressive enhancement in places that used to be JavaScript territory.
 
 And sometimes, that’s exactly the kind of constraint that makes building for the web fun again.
