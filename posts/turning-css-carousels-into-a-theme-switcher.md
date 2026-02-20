@@ -29,8 +29,7 @@ After a few hours of nudging values and fighting stacking contexts, the scheme f
 
 ![A bright, stylized landscape with rolling green hills, trees, and a large sun in the sky. Decorative drop caps begin the paragraphs.](/img/theme-light.png)
 
-Respecting user preferences
----------------------------
+## Respecting user preferences
 
 One of the design goals was to behave like a good web citizen:
 
