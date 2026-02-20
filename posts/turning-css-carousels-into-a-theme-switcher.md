@@ -99,7 +99,7 @@ meta:nth-of-type(3) {
 }
 ```
 
-The generated dot navigation is exposed as pseudo element `::scroll-marker-group`. I positioned that at the top of the page and turned the markers into buttons with accessible names:
+The generated dot navigation is exposed as pseudo element `::scroll-marker-group`. I positioned it at the top of the page and turned the markers into buttons with accessible names:
 
 ```css
 head::scroll-marker-group {
