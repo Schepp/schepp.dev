@@ -1,617 +1,622 @@
 @font-face {
-    font-family: 'Leafy';
-    src: url('./../fonts/leafy/leafy-regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Leafy';
+  src: url('./../fonts/leafy/leafy-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Barlow-fallback';
-    size-adjust: 96.7%;
-    src: local('Arial');
+  font-family: 'Barlow-fallback';
+  size-adjust: 96.7%;
+  src: local('Arial');
 }
 
 @font-face {
-    font-family: 'Barlow';
-    src: url('./../fonts/barlow/barlow-regular-webfont.woff2') format('woff2'),
-         url('./../fonts/barlow/barlow-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Barlow';
+  src: url('./../fonts/barlow/barlow-regular-webfont.woff2') format('woff2'),
+  url('./../fonts/barlow/barlow-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Barlow';
-    src: url('./../fonts/barlow/barlow-medium-webfont.woff2') format('woff2'),
-         url('./../fonts/barlow/barlow-medium-webfont.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Barlow';
+  src: url('./../fonts/barlow/barlow-medium-webfont.woff2') format('woff2'),
+  url('./../fonts/barlow/barlow-medium-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Barlow';
-    src: url('./../fonts/barlow/barlow-italic-webfont.woff2') format('woff2'),
-         url('./../fonts/barlow/barlow-italic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
+  font-family: 'Barlow';
+  src: url('./../fonts/barlow/barlow-italic-webfont.woff2') format('woff2'),
+  url('./../fonts/barlow/barlow-italic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Barlow';
-    src: url('./../fonts/barlow/barlow-mediumitalic-webfont.woff2') format('woff2'),
-         url('./../fonts/barlow/barlow-mediumitalic-webfont.woff') format('woff');
-    font-weight: bold;
-    font-style: italic;
-    font-display: swap;
+  font-family: 'Barlow';
+  src: url('./../fonts/barlow/barlow-mediumitalic-webfont.woff2') format('woff2'),
+  url('./../fonts/barlow/barlow-mediumitalic-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
 }
 
 /* ---------------- */
 
 @property --degree {
-    syntax: '<angle>';
-    inherits: false;
-    initial-value: 0deg;
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
 }
 
 /* ---------------- */
 
 @keyframes set-scheme {
-    from,
-    50% {
-        --scheme: light;
-    }
+  from,
+  50% {
+    --scheme: light;
+  }
 
-    to {
-        --scheme: dark;
-    }
+  to {
+    --scheme: dark;
+  }
 }
 
 @keyframes set-scheme-dark-preferred {
-    50% {
-        --scheme: light;
-    }
+  50% {
+    --scheme: light;
+  }
 
-    from,
-    to {
-        --scheme: dark;
-    }
+  from,
+  to {
+    --scheme: dark;
+  }
 }
 
 @keyframes click-me {
-    from,
-    2.5% {
-        transform: translate3d(0, 0, 0) rotate(0deg);
-    }
+  from,
+  2.5% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
 
-    0.25%,
-    2.25% {
-        transform: translate3d(-1px, 0, 0) rotate(-2deg);
-    }
+  0.25%,
+  2.25% {
+    transform: translate3d(-1px, 0, 0) rotate(-2deg);
+  }
 
-    0.5%,
-    2% {
-        transform: translate3d(2px, 0, 0) rotate(3deg);
-    }
+  0.5%,
+  2% {
+    transform: translate3d(2px, 0, 0) rotate(3deg);
+  }
 
-    0.75%,
-    1.25%,
-    1.75% {
-        transform: translate3d(-4px, 0, 0) rotate(-5deg);
-    }
+  0.75%,
+  1.25%,
+  1.75% {
+    transform: translate3d(-4px, 0, 0) rotate(-5deg);
+  }
 
-    1%,
-    1.5% {
-        transform: translate3d(4px, 0, 0) rotate(8deg);
-    }
+  1%,
+  1.5% {
+    transform: translate3d(4px, 0, 0) rotate(8deg);
+  }
 }
 
 @keyframes glow {
-    from {
-        --degree: 0deg;
-        filter: blur(4px) drop-shadow(0 0 4px var(--color-celestial-glow));
-    }
+  from {
+    --degree: 0deg;
+    filter: blur(4px) drop-shadow(0 0 4px var(--color-celestial-glow));
+  }
 
-    50% {
-        filter: blur(2px) drop-shadow(0 0 10px var(--color-celestial-glow));
-    }
+  50% {
+    filter: blur(2px) drop-shadow(0 0 10px var(--color-celestial-glow));
+  }
 
-    to {
-        --degree: 360deg;
-        filter: blur(4px) drop-shadow(0 0 4px var(--color-celestial-glow));
-    }
+  to {
+    --degree: 360deg;
+    filter: blur(4px) drop-shadow(0 0 4px var(--color-celestial-glow));
+  }
 }
 
 @keyframes scale-clouds {
-    from {
-        scale: 1;
-    }
+  from {
+    scale: 1;
+  }
 
-    to {
-        scale: 2;
-    }
+  to {
+    scale: 2;
+  }
 }
 
 @keyframes fade-in {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes celestial {
-    from {
-        opacity: 0;
-        --degree: -30deg;
-    }
+  from {
+    opacity: 0;
+    --degree: -30deg;
+  }
 
-    to {
-        opacity: 1;
-        --degree: 0deg;
-    }
+  to {
+    opacity: 1;
+    --degree: 0deg;
+  }
 }
 
 /* ---------------- */
 
 * {
-    outline-color: darkgreen;
-    outline-offset: 3px;
-    transition-property: background-color, filter;
-    transition-duration: 600ms;
+  outline-color: darkgreen;
+  outline-offset: 3px;
+  transition-property: background-color, filter;
+  transition-duration: 600ms;
 }
 
 html, table, input, select, textarea {
-    font-family: 'Barlow', 'Barlow-fallback', Arial, Helvetica, sans-serif;
+  font-family: 'Barlow', 'Barlow-fallback', Arial, Helvetica, sans-serif;
 }
 
 html {
-    --color-accent-rgb: 117, 76, 36;
+  --scheme: light;
+
+  --color-accent-rgb: 117, 76, 36;
+  --color-sky: #d3f2f9;
+  --color-celestial-body: #fff;
+  --color-celestial-glow: #ffdf8d;
+
+  @supports (color: color(display-p3 1 1 1)) {
     --color-sky: #d3f2f9;
-    --color-celestial-body: #fff;
-    --color-celestial-glow: #ffdf8d;
+    --color-celestial-body: color(display-p3 1 1 1);
+    --color-celestial-glow: color(display-p3 1.000000 0.874510 0.552941);
+  }
 
-    @supports (color: color(display-p3 1 1 1)) {
-        --color-sky: #d3f2f9;
-        --color-celestial-body: color(display-p3 1 1 1);
-        --color-celestial-glow: color(display-p3 1.000000 0.874510 0.552941);
-    }
+  margin: 0;
+  padding: 0;
+  accent-color: rgb(var(--color-accent-rgb));
+  line-height: 1.35;
+  hyphens: auto;
+  hyphenate-limit-chars: 10 4 4;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  scroll-padding-bottom: 25vw;
+  timeline-scope: --head-timeline;
+  animation: set-scheme 1ms steps(3);
+  animation-timeline: --head-timeline;
 
-    margin: 0;
-    padding: 0;
-    accent-color: rgb(var(--color-accent-rgb));
-    line-height: 1.35;
-    hyphens: auto;
-    hyphenate-limit-chars: 10 4 4;
-    scroll-behavior: smooth;
-    scrollbar-gutter: stable;
-    scroll-padding-bottom: 25vw;
-    timeline-scope: --head-timeline;
-    animation: set-scheme 1ms steps(3);
-    animation-timeline: --head-timeline;
+  @media (prefers-reduced-motion: no-preference) {
+    animation: set-scheme 1ms steps(3), fade-in 2s ease-out;
+    animation-timeline: --head-timeline, auto;
+  }
 
-    @media (prefers-reduced-motion: no-preference) {
-        animation: set-scheme 1ms steps(3), fade-in 2s ease-out;
-        animation-timeline: --head-timeline, auto;
-    }
+  @media (prefers-color-scheme: dark) {
+    --scheme: dark;
 
-    @media (prefers-color-scheme: dark) {
-        animation-name: set-scheme-dark-preferred;
-    }
+    animation-name: set-scheme-dark-preferred;
+  }
 }
 
 html::before,
 html::after {
-    position: fixed;
-    z-index: 3;
-    right: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    pointer-events: none;
-    filter: drop-shadow(0 0 2px var(--color-celestial-body));
+  position: fixed;
+  z-index: 3;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 0 2px var(--color-celestial-body));
 
-    @container style(--scheme: dark) {
-        filter: sepia(0.25) hue-rotate(147deg) brightness(0.25) drop-shadow(-1px -1px 2px rgba(255, 255, 255, 0.5));
-    }
+  @container style(--scheme: dark) {
+    filter: sepia(0.25) hue-rotate(147deg) brightness(0.25) drop-shadow(-1px -1px 2px rgba(255, 255, 255, 0.5));
+  }
 }
 
 html::before {
-    content: url('./../images/landscape-top-part.svg');
-    top: 0;
+  content: url('./../images/landscape-top-part.svg');
+  top: 0;
 }
 
 html::after {
-    content: url('./../images/landscape-bottom-part.svg');
-    bottom: -7.5vw;
+  content: url('./../images/landscape-bottom-part.svg');
+  bottom: -7.5vw;
 }
 
 head {
-    position: relative;
-    z-index: 5;
-    display: block;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    scroll-timeline-name: --head-timeline;
-    scroll-timeline-axis: x;
-    scroll-timeline-axis: inline;
-    scroll-marker-group: after;
-    scroll-behavior: auto;
-    margin-top: -5rem;
-    font-size: 0;
-    white-space: nowrap;
+  position: relative;
+  z-index: 5;
+  display: block;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-timeline-name: --head-timeline;
+  scroll-timeline-axis: x;
+  scroll-timeline-axis: inline;
+  scroll-marker-group: after;
+  scroll-behavior: auto;
+  margin-top: -3rem;
+  opacity: 0;
+  font-size: 0;
+  white-space: nowrap;
 }
 
 head::scroll-marker-group {
-    position: fixed;
-    z-index: 5;
-    top: 1rem;
-    left: 50%;
-    display: flex;
-    gap: 0.25rem;
-    transform: translateX(-50%);
+  position: fixed;
+  z-index: 5;
+  top: 1rem;
+  left: 50%;
+  display: flex;
+  gap: 0.25rem;
+  transform: translateX(-50%);
 }
 
 meta::scroll-marker {
-    display: block;
-    width: 1.5rem;
-    height: 1.5rem;
-    padding: 0.25rem;
-    border-radius: 3px;
-    font-size: 0;
-    filter: drop-shadow(.5px .5px 0 #fff) drop-shadow(.5px -.5px 0 #fff) drop-shadow(-.5px .5px 0 #fff) drop-shadow(-.5px -.5px 0 #fff);
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.25rem;
+  border-radius: 3px;
+  font-size: 0;
+  filter: drop-shadow(.5px .5px 0 #fff) drop-shadow(.5px -.5px 0 #fff) drop-shadow(-.5px .5px 0 #fff) drop-shadow(-.5px -.5px 0 #fff);
 
-    @container style(--scheme: dark) {
-        filter: invert(1) drop-shadow(.5px .5px 0 #000) drop-shadow(-.5px .5px 0 #000) drop-shadow(.5px -.5px 0 #000) drop-shadow(-.5px -.5px 0 #000);
-    }
+  @container style(--scheme: dark) {
+    filter: invert(1) drop-shadow(.5px .5px 0 #000) drop-shadow(-.5px .5px 0 #000) drop-shadow(.5px -.5px 0 #000) drop-shadow(-.5px -.5px 0 #000);
+  }
 }
 
 meta::scroll-marker:target-current {
-    background: var(--color-celestial-body);
+  background: var(--color-celestial-body);
 }
 
 meta:nth-of-type(1),
 meta:nth-of-type(2),
 meta:nth-of-type(3) {
-    display: inline-block;
-    width: 100vw;
-    height: 1lh;
-    border: 1px solid currentColor;
-    font-size: 1rem;
-    text-align: center;
-    scroll-snap-align: center;
+  display: inline-block;
+  width: 100vw;
+  height: 1lh;
+  border: 1px solid currentColor;
+  font-size: 1rem;
+  text-align: center;
+  scroll-snap-align: center;
 }
 
 meta:nth-of-type(1)::scroll-marker {
-    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.5 2.52267C6.13332 2.64713 4.86254 3.27802 3.9372 4.29146C3.01186 5.3049 2.49882 6.62766 2.49882 8C2.49882 9.37234 3.01186 10.6951 3.9372 11.7085C4.86254 12.722 6.13332 13.3529 7.5 13.4773V2.52267ZM1.5 8C1.5 4.41 4.41 1.5 8 1.5C11.59 1.5 14.5 4.41 14.5 8C14.5 11.59 11.59 14.5 8 14.5C4.41 14.5 1.5 11.59 1.5 8Z' fill='currentColor'%3E%3C/path%3E%3C/svg%3E") / 'automatic light or dark mode';
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.5 2.52267C6.13332 2.64713 4.86254 3.27802 3.9372 4.29146C3.01186 5.3049 2.49882 6.62766 2.49882 8C2.49882 9.37234 3.01186 10.6951 3.9372 11.7085C4.86254 12.722 6.13332 13.3529 7.5 13.4773V2.52267ZM1.5 8C1.5 4.41 4.41 1.5 8 1.5C11.59 1.5 14.5 4.41 14.5 8C14.5 11.59 11.59 14.5 8 14.5C4.41 14.5 1.5 11.59 1.5 8Z' fill='currentColor'%3E%3C/path%3E%3C/svg%3E") / 'automatic light or dark mode';
 }
 
 meta:nth-of-type(2)::scroll-marker {
-    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='2 2 20 20' stroke-width='1.5' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z' /%3E%3C/svg%3E") / 'light mode';
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='2 2 20 20' stroke-width='1.5' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z' /%3E%3C/svg%3E") / 'light mode';
 }
 
 meta:nth-of-type(3)::scroll-marker {
-    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z' /%3E%3C/svg%3E") / 'dark mode';
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z' /%3E%3C/svg%3E") / 'dark mode';
 }
 
 body {
-    max-width: 40rem;
-    margin: 0 auto;
-    padding: 10vh 2rem 30vh;
-    background: var(--color-sky);
-    color: #000;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 10vh 2rem 30vh;
+  background: var(--color-sky);
+  color: #000;
 
-    @container style(--scheme: dark) {
-        background-color: #001c40;
-        color: #ddd;
-    }
+  @container style(--scheme: dark) {
+    background-color: #001c40;
+    color: #ddd;
+  }
 }
 
 body::before,
 body::after {
-    content: '';
-    position: fixed;
-    z-index: 1;
+  content: '';
+  position: fixed;
+  z-index: 1;
 }
 
 body::before {
-    content: 'A bright, stylized landscape with rolling green hills, trees, and a large sun in the sky. Decorative drop caps begin the paragraphs.';
-    position: fixed;
-    z-index: 1;
-    top: 5vh;
-    left: 70vw;
-    width: 20vmax;
-    height: 20vmax;
-    background-color: var(--color-celestial-body);
-    border-radius: 50%;
-    box-shadow: 0 0 1vmax var(--color-celestial-glow), 0 0 50vmax var(--color-celestial-glow), 0 0 35vmax var(--color-celestial-glow);
-    font-size: 0;
-    transform-origin: 20vw 80vmax;
-    rotate: var(--degree);
+  content: 'A bright, stylized landscape with rolling green hills, trees, and a large sun in the sky. Decorative drop caps begin the paragraphs.';
+  position: fixed;
+  z-index: 1;
+  top: 5vh;
+  left: 70vw;
+  width: 20vmax;
+  height: 20vmax;
+  background-color: var(--color-celestial-body);
+  border-radius: 50%;
+  box-shadow: 0 0 1vmax var(--color-celestial-glow), 0 0 50vmax var(--color-celestial-glow), 0 0 35vmax var(--color-celestial-glow);
+  font-size: 0;
+  transform-origin: 20vw 80vmax;
+  rotate: var(--degree);
 
-    @media (prefers-reduced-motion: no-preference) {
-        animation-name: celestial;
-        animation-duration: 2000ms;
-        animation-timing-function: ease-out;
-        animation-fill-mode: both;
-    }
+  @media (prefers-reduced-motion: no-preference) {
+    animation-name: celestial;
+    animation-duration: 2000ms;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+  }
 
-    @container style(--scheme: dark) {
-        --color-celestial-glow: #000;
-        content: 'A nighttime illustration with rolling hills, silhouetted trees, and a large glowing moon in a deep blue sky. Decorative drop caps begin the paragraphs.';
-        background-image: radial-gradient(circle at 60% 60%, transparent 50%, rgba(255, 255, 255, 1) 120%),
-            radial-gradient(circle at 40% 40%, transparent 50%, rgba(0, 0, 0, 1) 110%),
-            radial-gradient(circle at top left, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.75) 100%),
-            radial-gradient(circle at bottom, rgba(10, 35, 66, 0.4) 30%, transparent 70%),
-            radial-gradient(circle at bottom, rgba(40, 62, 81, 0.15) 0%, rgba(10, 35, 66, 0.2) 100%),
-            radial-gradient(circle at top left, rgba(171, 227, 255, 0.75) 0%, rgba(0, 0, 0, 0.5) 90%),
-            linear-gradient(to left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.1) 100%);
-        background-size: 180%, 100%, 100%, 100%, 100%, 100%, 100%;
-        background-position: 50%, 50%, 50%, 50%, 50%, 50%, 50%;
-        filter: invert(1) brightness(0.7);
-    }
+  @container style(--scheme: dark) {
+    --color-celestial-glow: #000;
+    content: 'A nighttime illustration with rolling hills, silhouetted trees, and a large glowing moon in a deep blue sky. Decorative drop caps begin the paragraphs.';
+    background-image: radial-gradient(circle at 60% 60%, transparent 50%, rgba(255, 255, 255, 1) 120%),
+    radial-gradient(circle at 40% 40%, transparent 50%, rgba(0, 0, 0, 1) 110%),
+    radial-gradient(circle at top left, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.75) 100%),
+    radial-gradient(circle at bottom, rgba(10, 35, 66, 0.4) 30%, transparent 70%),
+    radial-gradient(circle at bottom, rgba(40, 62, 81, 0.15) 0%, rgba(10, 35, 66, 0.2) 100%),
+    radial-gradient(circle at top left, rgba(171, 227, 255, 0.75) 0%, rgba(0, 0, 0, 0.5) 90%),
+    linear-gradient(to left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.1) 100%);
+    background-size: 180%, 100%, 100%, 100%, 100%, 100%, 100%;
+    background-position: 50%, 50%, 50%, 50%, 50%, 50%, 50%;
+    filter: invert(1) brightness(0.7);
+  }
 }
 
 body::after {
-    content: url('./../images/landscape-clouds.svg');
-    top: 50%;
-    left: 0;
-    width: 102vw;
-    height: auto;
-    translate: 0 -50%;
-    pointer-events: none;
+  content: url('./../images/landscape-clouds.svg');
+  top: 50%;
+  left: 0;
+  width: 102vw;
+  height: auto;
+  translate: 0 -50%;
+  pointer-events: none;
 
-    @media (prefers-reduced-motion: no-preference) {
-        animation-name: scale-clouds;
-        animation-duration: 300s;
-        animation-timing-function: ease-out;
-    }
+  @media (prefers-reduced-motion: no-preference) {
+    animation-name: scale-clouds;
+    animation-duration: 300s;
+    animation-timing-function: ease-out;
+  }
 
-    @container style(--scheme: dark) {
-        filter: brightness(0.35) contrast(1.5);
-    }
+  @container style(--scheme: dark) {
+    filter: brightness(0.35) contrast(1.5);
+  }
 }
 
 body > * {
-    position: relative;
-    z-index: 2;
+  position: relative;
+  z-index: 2;
 }
 
 header {
-    z-index: 3;
+  z-index: 3;
 }
 
 aside {
-    margin: 1em 0;
-    margin-block: 1em;
-    padding: 1rem;
-    background-color: rgba(var(--color-accent-rgb), 0.25);
-    background-color: color-mix(in srgb, rgb(var(--color-accent-rgb)) 25%, white 90%);
-    border-left: 0.5rem solid rgb(var(--color-accent-rgb));
-    border-inline-start: 0.5rem solid rgb(var(--color-accent-rgb));
+  margin: 1em 0;
+  margin-block: 1em;
+  padding: 1rem;
+  background-color: rgba(var(--color-accent-rgb), 0.25);
+  background-color: color-mix(in srgb, rgb(var(--color-accent-rgb)) 25%, white 90%);
+  border-left: 0.5rem solid rgb(var(--color-accent-rgb));
+  border-inline-start: 0.5rem solid rgb(var(--color-accent-rgb));
 
-    @container style(--scheme: dark) {
-        background-color: color-mix(in srgb, rgb(var(--color-accent-rgb)) 25%, black 90%);
-    }
+  @container style(--scheme: dark) {
+    background-color: color-mix(in srgb, rgb(var(--color-accent-rgb)) 25%, black 90%);
+  }
 }
 
 aside::after {
-    content: '';
-    display: block;
-    clear: both;
+  content: '';
+  display: block;
+  clear: both;
 }
 
 aside > :first-child {
-    margin-top: 0;
-    margin-block-start: 0;
+  margin-top: 0;
+  margin-block-start: 0;
 }
 
 :is(h2, h2, h3, h4, h5, h6) {
-    line-height: 1.2;
+  line-height: 1.2;
 }
 
 :is(h2, h2, h3, h4, h5, h6) {
-    margin-top: 1.5em;
+  margin-top: 1.5em;
 }
 
 :is(h1, h2, h2, h3, h4, h5, h6, summary) + p:first-letter {
-    float: left;
-    margin-right: 0.1em;
-    margin-inline-end: 0.1em;
-    font-family: serif;
-    font-size: 300%;
-    font-size: 3lh;
-    font-weight: normal;
-    line-height: 1;
+  float: left;
+  margin-right: 0.1em;
+  margin-inline-end: 0.1em;
+  font-family: serif;
+  font-size: 300%;
+  font-size: 3lh;
+  font-weight: normal;
+  line-height: 1;
 }
 
 :is(h1, h2, h2, h3, h4, h5, h6, summary) + p::after {
-    content: '';
-    display: block;
-    clear: both;
+  content: '';
+  display: block;
+  clear: both;
 }
 
 h1 {
-    --color-contrast: #fff;
-    font-family: 'Leafy', serif;
-    font-size: 5rem;
-    font-size: clamp(3rem, 10vw, 5rem);
-    font-weight: normal;
-    line-height: 1;
-    text-align: center;
-    text-shadow: .5px .5px 0 var(--color-contrast), -.5px .5px 0 var(--color-contrast), .5px -.5px 0 var(--color-contrast), -.5px -.5px 0 var(--color-contrast);
+  --color-contrast: #fff;
+  font-family: 'Leafy', serif;
+  font-size: 5rem;
+  font-size: clamp(3rem, 10vw, 5rem);
+  font-weight: normal;
+  line-height: 1;
+  text-align: center;
+  text-shadow: .5px .5px 0 var(--color-contrast), -.5px .5px 0 var(--color-contrast), .5px -.5px 0 var(--color-contrast), -.5px -.5px 0 var(--color-contrast);
 
-    @container style(--scheme: dark) {
-        --color-contrast: #000;
-    }
+  @container style(--scheme: dark) {
+    --color-contrast: #000;
+  }
 }
 
 h1 + p {
-    font-size: 1.25rem;
-    font-size: clap(1rem, 1.25rem, 3vw);
-    font-weight: bold;
+  font-size: 1.25rem;
+  font-size: clap(1rem, 1.25rem, 3vw);
+  font-weight: bold;
 }
 
 p {
-    clear: both;
+  clear: both;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 1rem;
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
 }
 
 #sessions ul {
-    --sessions-img-size: 25vmin;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin: 4rem 0;
-    padding: 0;
+  --sessions-img-size: 25vmin;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 4rem 0;
+  padding: 0;
 }
 
 #sessions li {
-    --sibling-index: sibling-index();
+  --sibling-index: sibling-index();
 
-    flex: 0 0 var(--sessions-img-size);
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-    reading-flow: grid-columns;
-    min-width: 0;
+  flex: 0 0 var(--sessions-img-size);
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  reading-flow: grid-columns;
+  min-width: 0;
 }
 
 #sessions li::before {
-    content: '';
-    width: calc(var(--sessions-img-size) + 1rem);
-    height: calc(var(--sessions-img-size) + 1rem);
-    color: var(--color-celestial-body);
-    background: currentColor;
-    translate: calc(cos(var(--degree)) * 0.25rem) calc(sin(var(--degree)) * 0.25rem);
+  content: '';
+  width: calc(var(--sessions-img-size) + 1rem);
+  height: calc(var(--sessions-img-size) + 1rem);
+  color: var(--color-celestial-body);
+  background: currentColor;
+  translate: calc(cos(var(--degree)) * 0.25rem) calc(sin(var(--degree)) * 0.25rem);
 
-    @media (prefers-reduced-motion: no-preference) {
-        animation: glow 4s linear infinite;
-        animation-delay: calc(var(--sibling-index) * 500ms);
-    }
+  @media (prefers-reduced-motion: no-preference) {
+    animation: glow 4s linear infinite;
+    animation-delay: calc(var(--sibling-index) * 500ms);
+  }
 }
 
 #sessions li::before,
 #sessions img {
-    grid-row: 1;
-    grid-column: 1;
-    margin: auto;
-    border-radius: 50%;
+  grid-row: 1;
+  grid-column: 1;
+  margin: auto;
+  border-radius: 50%;
 }
 
 #sessions img {
-    width: var(--sessions-img-size);
-    height: var(--sessions-img-size);
-    object-fit: cover;
-    filter: sepia(40%);
+  width: var(--sessions-img-size);
+  height: var(--sessions-img-size);
+  object-fit: cover;
+  filter: sepia(40%);
 }
 
 #sessions a {
-    order: 99;
-    overflow-wrap: anywhere;
-    text-align: center;
+  order: 99;
+  overflow-wrap: anywhere;
+  text-align: center;
 }
 
 summary {
-    clear: both;
-    padding: .5rem 0;
-    font-weight: bold;
-    cursor: pointer;
+  clear: both;
+  padding: .5rem 0;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 summary + p {
-    margin-top: -.25rem;
+  margin-top: -.25rem;
 }
 
 ::details-content {
-    transition: height 0.2s ease, content-visibility 0.5s ease allow-discrete;
-    height: 0;
-    overflow: clip;
+  transition: height 0.2s ease, content-visibility 0.5s ease allow-discrete;
+  height: 0;
+  overflow: clip;
 }
 
 /* Browser supports interpolate-size */
 @supports (interpolate-size: allow-keywords) {
-    :root {
-        interpolate-size: allow-keywords;
-    }
+  :root {
+    interpolate-size: allow-keywords;
+  }
 
-    [open]::details-content {
-        height: auto;
-    }
+  [open]::details-content {
+    height: auto;
+  }
 }
 
 /* Fallback for browsers with no interpolate-size support */
 @supports not (interpolate-size: allow-keywords) {
-    [open]::details-content {
-        height: auto;
-    }
+  [open]::details-content {
+    height: auto;
+  }
 }
 
 a {
-    color: rgb(var(--color-accent-rgb));
-    font-weight: bold;
+  color: rgb(var(--color-accent-rgb));
+  font-weight: bold;
 
-    @container style(--scheme: dark) {
-        filter: brightness(1.5);
-    }
+  @container style(--scheme: dark) {
+    filter: brightness(1.5);
+  }
 }
 
 a::before {
-    display: inline-block;
-    width: 1.35em;
-    height: 1.35em;
-    margin-right: 0.25rem;
-    background-color: currentColor;
-    mask-size: cover;
-    vertical-align: bottom;
+  display: inline-block;
+  width: 1.35em;
+  height: 1.35em;
+  margin-right: 0.25rem;
+  background-color: currentColor;
+  mask-size: cover;
+  vertical-align: bottom;
 }
 
 a[href^="https://gath.io"] {
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    margin: 2.5rem auto;
-    padding: 0.25em 1em;
-    background-color: rgb(var(--color-accent-rgb));
-    color: #fff;
-    color: color-mix(in srgb, rgb(var(--color-accent-rgb)) 10%, white 90%);
-    border-radius: 0.25rem;
-    font-size: 1.5em;
-    font-weight: normal;
-    text-decoration: none;
-    box-shadow: 0 0 2rem 0.25rem rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin: 2.5rem auto;
+  padding: 0.25em 1em;
+  background-color: rgb(var(--color-accent-rgb));
+  color: #fff;
+  color: color-mix(in srgb, rgb(var(--color-accent-rgb)) 10%, white 90%);
+  border-radius: 0.25rem;
+  font-size: 1.5em;
+  font-weight: normal;
+  text-decoration: none;
+  box-shadow: 0 0 2rem 0.25rem rgba(255, 255, 255, 0.5);
 
-    @media (prefers-reduced-motion: no-preference) {
-        animation: click-me 16s infinite;
-        animation-delay: 8s;
-    }
+  @media (prefers-reduced-motion: no-preference) {
+    animation: click-me 16s infinite;
+    animation-delay: 8s;
+  }
 
-    @container style(--scheme: dark) {
-        box-shadow: 0 0 2rem 0.25rem rgba(0, 0, 0, 0.5);
-    }
+  @container style(--scheme: dark) {
+    box-shadow: 0 0 2rem 0.25rem rgba(0, 0, 0, 0.5);
+  }
 }
 
 a[href^="https://gath.io"]::before {
-    content: '';
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E\n  %3Cpath fill-rule='evenodd' d='M1.5 6.375c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v3.026a.75.75 0 0 1-.375.65 2.249 2.249 0 0 0 0 3.898.75.75 0 0 1 .375.65v3.026c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 17.625v-3.026a.75.75 0 0 1 .374-.65 2.249 2.249 0 0 0 0-3.898.75.75 0 0 1-.374-.65V6.375Zm15-1.125a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Zm.75 4.5a.75.75 0 0 0-1.5 0v.75a.75.75 0 0 0 1.5 0v-.75Zm-.75 3a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-1.5 0v-.75a.75.75 0 0 1 .75-.75Zm.75 4.5a.75.75 0 0 0-1.5 0V18a.75.75 0 0 0 1.5 0v-.75ZM6 12a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 12Zm.75 2.25a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z' clip-rule='evenodd' /%3E\n%3C/svg%3E");
+  content: '';
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E\n  %3Cpath fill-rule='evenodd' d='M1.5 6.375c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v3.026a.75.75 0 0 1-.375.65 2.249 2.249 0 0 0 0 3.898.75.75 0 0 1 .375.65v3.026c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 17.625v-3.026a.75.75 0 0 1 .374-.65 2.249 2.249 0 0 0 0-3.898.75.75 0 0 1-.374-.65V6.375Zm15-1.125a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Zm.75 4.5a.75.75 0 0 0-1.5 0v.75a.75.75 0 0 0 1.5 0v-.75Zm-.75 3a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-1.5 0v-.75a.75.75 0 0 1 .75-.75Zm.75 4.5a.75.75 0 0 0-1.5 0V18a.75.75 0 0 0 1.5 0v-.75ZM6 12a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 12Zm.75 2.25a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z' clip-rule='evenodd' /%3E\n%3C/svg%3E");
 }
 
 a[href^="mailto:"]::before {
-    content: '';
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E\n  %3Cpath d='M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z' /%3E\n  %3Cpath d='M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z' /%3E\n%3C/svg%3E");
+  content: '';
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E\n  %3Cpath d='M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z' /%3E\n  %3Cpath d='M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z' /%3E\n%3C/svg%3E");
 }
 

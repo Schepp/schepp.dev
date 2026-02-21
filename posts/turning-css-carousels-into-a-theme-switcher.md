@@ -199,7 +199,7 @@ Light scene. Night scene. Same markup!
 
 And a tiny row of buttons that exists only because CSS decided it should. ✨
 
-👉 [Have a look](/demos/the-web-we-want) :)
+👉 [Have a look (Chromium only)](/demos/the-web-we-want) :)
 
 ## A small disclaimer
 
