@@ -62,7 +62,7 @@ Classic CSS toggling tricks need some kind of state holder - a checkbox, a fragm
 
 Then I remembered the [Chrome team’s CSS-only carousel work](https://developer.chrome.com/blog/carousels-with-css#add_scroll_buttons_with_scroll-button).
 
-That proposal introduces pseudo-elements such as **scroll buttons** and **scroll markers** that behave very much like navigation controls - focusable, keyboard-operable, grouped. In other words: interactive UI created entirely by CSS.
+That (Chromium-only) proposal introduces pseudo-elements such as **scroll buttons** and **scroll markers** that behave very much like navigation controls - focusable, keyboard-operable, grouped. In other words: interactive UI created entirely by CSS.
 
 So the question became:
 
