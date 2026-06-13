@@ -288,7 +288,6 @@ code {
   -ms-hyphens: none;
   text-size-adjust: from-font;
   hyphens: none;
-  white-space: nowrap;
   word-break: break-all;
 }
 
