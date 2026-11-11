@@ -2,3 +2,5 @@ _site/
 _cache/
 node_modules/
 .env
+.idea
+.DS_Store
