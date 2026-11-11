@@ -23,7 +23,7 @@
   "homepage": "https://github.com/Schepp/schepp.dev#readme",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-img": "^3.1.0",
+    "@11ty/eleventy-img": "^7.1.1",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "luxon": "^3.3.0",
