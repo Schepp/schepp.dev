@@ -627,3 +627,117 @@ img[src*="sky-follower-bridge-icon.png"] {
   vertical-align: middle;
 }
 
+
+/* dark mode */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --red: #434343;
+    --darkred: #969696;
+    --lightgray: #2E2E2E;
+    --gray: #414141;
+    --darkgray: #CCC;
+    --navy: #C0B1B9;
+    --blue: #C2C2C2;
+    --white: #111;
+  }
+  
+  main .h1--post {
+    color: #111;
+    text-shadow: 0 0 4px #fff;  
+    @supports (paint-order: stroke fill) {
+      -webkit-text-stroke: 1px #eee;
+      text-stroke: 1px #eee;
+    }
+  }
+  
+  main .h1--inverted {
+    color: #eee;
+    text-shadow: 0 0 4px #111;
+  
+    @supports (paint-order: stroke fill) {
+      -webkit-text-stroke: 1px #111;
+      text-stroke: 1px #111;
+    }
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    border-right: 1px solid #111;
+  }
+  
+  img, video {
+    border: 1px solid #333;
+  }
+  
+  a {
+    text-decoration-color: #0069CF;
+  }
+  
+  pre,
+  code,
+  .speculationrules {
+    background-color: #665200;
+    color: #eee;
+  }
+  
+  code {
+    box-shadow: inset 0 0 4px #AB6E00;
+  }
+  
+  .highlight-line-isdir {
+    color: #4A4A4A;
+    background-color: #ccc;
+  }
+  
+  .highlight-line-active {
+    background-color: #bbb;
+    background-color: hsla(0, 0%, 73%, .8);
+  }
+  
+  .highlight-line-add {
+    background-color: #3CAC47;
+  }
+  
+  .highlight-line-remove {
+    background-color: #BE5C5C;
+  }
+  
+  a[href].tag,
+  a[href].tag:visited {
+    color: #111;
+  }
+  
+  .info {
+    background-color: #002F60;
+  }
+  
+  .warning {
+    background-color: #515100;
+  }
+  
+  a[href].direct-link:focus,
+  a[href].direct-link:focus:visited,
+  :hover > a[href].direct-link,
+  :hover > a[href].direct-link:visited {
+    color: #777;
+  }
+  
+  .me {
+    border-top: 2px solid #ccc;
+  }
+  
+  blockquote {
+    color: #bbb;
+  }
+  
+  .multicolumn {
+    background-color: #292929;
+  }
+  
+  /* social icons */
+  .me svg {
+    filter: invert();
+  }
+
+}
